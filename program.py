@@ -1,4 +1,5 @@
 import calendar
+from datetime import date
 
 class programWeek1:
     
@@ -27,6 +28,20 @@ class programWeek1:
         self.month = int(input("Input the month : "))
         print(calendar.month(self.year, self.month))   # print calendar for given month and year.
 
+    def getNoOfDays(self):
+        self.f_date = input("Input the first date (yyyy/mm/dd) : ")
+        self.l_date = input("Input the last date (yyyy/mm/dd): ")
+        self.year1 = int(self.f_date.split("/")[0])
+        self.month1 = int(self.f_date.split("/")[1])
+        self.date1 = int(self.f_date.split("/")[2])
+        self.year2 = int(self.l_date.split("/")[0])
+        self.month2 = int(self.l_date.split("/")[1])
+        self.date2 = int(self.l_date.split("/")[2])
+        self.first_date = date(self.year1,self.month1,self.date1)   # using datetime module convert into date type
+        self.last_date = date(self.year2,self.month2,self.date2)
+        delta = self.last_date - self.first_date     # diffrence between dates
+        print(delta)
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -34,6 +49,7 @@ def main():
     obj.display_colors()
     obj.document_builtInFunction()
     obj.print_calendar()
+    obj.getNoOfDays()
 
 if __name__ == "__main__":
     main()
