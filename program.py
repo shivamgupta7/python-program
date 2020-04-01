@@ -91,17 +91,27 @@ class programWeek1:
             result += str(element)   # convert each element into string
         print(result)
 
+    def set_difference(self):
+        
+        '''Print out a set containing all the colors from color_list_1 which are not present in color_list_2.'''
+        
+        self.color_list_1 = set(["White", "Black", "Red"])
+        self.color_list_2 = set(["Red", "Green"])
+        print(self.color_list_1.difference(self.color_list_2))
+
+
 def main():
     obj = programWeek1()   # create object of class
-    #obj.reverse_name()     # calling methods(function) in class
-    #obj.list_tuple()
-    #obj.display_colors()
-    #obj.document_builtInFunction()
-    #obj.print_calendar()
-    #obj.getNoOfDays()
-    #obj.is_group_member()
-    #obj.histogram([2,5,3,8])
+    obj.reverse_name()     # calling methods(function) in class
+    obj.list_tuple()
+    obj.display_colors()
+    obj.document_builtInFunction()
+    obj.print_calendar()
+    obj.getNoOfDays()
+    obj.is_group_member()
+    obj.histogram([2,5,3,8])
     obj.concatenate_list_data([2,5,3,8])
+    obj.set_difference()
 
 if __name__ == "__main__":
     main()
