@@ -12,10 +12,15 @@ class programWeek1:
         print('List : ',self.list)
         print('Tuple : ',self.tuple)
 
+    def display_colors(self):
+        color_list = ["Red","Green","White" ,"Black"]
+        print("First color is {0} and Last color is {1}.".format(color_list[0],color_list[-1]))
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
     obj.list_tuple()
+    obj.display_colors()
 
 if __name__ == "__main__":
     main()
