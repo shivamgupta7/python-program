@@ -81,16 +81,27 @@ class programWeek1:
                 times = times - 1
             print(output)
 
+    def concatenate_list_data(self, list):
+
+        ''' concatenate all elements in a list into a string and return it.'''
+        
+        self.list = list
+        result= ''
+        for element in list:
+            result += str(element)   # convert each element into string
+        print(result)
+
 def main():
     obj = programWeek1()   # create object of class
-    obj.reverse_name()     # calling methods(function) in class
-    obj.list_tuple()
-    obj.display_colors()
-    obj.document_builtInFunction()
-    obj.print_calendar()
-    obj.getNoOfDays()
-    obj.is_group_member()
-    obj.histogram([2,5,3,8])
+    #obj.reverse_name()     # calling methods(function) in class
+    #obj.list_tuple()
+    #obj.display_colors()
+    #obj.document_builtInFunction()
+    #obj.print_calendar()
+    #obj.getNoOfDays()
+    #obj.is_group_member()
+    #obj.histogram([2,5,3,8])
+    obj.concatenate_list_data([2,5,3,8])
 
 if __name__ == "__main__":
     main()
