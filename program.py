@@ -66,7 +66,20 @@ class programWeek1:
 
         list = [1, 5, 8, 3]
         self.value = int(input("Enter the seaching number : "))
-        print(self.value in list)    
+        print(self.value in list)
+
+    def histogram(self,items):
+        
+        '''Program to create a histogram from a given list of integers.'''
+        
+        self.items = items
+        for number in items:
+            output = ''
+            times = number
+            while( times > 0 ):
+                output += '*'
+                times = times - 1
+            print(output)
 
 def main():
     obj = programWeek1()   # create object of class
@@ -77,6 +90,7 @@ def main():
     obj.print_calendar()
     obj.getNoOfDays()
     obj.is_group_member()
+    obj.histogram([2,5,3,8])
 
 if __name__ == "__main__":
     main()
