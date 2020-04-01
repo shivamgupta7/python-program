@@ -1,3 +1,5 @@
+import calendar
+
 class programWeek1:
     
     def reverse_name(self):
@@ -20,6 +22,10 @@ class programWeek1:
         func = input("Enter a valid Python function name: ")
         print(help(func))     # help that provides a helpful message.
 
+    def print_calendar(self):
+        self.year = int(input("Input the year : "))
+        self.month = int(input("Input the month : "))
+        print(calendar.month(self.year, self.month))   # print calendar for given month and year.
 
 def main():
     obj = programWeek1()   # create object of class
@@ -27,6 +33,7 @@ def main():
     obj.list_tuple()
     obj.display_colors()
     obj.document_builtInFunction()
+    obj.print_calendar()
 
 if __name__ == "__main__":
     main()
