@@ -113,6 +113,12 @@ class programWeek1:
         '''
         print(os.listdir(path))
    
+    def check_environment(self):
+        '''
+        Access environment variables.
+        '''
+        print(os.environ)
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -127,6 +133,7 @@ def main():
     obj.set_difference()
     obj.cpu_using()
     obj.all_files('/home/shivam_gupta/Documents/python-program/')
+    obj.check_environment()
 
 if __name__ == "__main__":
     main()
