@@ -1,5 +1,6 @@
 import calendar
 from datetime import date
+import multiprocessing
 
 class programWeek1:
     
@@ -99,6 +100,11 @@ class programWeek1:
         self.color_list_2 = set(["Red", "Green"])
         print(self.color_list_1.difference(self.color_list_2))
 
+    def cpu_using(self):
+        '''
+        find out the number of CPUs using.
+        '''
+        print("Number of CPU using : ",multiprocessing.cpu_count())
 
 def main():
     obj = programWeek1()   # create object of class
@@ -112,6 +118,7 @@ def main():
     obj.histogram([2,5,3,8])
     obj.concatenate_list_data([2,5,3,8])
     obj.set_difference()
+    obj.cpu_using()
 
 if __name__ == "__main__":
     main()
