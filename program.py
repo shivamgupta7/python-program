@@ -1,6 +1,7 @@
 import calendar
 from datetime import date
 import multiprocessing
+import os
 
 class programWeek1:
     
@@ -106,6 +107,12 @@ class programWeek1:
         '''
         print("Number of CPU using : ",multiprocessing.cpu_count())
 
+    def all_files(self, path):
+        '''
+         list all files in a directory in Python.
+        '''
+        print(os.listdir(path))
+   
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -119,6 +126,7 @@ def main():
     obj.concatenate_list_data([2,5,3,8])
     obj.set_difference()
     obj.cpu_using()
+    obj.all_files('/home/shivam_gupta/Documents/python-program/')
 
 if __name__ == "__main__":
     main()
