@@ -16,11 +16,17 @@ class programWeek1:
         color_list = ["Red","Green","White" ,"Black"]
         print("First color is {0} and Last color is {1}.".format(color_list[0],color_list[-1]))
 
+    def document_builtInFunction(self):
+        func = input("Enter a valid Python function name: ")
+        print(help(func))     # help that provides a helpful message.
+
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
     obj.list_tuple()
     obj.display_colors()
+    obj.document_builtInFunction()
 
 if __name__ == "__main__":
     main()
