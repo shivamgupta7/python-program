@@ -141,6 +141,13 @@ class programWeek1:
         '''
         print(os.path.abspath(path_fname))
 
+    def create_modification_dateTime(self, file):
+        '''
+         Get file creation and modification date/times.
+        '''
+        print("Created: %s" % time.ctime(os.path.getctime(file)))   # ctime() - The number of seconds to be converted into string representation. getctime() path creation time.
+        print("Last modified: %s" % time.ctime(os.path.getmtime(file)))   # getmtime - path modification time.
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -159,6 +166,7 @@ def main():
     obj.get_current_username()
     obj.get_execution_time()
     obj.absolute_file_path('program.py')
+    obj.create_modification_dateTime('program.py')
 
 if __name__ == "__main__":
     main()
