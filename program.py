@@ -2,6 +2,7 @@ import calendar
 from datetime import date
 import multiprocessing
 import os
+import getpass
 
 class programWeek1:
     
@@ -119,6 +120,12 @@ class programWeek1:
         '''
         print(os.environ)
 
+    def get_current_username(self):
+        '''
+        Get the current username.
+        '''
+        print("Current Username : ",getpass.getuser())   # The getuser() function displays the login name of the user.
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -134,6 +141,7 @@ def main():
     obj.cpu_using()
     obj.all_files('/home/shivam_gupta/Documents/python-program/')
     obj.check_environment()
+    obj.get_current_username()
 
 if __name__ == "__main__":
     main()
