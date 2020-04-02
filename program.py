@@ -3,6 +3,7 @@ from datetime import date
 import multiprocessing
 import os
 import getpass
+import time
 
 class programWeek1:
     
@@ -126,6 +127,14 @@ class programWeek1:
         '''
         print("Current Username : ",getpass.getuser())   # The getuser() function displays the login name of the user.
 
+    def get_execution_time(self):
+        '''
+        Get execution time.
+        '''
+        self.start = time.time()
+        self.end = time.time()
+        print(self.end - self.start)
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -142,6 +151,7 @@ def main():
     obj.all_files('/home/shivam_gupta/Documents/python-program/')
     obj.check_environment()
     obj.get_current_username()
+    obj.get_execution_time()
 
 if __name__ == "__main__":
     main()
