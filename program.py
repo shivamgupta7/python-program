@@ -210,6 +210,12 @@ class programWeek1:
         self.occurrence = self.string.count(self.count_char)
         return self.occurrence
 
+    def get_system_time(self):
+        '''
+        Get the system time.
+        '''
+        return time.ctime()
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -236,6 +242,7 @@ def main():
     print(obj.get_object_size(obj))
     print(obj.get_recursion_limit())
     print(obj.count_occurrence())
+    print(obj.get_system_time())
 
 if __name__ == "__main__":
     main()
