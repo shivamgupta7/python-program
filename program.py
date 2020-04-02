@@ -5,6 +5,7 @@ import os
 import getpass
 import time
 import glob    # get a list of file excludung directories
+import sys
 
 class programWeek1:
     
@@ -170,6 +171,16 @@ class programWeek1:
         self.files.sort(key=os.path.getmtime)
         return self.files
 
+    def get_command_argu(self):
+        '''
+        Get the command-line arguments (name of the script, the number
+        of arguments, arguments) passed to a script.
+        '''
+        self.script_name = sys.argv[0]
+        self.argu_length = len(sys.argv)
+        self.argu_list = str(sys.argv)
+        return self.script_name, self.argu_length, self.argu_list
+        
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -191,6 +202,7 @@ def main():
     obj.create_modification_dateTime('program.py')
     print(obj.sort_three_number())
     print(obj.sort_file("/media/shivam_gupta/Material/New folder/*.exe"))
+    print(obj.get_command_argu())
 
 if __name__ == "__main__":
     main()
