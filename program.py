@@ -135,6 +135,12 @@ class programWeek1:
         self.end = time.time()
         print(self.end - self.start)
 
+    def absolute_file_path(self,path_fname):
+        '''
+        Get an absolute file path.
+        '''
+        print(os.path.abspath(path_fname))
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -152,6 +158,7 @@ def main():
     obj.check_environment()
     obj.get_current_username()
     obj.get_execution_time()
+    obj.absolute_file_path('program.py')
 
 if __name__ == "__main__":
     main()
