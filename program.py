@@ -216,6 +216,12 @@ class programWeek1:
         '''
         return time.ctime()
 
+    def clear_screen(self):
+        '''
+        Clear the screen or terminal.
+        '''
+        return os.system("clear")
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -243,6 +249,7 @@ def main():
     print(obj.get_recursion_limit())
     print(obj.count_occurrence())
     print(obj.get_system_time())
+    obj.clear_screen()
 
 if __name__ == "__main__":
     main()
