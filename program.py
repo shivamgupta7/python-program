@@ -195,6 +195,12 @@ class programWeek1:
         self.obj_size = sys.getsizeof(object_name)   # sys.getsizeof() given size of file.
         return self.obj_size
 
+    def get_recursion_limit(self):
+        '''
+        Get the current value of the recursion limit.
+        '''
+        return sys.getrecursionlimit()   # Return the current value of the recursion value
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -219,6 +225,7 @@ def main():
     print(obj.get_command_argu())
     print(obj.get_builtin_module())
     print(obj.get_object_size(obj))
+    obj.get_recursion_limit()
 
 if __name__ == "__main__":
     main()
