@@ -7,6 +7,7 @@ import time
 import glob    # get a list of file excludung directories
 import sys
 import socket
+from http.client import HTTPConnection
 
 class programWeek1:
     
@@ -230,6 +231,16 @@ class programWeek1:
         self.host_name = socket.gethostname()
         return self.host_name
 
+    def access_print_url(self):
+        '''
+        Access and print a URL's content to the console.
+        '''
+        self.conn = HTTPConnection("www.google.com")
+        self.conn.request("GET", "/")
+        self.result = self.conn.getresponse()
+        self.contents = self.result.read()   # retrieves the entire contents.
+        return self.contents
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -259,6 +270,7 @@ def main():
     print(obj.get_system_time())
     obj.clear_screen()
     print(obj.get_host_name())
+    print(obj.access_print_url())
 
 if __name__ == "__main__":
     main()
