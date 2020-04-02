@@ -181,6 +181,13 @@ class programWeek1:
         self.argu_list = str(sys.argv)
         return self.script_name, self.argu_length, self.argu_list
         
+    def get_builtin_module(self):
+        '''
+        Return the available built-in modules
+        '''
+        self.module_name = [', '.join(sys.builtin_module_names)]   # sys.builtin_module_names given all python built-in modules
+        return self.module_name
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -203,6 +210,7 @@ def main():
     print(obj.sort_three_number())
     print(obj.sort_file("/media/shivam_gupta/Material/New folder/*.exe"))
     print(obj.get_command_argu())
+    print(obj.get_builtin_module())
 
 if __name__ == "__main__":
     main()
