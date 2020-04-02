@@ -6,6 +6,7 @@ import getpass
 import time
 import glob    # get a list of file excludung directories
 import sys
+import socket
 
 class programWeek1:
     
@@ -222,6 +223,13 @@ class programWeek1:
         '''
         return os.system("clear")
 
+    def get_host_name(self):
+        '''
+        Get the name of the host on which the routine is running
+        '''
+        self.host_name = socket.gethostname()
+        return self.host_name
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -250,6 +258,7 @@ def main():
     print(obj.count_occurrence())
     print(obj.get_system_time())
     obj.clear_screen()
+    print(obj.get_host_name())
 
 if __name__ == "__main__":
     main()
