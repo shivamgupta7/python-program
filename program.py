@@ -49,16 +49,16 @@ class programWeek1:
 
     def getNoOfDays(self):
         
-        ''' program to calculate number of days between two dates.'''
+        ''' Program to calculate number of days between two dates.'''
 
-        self.f_date = input("Input the first date (yyyy/mm/dd) : ")
-        self.l_date = input("Input the last date (yyyy/mm/dd): ")
-        self.year1 = int(self.f_date.split("/")[0])
-        self.month1 = int(self.f_date.split("/")[1])
-        self.date1 = int(self.f_date.split("/")[2])
-        self.year2 = int(self.l_date.split("/")[0])
-        self.month2 = int(self.l_date.split("/")[1])
-        self.date2 = int(self.l_date.split("/")[2])
+        self.f_date = input("Input the first date (yyyy/mm/dd) : ").split("/")
+        self.l_date = input("Input the last date (yyyy/mm/dd): ").split("/")
+        self.year1 = int(self.f_date[0])
+        self.month1 = int(self.f_date[1])
+        self.date1 = int(self.f_date[2])
+        self.year2 = int(self.l_date[0])
+        self.month2 = int(self.l_date[1])
+        self.date2 = int(self.l_date[2])
         self.first_date = date(self.year1,self.month1,self.date1)   # using datetime module convert into date type
         self.last_date = date(self.year2,self.month2,self.date2)
         delta = self.last_date - self.first_date     # diffrence between dates
