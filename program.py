@@ -201,6 +201,15 @@ class programWeek1:
         '''
         return sys.getrecursionlimit()   # Return the current value of the recursion value
 
+    def count_occurrence(self):
+        '''
+        Count the number occurrence of a specific character in a string.
+        '''
+        self.string = input("Enter the String : ")
+        self.count_char = input("Enter character for count number of occurrence : ")
+        self.occurrence = self.string.count(self.count_char)
+        return self.occurrence
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -225,7 +234,8 @@ def main():
     print(obj.get_command_argu())
     print(obj.get_builtin_module())
     print(obj.get_object_size(obj))
-    obj.get_recursion_limit()
+    print(obj.get_recursion_limit())
+    print(obj.count_occurrence())
 
 if __name__ == "__main__":
     main()
