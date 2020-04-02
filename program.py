@@ -188,6 +188,13 @@ class programWeek1:
         self.module_name = [', '.join(sys.builtin_module_names)]   # sys.builtin_module_names given all python built-in modules
         return self.module_name
 
+    def get_object_size(self, object_name):
+        '''
+        Get the size of an object in bytes.
+        '''
+        self.obj_size = sys.getsizeof(object_name)   # sys.getsizeof() given size of file.
+        return self.obj_size
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -211,6 +218,7 @@ def main():
     print(obj.sort_file("/media/shivam_gupta/Material/New folder/*.exe"))
     print(obj.get_command_argu())
     print(obj.get_builtin_module())
+    print(obj.get_object_size(obj))
 
 if __name__ == "__main__":
     main()
