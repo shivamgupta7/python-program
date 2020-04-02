@@ -148,6 +148,19 @@ class programWeek1:
         print("Created: %s" % time.ctime(os.path.getctime(file)))   # ctime() - The number of seconds to be converted into string representation. getctime() path creation time.
         print("Last modified: %s" % time.ctime(os.path.getmtime(file)))   # getmtime - path modification time.
 
+    def sort_three_number(self):
+        '''
+        Sort three integers without using conditional statements and loops.
+        '''
+        self.number1 = int(input("Input first number: "))
+        self.number2 = int(input("Input second number: "))
+        self.number3 = int(input("Input third number: "))
+
+        self.min = min(self.number1, self.number2, self.number3)
+        self.max = max(self.number1, self.number2, self.number3)
+        self.middle = (self.number1 + self.number2 + self.number3) - self.min - self.max
+        return self.min, self.middle, self.max
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -167,6 +180,7 @@ def main():
     obj.get_execution_time()
     obj.absolute_file_path('program.py')
     obj.create_modification_dateTime('program.py')
+    print(obj.sort_three_number())
 
 if __name__ == "__main__":
     main()
