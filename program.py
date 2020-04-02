@@ -4,6 +4,7 @@ import multiprocessing
 import os
 import getpass
 import time
+import glob    # get a list of file excludung directories
 
 class programWeek1:
     
@@ -161,6 +162,14 @@ class programWeek1:
         self.middle = (self.number1 + self.number2 + self.number3) - self.min - self.max
         return self.min, self.middle, self.max
 
+    def sort_file_by_date(self, path):
+        '''
+        Sort files by last modified date.
+        '''
+        self.files = glob.glob(path)
+        self.files.sort(key=os.path.getmtime)
+        return self.files
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -181,6 +190,7 @@ def main():
     obj.absolute_file_path('program.py')
     obj.create_modification_dateTime('program.py')
     print(obj.sort_three_number())
+    print(obj.sort_file("/media/shivam_gupta/Material/New folder/*.exe"))
 
 if __name__ == "__main__":
     main()
