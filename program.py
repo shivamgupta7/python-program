@@ -8,6 +8,7 @@ import glob    # get a list of file excludung directories
 import sys
 import socket
 from http.client import HTTPConnection
+import subprocess
 
 class programWeek1:
     
@@ -241,6 +242,14 @@ class programWeek1:
         self.contents = self.result.read()   # retrieves the entire contents.
         return self.contents
 
+    def get_system_command(self):
+        '''
+        Get system command output.
+        '''
+        command = input("Enter the command : ")
+        returned_output = subprocess.check_output(command, shell=True, universal_newlines=True)
+        return returned_output
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -271,6 +280,7 @@ def main():
     obj.clear_screen()
     print(obj.get_host_name())
     print(obj.access_print_url())
+    print(obj.get_system_command())
 
 if __name__ == "__main__":
     main()
