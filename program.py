@@ -328,6 +328,19 @@ class programWeek1:
         self.mode = struct.calcsize("P") * 8
         return self.mode
 
+    def find_min_max(self,data):
+        '''
+        Find the maximum and minimum numbers from a sequence of numbers.
+        '''
+        self.min = data[0]
+        self.max = data[0]
+        for num in data:
+            if num > self.max:
+                self.max = num
+            elif num < self.min:
+                self.min = num
+        return self.min, self.max
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -367,6 +380,7 @@ def main():
     print(obj.extract_key_value({7:'shivam'}))
     print(obj.int_to_binary(12))
     print(obj.python_shell_mode())
+    print(obj.find_min_max([2, 10, 15, 40, 32, -4, 15, 28]))
 
 if __name__ == "__main__":
     main()
