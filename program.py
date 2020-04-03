@@ -9,6 +9,7 @@ import sys
 import socket
 from http.client import HTTPConnection
 import subprocess
+import struct
 
 class programWeek1:
     
@@ -320,6 +321,13 @@ class programWeek1:
         self.binary = format(integer, '010b')
         return self.binary
 
+    def python_shell_mode(self):
+        '''
+        Determine if the python shell is executing in 32bit or 64bit mode on operating system.
+        '''
+        self.mode = struct.calcsize("P") * 8
+        return self.mode
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -358,6 +366,7 @@ def main():
     print(obj.left_padding())
     print(obj.extract_key_value({7:'shivam'}))
     print(obj.int_to_binary(12))
+    print(obj.python_shell_mode())
 
 if __name__ == "__main__":
     main()
