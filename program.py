@@ -268,6 +268,24 @@ class programWeek1:
         self.result = list(filter(lambda x: (x % 15 == 0), num_list))    # use anonymous function to filter
         return self.result
 
+    def var_definedOrNot(self):
+        '''
+        Determine whether variable is defined or not.
+        '''
+        try:
+            var_name1 = 123
+        except NameError:
+            print("Variable is not defined....!")
+        else:
+            print("Variable is defined.")
+            
+        try:
+            var_name2
+        except NameError:
+            print("Variable is not defined....!")
+        else:
+            print("Variable is defined.")
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -301,6 +319,7 @@ def main():
     print(obj.get_system_command())
     print(obj.get_group_ids())
     print(obj.divisible_by_fifteen([45, 55, 60, 37, 100, 105, 220]))
+    obj.var_definedOrNot()
 
 if __name__ == "__main__":
     main()
