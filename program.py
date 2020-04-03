@@ -296,6 +296,16 @@ class programWeek1:
         t = (5,6,7,8)
         return type(n)(), type(d)(), type(l)(), type(t)()
 
+    def left_padding(self):
+        '''
+        Add leading character to a string.
+        '''
+        self.string = input("Enter the string : ")
+        self.fillchar = input("Enter the left padding number or char : ")
+        self.width = int(input("Enter the width/length of string : "))
+        self.new_string = self.string.ljust(self.width, self.fillchar)    # ljust() :- Return the string left justified in a string of specified length.
+        return self.new_string
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -331,6 +341,7 @@ def main():
     print(obj.divisible_by_fifteen([45, 55, 60, 37, 100, 105, 220]))
     obj.var_definedOrNot()
     print(obj.get_empty_variable())
+    print(obj.left_padding())
 
 if __name__ == "__main__":
     main()
