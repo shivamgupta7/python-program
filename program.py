@@ -306,6 +306,13 @@ class programWeek1:
         self.new_string = self.string.ljust(self.width, self.fillchar)    # ljust() :- Return the string left justified in a string of specified length.
         return self.new_string
 
+    def extract_key_value(self, dictionary):
+        '''
+        Extract single key-value pair of a dictionary in variables.
+        '''
+        (key, value), = dictionary.items()
+        return key, value
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -342,6 +349,7 @@ def main():
     obj.var_definedOrNot()
     print(obj.get_empty_variable())
     print(obj.left_padding())
+    print(obj.extract_key_value({7:'shivam'}))
 
 if __name__ == "__main__":
     main()
