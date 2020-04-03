@@ -286,6 +286,16 @@ class programWeek1:
         else:
             print("Variable is defined.")
 
+    def get_empty_variable(self):
+        '''
+        Empty a variable without destroying it.
+        '''
+        n = 20
+        d = {"x":200}
+        l = [1,2,3,4]
+        t = (5,6,7,8)
+        return type(n)(), type(d)(), type(l)(), type(t)()
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -320,6 +330,7 @@ def main():
     print(obj.get_group_ids())
     print(obj.divisible_by_fifteen([45, 55, 60, 37, 100, 105, 220]))
     obj.var_definedOrNot()
+    print(obj.get_empty_variable())
 
 if __name__ == "__main__":
     main()
