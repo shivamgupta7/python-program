@@ -313,6 +313,13 @@ class programWeek1:
         (key, value), = dictionary.items()
         return key, value
 
+    def int_to_binary(self,integer):
+        '''
+        Convert an integer to binary keep leading zeros.
+        '''
+        self.binary = format(integer, '010b')
+        return self.binary
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -350,6 +357,7 @@ def main():
     print(obj.get_empty_variable())
     print(obj.left_padding())
     print(obj.extract_key_value({7:'shivam'}))
+    print(obj.int_to_binary(12))
 
 if __name__ == "__main__":
     main()
