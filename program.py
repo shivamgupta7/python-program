@@ -261,6 +261,13 @@ class programWeek1:
         self.supplemental_group_ids = os.getgroups()  # Get the list of supplemental group ids
         return self.effect_group_id, self.effect_user_id, self.real_group_id, self.supplemental_group_ids
 
+    def divisible_by_fifteen(self,num_list):
+        '''
+        Get numbers divisible by fifteen from a list using an anonymous function.
+        '''
+        self.result = list(filter(lambda x: (x % 15 == 0), num_list))    # use anonymous function to filter
+        return self.result
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -293,6 +300,7 @@ def main():
     print(obj.access_print_url())
     print(obj.get_system_command())
     print(obj.get_group_ids())
+    print(obj.divisible_by_fifteen([45, 55, 60, 37, 100, 105, 220]))
 
 if __name__ == "__main__":
     main()
