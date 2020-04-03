@@ -250,6 +250,17 @@ class programWeek1:
         returned_output = subprocess.check_output(command, shell=True, universal_newlines=True)
         return returned_output
 
+    def get_group_ids(self):
+        '''
+        Get the effective group id, effective user id, real group id, a list of
+        supplemental group ids associated with the current process.
+        '''
+        self.effect_group_id = os.getegid()           # Get the effective group id
+        self.effect_user_id = os.geteuid()            # Get the effective user id
+        self.real_group_id = os.getgid()              # Get the real group id
+        self.supplemental_group_ids = os.getgroups()  # Get the list of supplemental group ids
+        return self.effect_group_id, self.effect_user_id, self.real_group_id, self.supplemental_group_ids
+
 def main():
     obj = programWeek1()   # create object of class
     obj.reverse_name()     # calling methods(function) in class
@@ -281,6 +292,7 @@ def main():
     print(obj.get_host_name())
     print(obj.access_print_url())
     print(obj.get_system_command())
+    print(obj.get_group_ids())
 
 if __name__ == "__main__":
     main()
