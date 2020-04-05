@@ -27,7 +27,10 @@ class programArray:
         '''
         self.array_num = array('i', lst)
         self.element = int(input("Enter the element for find number of occurrences : "))
-        self.occurr = self.array_num.count(self.element)
+        self.occurr = 0
+        for item in self.array_num:
+            if item == self.element:
+                self.occurr += 1
         return self.occurr
 
     def remove_occurrence(self, lst):
