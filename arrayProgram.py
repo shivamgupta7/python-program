@@ -8,17 +8,18 @@ class programArray:
         Access individual element through indexes.
         '''
         array_num = array('i', lst)
-        for ele in array_num:
-            print(ele)
+        print(*array_num)
         return array_num[0], array_num[1], array_num[2], array_num[3], array_num[4]
 
     def reverse_array(self, lst):
         '''
         Reverse the order of the items in the array.
         '''
+        self.new_array = array('i',[])
         self.array_num = array('i', lst)
-        self.array_num.reverse()
-        return self.array_num
+        for index in range(len(self.array_num)-1,-1,-1):
+            self.new_array.append(self.array_num[index])
+        return self.new_array
 
     def count_occurrence(self, lst):
         '''
