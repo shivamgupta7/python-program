@@ -27,10 +27,18 @@ class programDictionary:
                 d_items[i], d_items[i+1] = self.order(d_items[i], d_items[i+1],sort_by)
         return dict(d_items)
 
+    def add_new_key(self, mydict, element):
+        '''
+        Add a key to a dictionary
+        '''
+        mydict.update(element)
+        return mydict
+
 def main():
     obj = programDictionary()
     print(obj.dictSort_by_value({1: 2, 3: 4, 4: 3, 2: 1, 0: 0}))
     print(obj.dictSort_by_value({1: 2, 3: 4, 4: 3, 2: 1, 0: 0},'DESC'))
+    print(obj.add_new_key({1: 2, 3: 4, 4: 3, 2: 1, 0: 0},{5:7}))
 
 if __name__ == "__main__":
     main()
