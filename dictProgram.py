@@ -78,6 +78,19 @@ class programDictionary:
         self.uniqueValues = set(values for dic in listOfmydict for values in dic.values())
         return self.uniqueValues
 
+    def frequency_Of_char(self, string):
+        '''
+        create a dictionary from a string.
+        Note: Track the count of the letters from the string.
+        '''
+        self.all_freq = {} 
+        for i in string:
+            if i in self.all_freq: 
+                self.all_freq[i] += 1
+            else: 
+                self.all_freq[i] = 1
+        return self.all_freq
+
 def main():
     obj = programDictionary()
     print(obj.dictSort_by_value({1: 2, 3: 4, 4: 3, 2: 1, 0: 0}))
@@ -88,6 +101,7 @@ def main():
     print(obj.storeSquares_in_dict())
     print(obj.delete_key({1: 2, 3: 4, 4: 3, 2: 1, 0: 0}))
     print(obj.uniqueValues_in_dict([{"V":"S001"}, {"V": "S002"}, {"VI": "S001"}, {"VI": "S005"}, {"VII":"S005"}, {"V":"S009"},{"VIII":"S007"}]))
+    print(obj.frequency_Of_char('abcaacddbegfb'))
 
 if __name__ == "__main__":
     main()
