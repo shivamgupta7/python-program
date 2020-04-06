@@ -112,6 +112,16 @@ class programDictionary:
         counts = sum(dic['success'] for dic in data)
         return counts
 
+    def check_multiple_key(self, mydict):
+        '''
+        Check multiple keys exists in a dictionary.
+        '''
+        keys = [int(x) for x in input("Enter the key(one or more seprated by space) which you want to check: ").split()]
+        if all(key in mydict for key in keys):
+            return True
+        else: 
+            return False
+
 def main():
     obj = programDictionary()
     print(obj.dictSort_by_value({1: 2, 3: 4, 4: 3, 2: 1, 0: 0}))
@@ -125,6 +135,7 @@ def main():
     print(obj.frequency_Of_char('abcaacddbegfb'))
     obj.dict_to_table()
     print(obj.count_value_associated_key())
+    print(obj.check_multiple_key({5: 50, 6: 60, 3: 30, 4: 40}))
 
 if __name__ == "__main__":
     main()
