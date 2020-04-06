@@ -62,6 +62,15 @@ class programDictionary:
             self.dictionary[num] = num*num
         return self.dictionary
 
+    def delete_key(self, mydict):
+        '''
+        Remove a key from a dictionary.
+        '''
+        key = int(input("Enter which key you want to delete : "))
+        if key in mydict:
+            del mydict[key]
+        return mydict
+
 def main():
     obj = programDictionary()
     print(obj.dictSort_by_value({1: 2, 3: 4, 4: 3, 2: 1, 0: 0}))
@@ -70,6 +79,7 @@ def main():
     print(obj.concatenate_dict())
     print(obj.iterate_dict({5: 50, 6: 60, 3: 30, 4: 40}))
     print(obj.storeSquares_in_dict())
+    print(obj.delete_key({1: 2, 3: 4, 4: 3, 2: 1, 0: 0}))
 
 if __name__ == "__main__":
     main()
