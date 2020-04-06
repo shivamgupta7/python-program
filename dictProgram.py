@@ -17,15 +17,15 @@ class programDictionary:
         else:
             print('Argument sort_by is wrong. Please check it.')
 
-    def dictSort_by_value(self,mydict,sort_by='ASC'):
+    def dictSort_by_value(self, mydict,sort_by='ASC'):
         '''
         Sorting algorithms for dictionary using bubble sort.
         '''
-        d_items = list(mydict.items())
-        for j in range(len(d_items) - 1):
-            for i in range(len(d_items) - 1):
-                d_items[i], d_items[i+1] = self.order(d_items[i], d_items[i+1],sort_by)
-        return dict(d_items)
+        self.d_items = list(mydict.items())
+        for index in range(len(self.d_items)):
+            for next_index in range(index+1, len(self.d_items)):
+                self.d_items[index], self.d_items[next_index] = self.order(self.d_items[index], self.d_items[next_index],sort_by)
+        return dict(self.d_items)
 
     def add_new_key(self, mydict, element):
         '''
