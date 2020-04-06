@@ -104,6 +104,14 @@ class programDictionary:
             name, age, course = value 
             print ("{:<10} {:<10} {:<10}".format(name, age, course))
 
+    def count_value_associated_key(self):
+        '''
+        Count the values associated with key in a dictionary.
+        '''
+        data = [{'id': 1, 'success': True, 'name': 'Lary'}, {'id': 2, 'success': False, 'name': 'Rabi'}, {'id': 3, 'success': True, 'name': 'Alex'}]
+        counts = sum(dic['success'] for dic in data)
+        return counts
+
 def main():
     obj = programDictionary()
     print(obj.dictSort_by_value({1: 2, 3: 4, 4: 3, 2: 1, 0: 0}))
@@ -116,6 +124,7 @@ def main():
     print(obj.uniqueValues_in_dict([{"V":"S001"}, {"V": "S002"}, {"VI": "S001"}, {"VI": "S005"}, {"VII":"S005"}, {"V":"S009"},{"VIII":"S007"}]))
     print(obj.frequency_Of_char('abcaacddbegfb'))
     obj.dict_to_table()
+    print(obj.count_value_associated_key())
 
 if __name__ == "__main__":
     main()
