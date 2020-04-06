@@ -52,6 +52,16 @@ class programDictionary:
         for key, value in mydict.items():
             print(key,"--->",value)
 
+    def storeSquares_in_dict(self):
+        '''
+        Generate and print a dictionary that contains a number (between 1 and n) in the form (x, x*x).
+        '''
+        self.dictionary = {}
+        self.number = int(input("Input a number(range) : "))
+        for num in range(1,self.number+1):
+            self.dictionary[num] = num*num
+        return self.dictionary
+
 def main():
     obj = programDictionary()
     print(obj.dictSort_by_value({1: 2, 3: 4, 4: 3, 2: 1, 0: 0}))
@@ -59,6 +69,7 @@ def main():
     print(obj.add_new_key({1: 2, 3: 4, 4: 3, 2: 1, 0: 0},{5:7}))
     print(obj.concatenate_dict())
     print(obj.iterate_dict({5: 50, 6: 60, 3: 30, 4: 40}))
+    print(obj.storeSquares_in_dict())
 
 if __name__ == "__main__":
     main()
