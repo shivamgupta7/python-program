@@ -34,11 +34,23 @@ class programDictionary:
         mydict.update(element)
         return mydict
 
+    def concatenate_dict(self):
+        '''
+        Concatenate following dictionaries to create a new one.
+        '''
+        self.new_dict = {}
+        self.total_dict = int(input("How many dictionary you have? : "))
+        for times in range(self.total_dict):
+            self.dictionary = eval(input("Enter {0} dectionary(format {{key: value}}) :".format(times+1)))
+            self.new_dict.update(self.dictionary)
+        return self.new_dict
+
 def main():
     obj = programDictionary()
     print(obj.dictSort_by_value({1: 2, 3: 4, 4: 3, 2: 1, 0: 0}))
     print(obj.dictSort_by_value({1: 2, 3: 4, 4: 3, 2: 1, 0: 0},'DESC'))
     print(obj.add_new_key({1: 2, 3: 4, 4: 3, 2: 1, 0: 0},{5:7}))
+    print(obj.concatenate_dict())
 
 if __name__ == "__main__":
     main()
