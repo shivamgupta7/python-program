@@ -122,6 +122,15 @@ class programDictionary:
         else: 
             return False
 
+    def count_values(self,mydict):
+        '''
+        Count number of items in a dictionary value that is a list.
+        '''
+        count = 0
+        for value in mydict.values():
+            count += len(value)
+        return count
+
 def main():
     obj = programDictionary()
     print(obj.dictSort_by_value({1: 2, 3: 4, 4: 3, 2: 1, 0: 0}))
@@ -136,6 +145,7 @@ def main():
     obj.dict_to_table()
     print(obj.count_value_associated_key())
     print(obj.check_multiple_key({5: 50, 6: 60, 3: 30, 4: 40}))
+    print(obj.count_values({'a': [10,20,30,40], 'b': [20,50,80]}))
 
 if __name__ == "__main__":
     main()
