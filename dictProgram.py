@@ -45,12 +45,20 @@ class programDictionary:
             self.new_dict.update(self.dictionary)
         return self.new_dict
 
+    def iterate_dict(self, mydict):
+        '''
+        Iterate over dictionaries using for loops.
+        '''
+        for key, value in mydict.items():
+            print(key,"--->",value)
+
 def main():
     obj = programDictionary()
     print(obj.dictSort_by_value({1: 2, 3: 4, 4: 3, 2: 1, 0: 0}))
     print(obj.dictSort_by_value({1: 2, 3: 4, 4: 3, 2: 1, 0: 0},'DESC'))
     print(obj.add_new_key({1: 2, 3: 4, 4: 3, 2: 1, 0: 0},{5:7}))
     print(obj.concatenate_dict())
+    print(obj.iterate_dict({5: 50, 6: 60, 3: 30, 4: 40}))
 
 if __name__ == "__main__":
     main()
