@@ -71,6 +71,13 @@ class programDictionary:
             del mydict[key]
         return mydict
 
+    def uniqueValues_in_dict(self, listOfmydict):
+        '''
+        unique values in a dictionary.
+        '''
+        self.uniqueValues = set(values for dic in listOfmydict for values in dic.values())
+        return self.uniqueValues
+
 def main():
     obj = programDictionary()
     print(obj.dictSort_by_value({1: 2, 3: 4, 4: 3, 2: 1, 0: 0}))
@@ -80,6 +87,7 @@ def main():
     print(obj.iterate_dict({5: 50, 6: 60, 3: 30, 4: 40}))
     print(obj.storeSquares_in_dict())
     print(obj.delete_key({1: 2, 3: 4, 4: 3, 2: 1, 0: 0}))
+    print(obj.uniqueValues_in_dict([{"V":"S001"}, {"V": "S002"}, {"VI": "S001"}, {"VI": "S005"}, {"VII":"S005"}, {"V":"S009"},{"VIII":"S007"}]))
 
 if __name__ == "__main__":
     main()
