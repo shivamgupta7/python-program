@@ -91,6 +91,19 @@ class programDictionary:
                 self.all_freq[i] = 1
         return self.all_freq
 
+    def dict_to_table(self):
+        '''
+        Print a dictionary in table format.
+        '''
+        data = {1: ["Rohit", 22, 'Data Structures'], 
+                 2: ["Shivam", 21, 'Machine Learning'], 
+                 3: ["Himanshu", 23, 'Networking']} 
+   
+        print ("{:<10} {:<10} {:<10}".format('NAME', 'AGE', 'COURSE'))  
+        for value in data.values(): 
+            name, age, course = value 
+            print ("{:<10} {:<10} {:<10}".format(name, age, course))
+
 def main():
     obj = programDictionary()
     print(obj.dictSort_by_value({1: 2, 3: 4, 4: 3, 2: 1, 0: 0}))
@@ -102,6 +115,7 @@ def main():
     print(obj.delete_key({1: 2, 3: 4, 4: 3, 2: 1, 0: 0}))
     print(obj.uniqueValues_in_dict([{"V":"S001"}, {"V": "S002"}, {"VI": "S001"}, {"VI": "S005"}, {"VII":"S005"}, {"V":"S009"},{"VIII":"S007"}]))
     print(obj.frequency_Of_char('abcaacddbegfb'))
+    obj.dict_to_table()
 
 if __name__ == "__main__":
     main()
