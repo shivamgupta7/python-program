@@ -116,7 +116,7 @@ class programDictionary:
         '''
         Check multiple keys exists in a dictionary.
         '''
-        keys = [int(x) for x in input("Enter the key(one or more seprated by space) which you want to check: ").split()]
+        keys = [int(string) for string in input("Enter the key(one or more seprated by space) which you want to check: ").split()]
         if all(key in mydict for key in keys):
             return True
         else: 
@@ -131,21 +131,50 @@ class programDictionary:
             count += len(value)
         return count
 
+def menu():
+    print('1.Sort dictionary in ascending\n2.Sort dictionary in descending\n3.Add new key in dictionary\n4.Concatenate dictionary\n5.Iterate dictionary')
+    print('6.Get dictionary that contains a number (between 1 and n) in the form (x, x*x)\n7.Remove a key from a dictionary.\n8.Get all unique values in a dictionary')
+    print('9.Count of the letters from the string in dictionary\n10.Print a dictionary in table format.\n11.Count the values associated with key in a dictionary.')
+    print('12.Check multiple keys exists in a dictionary\n13.Count number of items in a dictionary value that is a list')
+
 def main():
+    menu()
+    choice = int(input("Enter which program you want to run: "))
     obj = programDictionary()
-    print(obj.dictSort_by_value({1: 2, 3: 4, 4: 3, 2: 1, 0: 0}))
-    print(obj.dictSort_by_value({1: 2, 3: 4, 4: 3, 2: 1, 0: 0},'DESC'))
-    print(obj.add_new_key({1: 2, 3: 4, 4: 3, 2: 1, 0: 0},{5:7}))
-    print(obj.concatenate_dict())
-    print(obj.iterate_dict({5: 50, 6: 60, 3: 30, 4: 40}))
-    print(obj.storeSquares_in_dict())
-    print(obj.delete_key({1: 2, 3: 4, 4: 3, 2: 1, 0: 0}))
-    print(obj.uniqueValues_in_dict([{"V":"S001"}, {"V": "S002"}, {"VI": "S001"}, {"VI": "S005"}, {"VII":"S005"}, {"V":"S009"},{"VIII":"S007"}]))
-    print(obj.frequency_Of_char('abcaacddbegfb'))
-    obj.dict_to_table()
-    print(obj.count_value_associated_key())
-    print(obj.check_multiple_key({5: 50, 6: 60, 3: 30, 4: 40}))
-    print(obj.count_values({'a': [10,20,30,40], 'b': [20,50,80]}))
+    if choice == 1:
+        print(obj.dictSort_by_value({1: 2, 3: 4, 4: 3, 2: 1, 0: 0}))
+    elif choice == 2:
+        print(obj.dictSort_by_value({1: 2, 3: 4, 4: 3, 2: 1, 0: 0},'DESC'))
+    elif choice == 3:
+        print(obj.add_new_key({1: 2, 3: 4, 4: 3, 2: 1, 0: 0},{5:7}))
+    elif choice == 4:
+        print(obj.concatenate_dict())
+    elif choice == 5:
+        obj.iterate_dict({5: 50, 6: 60, 3: 30, 4: 40})
+    elif choice == 6:
+        print(obj.storeSquares_in_dict())
+    elif choice == 7:
+        print(obj.delete_key({1: 2, 3: 4, 4: 3, 2: 1, 0: 0}))
+    elif choice == 8:
+        print(obj.uniqueValues_in_dict([{"V":"S001"}, {"V": "S002"}, {"VI": "S001"}, {"VI": "S005"}, {"VII":"S005"}, {"V":"S009"},{"VIII":"S007"}]))
+    elif choice == 9:
+        print(obj.frequency_Of_char('abcaacddbegfb'))
+    elif choice == 10:
+        obj.dict_to_table()
+    elif choice == 11:
+        print(obj.count_value_associated_key())
+    elif choice == 12:
+        print(obj.check_multiple_key({5: 50, 6: 60, 3: 30, 4: 40}))
+    elif choice == 13:
+        print(obj.count_values({'a': [10,20,30,40], 'b': [20,50,80]}))
+    else:
+        print('Please choose correct choice.')
+    
+    options = input('Do you want to continue?[y/n]: ')
+    if options.lower() == 'y':
+        main()
+    else:
+        exit()
 
 if __name__ == "__main__":
     main()
