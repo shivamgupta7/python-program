@@ -56,12 +56,19 @@ class programList:
                 break
         return myList
 
+    def copyList(self, myList):
+        '''
+        Clone or copy a list
+        '''
+        new_list = myList.copy()
+        return new_list
+
 def menu():
     '''
     Menu of programs
     '''
     print('1.Sum all the items in list\n2.Multiply all the items in list\n3.Get smallest number\n4.Count string which first and last char are same')
-    print('5.Sort list of tuple')
+    print('5.Sort list of tuple\n6.Clone or copy a list')
 
 def switchToFunction(case, obj):
     '''
@@ -73,6 +80,7 @@ def switchToFunction(case, obj):
         3 : lambda: obj.smallestNumber([8,7,9,2,12,7,6]),
         4 : lambda: obj.count_string(['abc', 'xyz', 'aba', '1221']),
         5 : lambda: obj.sort_listOfTuple([(2, 5), (1, 2), (4, 4), (2, 3), (2, 1)]),  
+        6 : lambda: obj.copyList([5,4,3,2,9]),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
