@@ -10,11 +10,21 @@ class programList:
             sum_all += ele
         return sum_all
 
+    def mulItems(self):
+        '''
+        Multiplies all the items in a list
+        '''
+        mul_all = 1
+        myList = [int(item) for item in input("Enter the items(seprated by space) for multiply: ").split()]
+        for ele in myList:
+            mul_all *= ele
+        return mul_all
+
 def menu():
     '''
     Menu of programs
     '''
-    print('1.Sum all the items in list')
+    print('1.Sum all the items in list\n2.Multiply all the items in list')
 
 def switchToFunction(case, obj):
     '''
@@ -22,6 +32,7 @@ def switchToFunction(case, obj):
     '''
     switcher = {
         1 : lambda: obj.sumItems(),
+        2 : lambda: obj.mulItems(),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
