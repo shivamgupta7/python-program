@@ -63,12 +63,25 @@ class programList:
         new_list = myList.copy()
         return new_list
 
+    def longerWords(self):
+        '''
+        Find the list of words that are longer than n from a given list of words
+        '''
+        string = input('Enter the string : ')
+        number = int(input('Enter the number for find words larger then this number : '))
+        wordsOfList = []
+        text = string.split(" ")
+        for word in text:
+            if len(word) > number:
+                wordsOfList.append(word)
+        return wordsOfList
+
 def menu():
     '''
     Menu of programs
     '''
     print('1.Sum all the items in list\n2.Multiply all the items in list\n3.Get smallest number\n4.Count string which first and last char are same')
-    print('5.Sort list of tuple\n6.Clone or copy a list')
+    print('5.Sort list of tuple\n6.Clone or copy a list\n7.Given list of words which longer then given number')
 
 def switchToFunction(case, obj):
     '''
@@ -81,6 +94,7 @@ def switchToFunction(case, obj):
         4 : lambda: obj.count_string(['abc', 'xyz', 'aba', '1221']),
         5 : lambda: obj.sort_listOfTuple([(2, 5), (1, 2), (4, 4), (2, 3), (2, 1)]),  
         6 : lambda: obj.copyList([5,4,3,2,9]),
+        7 : lambda: obj.longerWords(),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
