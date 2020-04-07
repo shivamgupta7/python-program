@@ -71,10 +71,22 @@ class programSet:
             result = mySet_copy.difference(input_set)
             mySet_copy = result
         return result
+    def symmentricDifferenceOfSets(self, mySet):
+        '''
+        Create a symmetric difference
+        '''
+        print("My set is : ",mySet)
+        mySet_copy = mySet.copy()
+        times = int(input('How many set you want to symmentric difference? : '))
+        for time in range(times):
+            input_set = set([int(item) for item in input("Enter the {0} set elements (one or more seprated by space): ".format(time+1)).split()])
+            result = mySet_copy.symmetric_difference(input_set)
+            mySet_copy = result
+        return result
 
 def menu():
     print('1.Create a set\n2.Iteration over sets\n3.Add new members\n4.Remove items from set\n5.Create an intersection of set')
-    print ('6.Create a union of set\n7.Create set difference')
+    print ('6.Create a union of set\n7.Create set difference\n8.Create a symmetric difference')
 
 def main():
     menu()
@@ -94,6 +106,8 @@ def main():
         print(obj.unionOfSet({2,7,6,8,3}))
     elif choice == 7:
         print(obj.differenceOfSets({2,5,3,9,7,15,1,8}))
+    elif choice == 8:
+        print(obj.symmentricDifferenceOfSets({2,5,3,9,7}))
     else:
         print('Please choose correct choice.')
     
