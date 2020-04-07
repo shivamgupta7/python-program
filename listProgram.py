@@ -30,11 +30,22 @@ class programList:
                 small = ele
         return small
 
+    def count_string(self, words):
+        '''
+        count the number of strings where the string length is 2 or more and 
+        the first and last character are same from a given list of strings.
+        '''
+        counts = 0
+        for word in words:
+            if len(word) > 1 and word[0] == word[-1]:
+                counts += 1
+        return counts
+
 def menu():
     '''
     Menu of programs
     '''
-    print('1.Sum all the items in list\n2.Multiply all the items in list\n3.Get smallest number')
+    print('1.Sum all the items in list\n2.Multiply all the items in list\n3.Get smallest number\n4.Count string which first and last char are same')
 
 def switchToFunction(case, obj):
     '''
@@ -44,6 +55,7 @@ def switchToFunction(case, obj):
         1 : lambda: obj.sumItems(),
         2 : lambda: obj.mulItems(),
         3 : lambda: obj.smallestNumber([8,7,9,2,12,7,6]),
+        4 : lambda: obj.count_string(['abc', 'xyz', 'aba', '1221']),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
