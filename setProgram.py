@@ -71,6 +71,7 @@ class programSet:
             result = mySet_copy.difference(input_set)
             mySet_copy = result
         return result
+        
     def symmentricDifferenceOfSets(self, mySet):
         '''
         Create a symmetric difference
@@ -85,32 +86,34 @@ class programSet:
         return result
 
 def menu():
+    '''
+    Menu of programs
+    '''
     print('1.Create a set\n2.Iteration over sets\n3.Add new members\n4.Remove items from set\n5.Create an intersection of set')
     print ('6.Create a union of set\n7.Create set difference\n8.Create a symmetric difference')
+
+def switchToFunction(case, obj):
+    '''
+    Create switch function to move perticular program
+    '''
+    switcher = {
+        1 : lambda: obj.create_set([1,2,3,4]),
+        2 : lambda: obj.iterate_set({2,7,6,8,3,5}),
+        3 : lambda: obj.addNewMembers({2,7,6,8,3,5}),
+        4 : lambda: obj.remove_items({2,5,3,9,7,15,1,8}),
+        5 : lambda: obj.intersectionOfSet({2,7,6,8,3,5}),
+        6 : lambda: obj.unionOfSet({2,7,6,8,3}),
+        7 : lambda: obj.differenceOfSets({2,5,3,9,7,15,1,8}),
+        8 : lambda: obj.symmentricDifferenceOfSets({2,5,3,9,7})
+    }
+    func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
+    print(func())
 
 def main():
     menu()
     choice = int(input("Enter which program you want to run: "))
     obj = programSet()
-    if choice == 1:
-        print(obj.create_set([1,2,3,4]))
-    elif choice == 2:
-        obj.iterate_set({2,7,6,8,3,5})
-    elif choice == 3:
-        print(obj.addNewMembers({2,7,6,8,3,5}))
-    elif choice == 4:
-        print(obj.remove_items({2,5,3,9,7,15,1,8}))
-    elif choice == 5:
-        print(obj.intersectionOfSet({2,7,6,8,3,5}))
-    elif choice == 6:
-        print(obj.unionOfSet({2,7,6,8,3}))
-    elif choice == 7:
-        print(obj.differenceOfSets({2,5,3,9,7,15,1,8}))
-    elif choice == 8:
-        print(obj.symmentricDifferenceOfSets({2,5,3,9,7}))
-    else:
-        print('Please choose correct choice.')
-    
+    switchToFunction(choice, obj)
     options = input('Do you want to continue?[y/n]: ')
     if options.lower() == 'y':
         main()
