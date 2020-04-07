@@ -85,12 +85,19 @@ class programSet:
             mySet_copy = result
         return result
 
+    def clearSet(self, mySet):
+        '''
+        Clear a set
+        '''
+        mySet.clear()
+        return mySet
+
 def menu():
     '''
     Menu of programs
     '''
     print('1.Create a set\n2.Iteration over sets\n3.Add new members\n4.Remove items from set\n5.Create an intersection of set')
-    print ('6.Create a union of set\n7.Create set difference\n8.Create a symmetric difference')
+    print ('6.Create a union of set\n7.Create set difference\n8.Create a symmetric difference\n9.Clear a set')
 
 def switchToFunction(case, obj):
     '''
@@ -104,7 +111,8 @@ def switchToFunction(case, obj):
         5 : lambda: obj.intersectionOfSet({2,7,6,8,3,5}),
         6 : lambda: obj.unionOfSet({2,7,6,8,3}),
         7 : lambda: obj.differenceOfSets({2,5,3,9,7,15,1,8}),
-        8 : lambda: obj.symmentricDifferenceOfSets({2,5,3,9,7})
+        8 : lambda: obj.symmentricDifferenceOfSets({2,5,3,9,7}),
+        9 : lambda: obj.clearSet({2,5,3,9,7})
     }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
