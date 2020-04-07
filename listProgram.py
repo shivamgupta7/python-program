@@ -41,11 +41,27 @@ class programList:
                 counts += 1
         return counts
 
+    def sort_listOfTuple(self, myList):
+        '''
+        Sorted in increasing order by the last element in each tuple from a given list of non-empty tuples.
+        '''
+        length = len(myList)
+        for index in range(length):
+            flag = 0
+            for nextIndex in range(index+1, length):
+                if (myList[index][1] > myList[nextIndex][1]):
+                    myList[index], myList[nextIndex] = myList[nextIndex], myList[index]
+                    flag = 1
+            if flag == 0:
+                break
+        return myList
+
 def menu():
     '''
     Menu of programs
     '''
     print('1.Sum all the items in list\n2.Multiply all the items in list\n3.Get smallest number\n4.Count string which first and last char are same')
+    print('5.Sort list of tuple')
 
 def switchToFunction(case, obj):
     '''
@@ -56,6 +72,7 @@ def switchToFunction(case, obj):
         2 : lambda: obj.mulItems(),
         3 : lambda: obj.smallestNumber([8,7,9,2,12,7,6]),
         4 : lambda: obj.count_string(['abc', 'xyz', 'aba', '1221']),
+        5 : lambda: obj.sort_listOfTuple([(2, 5), (1, 2), (4, 4), (2, 3), (2, 1)]),  
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
