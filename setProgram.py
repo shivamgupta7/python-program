@@ -104,12 +104,26 @@ class programSet:
             frozen_set = result
         return result
 
+    def find_min_max(self,mySet):
+        '''
+        Find the maximum and minimum numbers from a set of numbers.
+        '''
+        self.min = float('inf')
+        self.max = float('-inf')
+        for num in mySet:
+            if num > self.max:
+                self.max = num
+            elif num < self.min:
+                self.min = num
+        return self.min, self.max
+
 def menu():
     '''
     Menu of programs
     '''
     print('1.Create a set\n2.Iteration over sets\n3.Add new members\n4.Remove items from set\n5.Create an intersection of set')
     print ('6.Create a union of set\n7.Create set difference\n8.Create a symmetric difference\n9.Clear a set\n10.Use of frozensets(union b/w frozenset)')
+    print('11.Find min and max in set')
 
 def switchToFunction(case, obj):
     '''
@@ -125,7 +139,8 @@ def switchToFunction(case, obj):
         7 : lambda: obj.differenceOfSets({2,5,3,9,7,15,1,8}),
         8 : lambda: obj.symmentricDifferenceOfSets({2,5,3,9,7}),
         9 : lambda: obj.clearSet({2,5,3,9,7}),
-        10 : lambda: obj.frozenSet()
+        10 : lambda: obj.frozenSet(),
+        11 : lambda: obj.find_min_max({5,3,8,7,15,13,4,9})
     }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
