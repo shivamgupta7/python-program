@@ -33,8 +33,21 @@ class programSet:
             mySet.discard(item)        # If the item to remove does not exist, discard() will NOT raise an error.
         return mySet
 
+    def intersectionOfSet(self, mySet):
+        '''
+        Create an intersection of sets
+        '''
+        print("My set is : ",mySet)
+        mySet_copy = mySet.copy()
+        times = int(input('How many set you want to intersect? : '))
+        for time in range(times):
+            input_set = set([int(item) for item in input("Enter the {0} set elements (one or more seprated by space): ".format(time+1)).split()])
+            result = mySet_copy.intersection(input_set)
+            mySet_copy = result
+        return result
+
 def menu():
-    print('1.Create a set\n2.Iteration over sets\n3.Add new members\n4.Remove items from set')
+    print('1.Create a set\n2.Iteration over sets\n3.Add new members\n4.Remove items from set\n5.Create an intersection of set')
 
 def main():
     menu()
@@ -48,6 +61,8 @@ def main():
         print(obj.addNewMembers({2,7,6,8,3,5}))
     elif choice == 4:
         print(obj.remove_items({2,5,3,9,7,15,1,8}))
+    elif choice == 5:
+        print(obj.intersectionOfSet({2,7,6,8,3,5}))
     else:
         print('Please choose correct choice.')
     
