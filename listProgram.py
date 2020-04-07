@@ -89,12 +89,24 @@ class programList:
                     result = True
         return result
 
+    def removeDuplicates(self):
+        '''
+        Remove duplicates from a list
+        '''
+        myList = [int(item) for item in input("Enter the items(separated by space): ").split()]
+        new_list = []
+        for num in myList:
+            if num not in new_list:
+                new_list.append(num)
+        return new_list
+
 def menu():
     '''
     Menu of programs
     '''
     print('1.Sum all the items in list\n2.Multiply all the items in list\n3.Get smallest number\n4.Count string which first and last char are same')
     print('5.Sort list of tuple\n6.Clone or copy a list\n7.Given list of words which longer then given number\n8.Check common members in two list')
+    print('9.Remove duplicates from a list')
 
 def switchToFunction(case, obj):
     '''
@@ -108,7 +120,8 @@ def switchToFunction(case, obj):
         5 : lambda: obj.sort_listOfTuple([(2, 5), (1, 2), (4, 4), (2, 3), (2, 1)]),  
         6 : lambda: obj.copyList([5,4,3,2,9]),
         7 : lambda: obj.longerWords(),
-        8 : lambda: obj.checkCommonDataInTwoList()
+        8 : lambda: obj.checkCommonDataInTwoList(),
+        9 : lambda: obj.removeDuplicates()
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
