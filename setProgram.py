@@ -92,12 +92,24 @@ class programSet:
         mySet.clear()
         return mySet
 
+    def frozenSet(self):
+        '''
+        Use of frozensets(union b/w frozenset)
+        '''
+        frozen_set = frozenset()
+        times = int(input('How many frozenset you want to create for union? : '))
+        for time in range(times):
+            input_set = frozenset([int(item) for item in input("Enter the {0} set elements (one or more seprated by space): ".format(time+1)).split()])
+            result = frozen_set.union(input_set)
+            frozen_set = result
+        return result
+
 def menu():
     '''
     Menu of programs
     '''
     print('1.Create a set\n2.Iteration over sets\n3.Add new members\n4.Remove items from set\n5.Create an intersection of set')
-    print ('6.Create a union of set\n7.Create set difference\n8.Create a symmetric difference\n9.Clear a set')
+    print ('6.Create a union of set\n7.Create set difference\n8.Create a symmetric difference\n9.Clear a set\n10.Use of frozensets(union b/w frozenset)')
 
 def switchToFunction(case, obj):
     '''
@@ -112,7 +124,8 @@ def switchToFunction(case, obj):
         6 : lambda: obj.unionOfSet({2,7,6,8,3}),
         7 : lambda: obj.differenceOfSets({2,5,3,9,7,15,1,8}),
         8 : lambda: obj.symmentricDifferenceOfSets({2,5,3,9,7}),
-        9 : lambda: obj.clearSet({2,5,3,9,7})
+        9 : lambda: obj.clearSet({2,5,3,9,7}),
+        10 : lambda: obj.frozenSet()
     }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
