@@ -15,7 +15,7 @@ class programList:
         Multiplies all the items in a list
         '''
         mul_all = 1
-        myList = [int(item) for item in input("Enter the items(seprated by space) for multiply: ").split()]
+        myList = [int(item) for item in input("Enter the items(separated by space) for multiply: ").split()]
         for ele in myList:
             mul_all *= ele
         return mul_all
@@ -76,12 +76,25 @@ class programList:
                 wordsOfList.append(word)
         return wordsOfList
 
+    def checkCommonDataInTwoList(self):
+        '''
+        Takes two lists and returns True if they have at least one common member
+        '''
+        result = False
+        list1 = input('Enter list1 elements separate by space: ').split()
+        list2 = input('Enter list2 elements separate by space: ').split()
+        for ele1 in list1:
+            for ele2 in list2:
+                if ele1 == ele2:
+                    result = True
+        return result
+
 def menu():
     '''
     Menu of programs
     '''
     print('1.Sum all the items in list\n2.Multiply all the items in list\n3.Get smallest number\n4.Count string which first and last char are same')
-    print('5.Sort list of tuple\n6.Clone or copy a list\n7.Given list of words which longer then given number')
+    print('5.Sort list of tuple\n6.Clone or copy a list\n7.Given list of words which longer then given number\n8.Check common members in two list')
 
 def switchToFunction(case, obj):
     '''
@@ -95,6 +108,7 @@ def switchToFunction(case, obj):
         5 : lambda: obj.sort_listOfTuple([(2, 5), (1, 2), (4, 4), (2, 3), (2, 1)]),  
         6 : lambda: obj.copyList([5,4,3,2,9]),
         7 : lambda: obj.longerWords(),
+        8 : lambda: obj.checkCommonDataInTwoList()
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
