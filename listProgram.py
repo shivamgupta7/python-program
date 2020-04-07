@@ -100,13 +100,24 @@ class programList:
                 new_list.append(num)
         return new_list
 
+    def printSpecifiedList(self):
+        '''
+        Print a specified list after removing the 0th, 4th and 5th elements
+        '''
+        myList = input("Enter the items(separated by space): ").split()
+        new_list = []
+        for index,value in enumerate(myList):
+            if index not in [0, 4, 5]:
+                new_list.append(value)
+        return new_list
+
 def menu():
     '''
     Menu of programs
     '''
     print('1.Sum all the items in list\n2.Multiply all the items in list\n3.Get smallest number\n4.Count string which first and last char are same')
     print('5.Sort list of tuple\n6.Clone or copy a list\n7.Given list of words which longer then given number\n8.Check common members in two list')
-    print('9.Remove duplicates from a list')
+    print('9.Remove duplicates from a list\n10.Removing the 0th, 4th and 5th elements')
 
 def switchToFunction(case, obj):
     '''
@@ -121,7 +132,8 @@ def switchToFunction(case, obj):
         6 : lambda: obj.copyList([5,4,3,2,9]),
         7 : lambda: obj.longerWords(),
         8 : lambda: obj.checkCommonDataInTwoList(),
-        9 : lambda: obj.removeDuplicates()
+        9 : lambda: obj.removeDuplicates(),
+        10 : lambda: obj.printSpecifiedList()
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
