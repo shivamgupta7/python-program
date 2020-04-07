@@ -20,11 +20,21 @@ class programList:
             mul_all *= ele
         return mul_all
 
+    def smallestNumber(self, myList):
+        '''
+        Get the smallest number from a list
+        '''
+        small = myList[0]
+        for ele in myList:
+            if ele < small:
+                small = ele
+        return small
+
 def menu():
     '''
     Menu of programs
     '''
-    print('1.Sum all the items in list\n2.Multiply all the items in list')
+    print('1.Sum all the items in list\n2.Multiply all the items in list\n3.Get smallest number')
 
 def switchToFunction(case, obj):
     '''
@@ -33,6 +43,7 @@ def switchToFunction(case, obj):
     switcher = {
         1 : lambda: obj.sumItems(),
         2 : lambda: obj.mulItems(),
+        3 : lambda: obj.smallestNumber([8,7,9,2,12,7,6]),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
