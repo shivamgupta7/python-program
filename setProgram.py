@@ -46,8 +46,22 @@ class programSet:
             mySet_copy = result
         return result
 
+    def unionOfSet(self, mySet):
+        '''
+        Create a union of sets
+        '''
+        print("My set is : ",mySet)
+        mySet_copy = mySet.copy()
+        times = int(input('How many set you want to union? : '))
+        for time in range(times):
+            input_set = set([int(item) for item in input("Enter the {0} set elements (one or more seprated by space): ".format(time+1)).split()])
+            result = mySet_copy.union(input_set)
+            mySet_copy = result
+        return result
+
 def menu():
     print('1.Create a set\n2.Iteration over sets\n3.Add new members\n4.Remove items from set\n5.Create an intersection of set')
+    print ('6.Create a union of set')
 
 def main():
     menu()
@@ -63,6 +77,8 @@ def main():
         print(obj.remove_items({2,5,3,9,7,15,1,8}))
     elif choice == 5:
         print(obj.intersectionOfSet({2,7,6,8,3,5}))
+    elif choice == 6:
+        print(obj.unionOfSet({2,7,6,8,3}))
     else:
         print('Please choose correct choice.')
     
