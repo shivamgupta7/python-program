@@ -111,13 +111,32 @@ class programList:
                 new_list.append(value)
         return new_list
 
+    def permutation(self,lst):
+        '''
+        Generate all permutations of a list
+        '''
+        # If lst is empty then there are no permutations or if lst is only one element then one permuatation
+        if len(lst) <= 1:
+            return [lst]
+        # Find the permutations for lst if there are more than 1 characters
+        new_list = [] # empty list that will store current permutation
+        # Iterate the input(lst) and calculate the permutation
+        for i in range(len(lst)):
+            start = lst[i]
+            # Extract lst[i] or start from the list. remList is remaining list
+            remList = lst[:i] + lst[i+1:]
+            # Generating all permutations where m is first element
+            for perm in self.permutation(remList):
+                new_list.append([start] + perm)
+        return new_list
+
 def menu():
     '''
     Menu of programs
     '''
     print('1.Sum all the items in list\n2.Multiply all the items in list\n3.Get smallest number\n4.Count string which first and last char are same')
     print('5.Sort list of tuple\n6.Clone or copy a list\n7.Given list of words which longer then given number\n8.Check common members in two list')
-    print('9.Remove duplicates from a list\n10.Removing the 0th, 4th and 5th elements')
+    print('9.Remove duplicates from a list\n10.Removing the 0th, 4th and 5th elements\n11.Generate all permutations of a list')
 
 def switchToFunction(case, obj):
     '''
@@ -133,7 +152,8 @@ def switchToFunction(case, obj):
         7 : lambda: obj.longerWords(),
         8 : lambda: obj.checkCommonDataInTwoList(),
         9 : lambda: obj.removeDuplicates(),
-        10 : lambda: obj.printSpecifiedList()
+        10 : lambda: obj.printSpecifiedList(),
+        11 : lambda: obj.permutation([1, 2, 3]),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
