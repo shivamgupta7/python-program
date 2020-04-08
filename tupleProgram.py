@@ -103,6 +103,16 @@ class programTuple:
             sliceList.append(myTuple[index])
         return tuple(sliceList)
 
+    def reverseTuple(self):
+        '''
+        Reverse a tuple
+        '''
+        myTuple = tuple(int(item) for item in input("Enter the integer elements(seprated by space): ").split())
+        reverseList = []
+        for index in range(len(myTuple)-1,-1,-1):
+            reverseList.append(myTuple[index])
+        return tuple(reverseList)
+
 def menu():
     '''
     Menu of programs
@@ -117,6 +127,7 @@ def menu():
     7.Convert a list to a tuple
     8.Remove an item from a tuple
     9.Slice a tuple
+    10.Reverse a tuple
     ''')
 
 def switchToFunction(case, obj):
@@ -133,6 +144,7 @@ def switchToFunction(case, obj):
         7 : lambda: obj.listToTuple(),
         8 : lambda: obj.removeItem(),
         9 : lambda: obj.sliceTuple(),
+        10: lambda: obj.reverseTuple()
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
