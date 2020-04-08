@@ -179,6 +179,31 @@ class programList:
             index += 1
         return lst
 
+    def circularly_identical(self):
+        '''
+        Check whether two lists are circularly identical
+        '''
+        list1 = [int(item) for item in input('Enter list1 elements separate by space: ').split()]
+        list2 = [int(item) for item in input('Enter list2 elements separate by space: ').split()] 
+        new_list = list1 * 2  # create new list which is double of list1
+        # traversal in twice of list1
+        length = len(list1)
+        if len(list2) == length:
+            for index1 in range(0, length): 
+                index2 = 0
+                # check if list2 == list1 curcularly using new_list
+                for index3 in range(index1, index1+length): 
+                    if list2[index2]== new_list[index3]: 
+                        index2 += 1
+                    else: 
+                        break
+                # if all elements are same circularly  
+                if index2 == length: 
+                    return True 
+            return False
+        else:
+            return False
+
 def menu():
     '''
     Menu of programs
@@ -187,7 +212,7 @@ def menu():
     print('5.Sort list of tuple\n6.Clone or copy a list\n7.Given list of words which longer then given number\n8.Check common members in two list')
     print('9.Remove duplicates from a list\n10.Removing the 0th, 4th and 5th elements\n11.Generate all permutations of a list')
     print('12.Get the difference between the two lists\n13.Append a list to the second list\n14.Find common items from two lists')
-    print('15.Remove duplicates from a list of list')
+    print('15.Remove duplicates from a list of list\n16.Check whether two lists are circularly identical')
 
 def switchToFunction(case, obj):
     '''
@@ -208,7 +233,8 @@ def switchToFunction(case, obj):
         12 : lambda: obj.differenceTwoList(),
         13 : lambda: obj.appendTwoList(),
         14 : lambda: obj.commonDataInTwoList(),
-        15 : lambda: obj.remove_dup([[10, 20], [40], [30, 56, 25], [10, 20], [33], [40]])
+        15 : lambda: obj.remove_dup([[10, 20], [40], [30, 56, 25], [10, 20], [33], [40]]),
+        16 : lambda: obj.circularly_identical()
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
