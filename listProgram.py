@@ -151,6 +151,19 @@ class programList:
         list1.extend(list2)
         return list1
 
+    def commonDataInTwoList(self):
+        '''
+        Find common items from two lists
+        '''
+        new_list = []
+        list1 = [int(string) for string in input('Enter list1 elements separate by space: ').split()]
+        list2 = [int(string) for string in input('Enter list2 elements separate by space: ').split()]
+        for ele1 in list1:
+            for ele2 in list2:
+                if ele1 == ele2:
+                    new_list.append(ele1)
+        return new_list
+
 def menu():
     '''
     Menu of programs
@@ -158,7 +171,7 @@ def menu():
     print('1.Sum all the items in list\n2.Multiply all the items in list\n3.Get smallest number\n4.Count string which first and last char are same')
     print('5.Sort list of tuple\n6.Clone or copy a list\n7.Given list of words which longer then given number\n8.Check common members in two list')
     print('9.Remove duplicates from a list\n10.Removing the 0th, 4th and 5th elements\n11.Generate all permutations of a list')
-    print('12.Get the difference between the two lists\n13.Append a list to the second list')
+    print('12.Get the difference between the two lists\n13.Append a list to the second list\n14.Find common items from two lists')
 
 def switchToFunction(case, obj):
     '''
@@ -178,6 +191,7 @@ def switchToFunction(case, obj):
         11 : lambda: obj.permutation([1, 2, 3]),
         12 : lambda: obj.differenceTwoList(),
         13 : lambda: obj.appendTwoList(),
+        14 : lambda: obj.commonDataInTwoList()
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
