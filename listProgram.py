@@ -49,7 +49,7 @@ class programList:
         for index in range(length):
             flag = 0
             for nextIndex in range(index+1, length):
-                if (myList[index][1] > myList[nextIndex][1]):
+                if (myList[index][-1] > myList[nextIndex][-1]):
                     myList[index], myList[nextIndex] = myList[nextIndex], myList[index]
                     flag = 1
             if flag == 0:
@@ -164,6 +164,21 @@ class programList:
                     new_list.append(ele1)
         return new_list
 
+    def remove_dup(self,lst):
+        '''
+        Remove duplicates from a list of lists
+        '''
+        index = 0
+        while index < len(lst):
+            nextIndex = index + 1
+            while nextIndex < len(lst):
+                if lst[index] == lst[nextIndex]:
+                    del lst[nextIndex]
+                else:
+                    nextIndex += 1
+            index += 1
+        return lst
+
 def menu():
     '''
     Menu of programs
@@ -172,6 +187,7 @@ def menu():
     print('5.Sort list of tuple\n6.Clone or copy a list\n7.Given list of words which longer then given number\n8.Check common members in two list')
     print('9.Remove duplicates from a list\n10.Removing the 0th, 4th and 5th elements\n11.Generate all permutations of a list')
     print('12.Get the difference between the two lists\n13.Append a list to the second list\n14.Find common items from two lists')
+    print('15.Remove duplicates from a list of list')
 
 def switchToFunction(case, obj):
     '''
@@ -191,7 +207,8 @@ def switchToFunction(case, obj):
         11 : lambda: obj.permutation([1, 2, 3]),
         12 : lambda: obj.differenceTwoList(),
         13 : lambda: obj.appendTwoList(),
-        14 : lambda: obj.commonDataInTwoList()
+        14 : lambda: obj.commonDataInTwoList(),
+        15 : lambda: obj.remove_dup([[10, 20], [40], [30, 56, 25], [10, 20], [33], [40]])
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
