@@ -121,11 +121,11 @@ class programList:
         # Find the permutations for lst if there are more than 1 characters
         new_list = [] # empty list that will store current permutation
         # Iterate the input(lst) and calculate the permutation
-        for i in range(len(lst)):
-            start = lst[i]
+        for index in range(len(lst)):
+            start = lst[index]
             # Extract lst[i] or start from the list. remList is remaining list
-            remList = lst[:i] + lst[i+1:]
-            # Generating all permutations where m is first element
+            remList = lst[:index] + lst[index+1:]
+            # Generating all permutations where start is first element
             for perm in self.permutation(remList):
                 new_list.append([start] + perm)
         return new_list
