@@ -71,6 +71,13 @@ class programTuple:
             return True
         return False
 
+    def listToTuple(self):
+        '''
+        Convert a list to a tuple
+        '''
+        myList = [int(item) for item in input("Enter the list of integer elements(seprated by space) : ").split()]
+        return tuple(myList)
+
 def menu():
     '''
     Menu of programs
@@ -82,6 +89,7 @@ def menu():
     4.Create the colon of a tuple
     5.Find the repeated items of a tuple
     6.Check whether an element exists within a tuple
+    7.Convert a list to a tuple
     ''')
 
 def switchToFunction(case, obj):
@@ -95,6 +103,7 @@ def switchToFunction(case, obj):
         4 : lambda: obj.colonOfTuple(),
         5 : lambda: obj.repeatedItems(),
         6 : lambda: obj.checkElementExists(),
+        7 : lambda: obj.listToTuple(),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
