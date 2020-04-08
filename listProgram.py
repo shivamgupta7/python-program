@@ -204,6 +204,39 @@ class programList:
         else:
             return False
 
+    @staticmethod
+    def bubbleSort(myList):
+        '''
+        Sorting using bubble sort
+        '''
+        length = len(myList)
+        for index in range(length):
+            flag = 0
+            for nextIndex in range(index+1, length):
+                if (myList[index] > myList[nextIndex]):
+                    myList[index], myList[nextIndex] = myList[nextIndex], myList[index]
+                    flag = 1
+            if flag == 0:
+                break
+        return myList      # return list after sorting
+
+    def splitListFirstChar(self):
+        '''
+        Split a list based on first character of word
+        '''
+        myList = input("Enter the items(separated by space) for list: ").split()
+        firstChar = []
+        for ele in myList:
+            if ele[0] not in firstChar:
+                firstChar.append(ele[0])   # append first character of all words if not present in list
+        sortChar = programList.bubbleSort(firstChar)
+        myList = programList.bubbleSort(myList)
+        for char in sortChar:
+            print(char)
+            for item in myList:
+                if char == item[0]:
+                    print(item)
+
 def menu():
     '''
     Menu of programs
@@ -212,7 +245,7 @@ def menu():
     print('5.Sort list of tuple\n6.Clone or copy a list\n7.Given list of words which longer then given number\n8.Check common members in two list')
     print('9.Remove duplicates from a list\n10.Removing the 0th, 4th and 5th elements\n11.Generate all permutations of a list')
     print('12.Get the difference between the two lists\n13.Append a list to the second list\n14.Find common items from two lists')
-    print('15.Remove duplicates from a list of list\n16.Check whether two lists are circularly identical')
+    print('15.Remove duplicates from a list of list\n16.Check whether two lists are circularly identical\n17.Split a list based on first character of word')
 
 def switchToFunction(case, obj):
     '''
@@ -234,7 +267,8 @@ def switchToFunction(case, obj):
         13 : lambda: obj.appendTwoList(),
         14 : lambda: obj.commonDataInTwoList(),
         15 : lambda: obj.remove_dup([[10, 20], [40], [30, 56, 25], [10, 20], [33], [40]]),
-        16 : lambda: obj.circularly_identical()
+        16 : lambda: obj.circularly_identical(),
+        17 : lambda: obj.splitListFirstChar()
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
