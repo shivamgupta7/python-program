@@ -61,6 +61,16 @@ class programTuple:
             print("No Duplicates")
         return repeat_ele
 
+    def checkElementExists(self):
+        '''
+        Check whether an element exists within a tuple
+        '''
+        myTuple = tuple(int(item) for item in input("Enter the integer elements(seprated by space): ").split())
+        element = int(input('Enter the integer which you want to check exists or not :'))
+        if element in myTuple:
+            return True
+        return False
+
 def menu():
     '''
     Menu of programs
@@ -71,6 +81,7 @@ def menu():
     3.Unpack a tuple in several variables
     4.Create the colon of a tuple
     5.Find the repeated items of a tuple
+    6.Check whether an element exists within a tuple
     ''')
 
 def switchToFunction(case, obj):
@@ -83,6 +94,7 @@ def switchToFunction(case, obj):
         3 : lambda: obj.unpackTuple(),
         4 : lambda: obj.colonOfTuple(),
         5 : lambda: obj.repeatedItems(),
+        6 : lambda: obj.checkElementExists(),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
