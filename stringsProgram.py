@@ -23,6 +23,17 @@ class programStrings:
                 frequency[char] = 1
         return frequency
 
+    def changeOccurChar(self):
+        '''
+        Get a string from a given string where all occurrences of its 
+        first char have been changed to '$', except the first char itself.
+        '''
+        # Strings are unchangeable or immutable
+        myString = input('Enter the String : ')
+        firstChar = myString[0]
+        myString = firstChar + myString[1:].replace(firstChar,'$')
+        return myString        
+
 def menu():
     '''
     Menu of programs
@@ -30,6 +41,7 @@ def menu():
     print('''
     1.Calculate the length of a string
     2.Character frequency in a string
+    3.Occurrences changed with $
     ''')
 
 def switchToFunction(case, obj):
@@ -39,6 +51,7 @@ def switchToFunction(case, obj):
     switcher = {
         1 : lambda: obj.lenOfStrings(),
         2 : lambda: obj.charFrequency(),
+        3 : lambda: obj.changeOccurChar()
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
