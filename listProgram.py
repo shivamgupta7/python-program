@@ -130,6 +130,18 @@ class programList:
                 new_list.append([start] + perm)
         return new_list
 
+    def differenceTwoList(self):
+        '''
+        Get the difference between the two lists
+        '''
+        list1 = [int(string) for string in input("Enter the items(separated by space) for list1: ").split()]
+        list2 = [int(string) for string in input("Enter the items(separated by space) for list2: ").split()]
+        list_difference = []
+        for item in list1:
+            if item not in list2:
+                list_difference.append(item)
+        return list_difference
+
 def menu():
     '''
     Menu of programs
@@ -137,6 +149,7 @@ def menu():
     print('1.Sum all the items in list\n2.Multiply all the items in list\n3.Get smallest number\n4.Count string which first and last char are same')
     print('5.Sort list of tuple\n6.Clone or copy a list\n7.Given list of words which longer then given number\n8.Check common members in two list')
     print('9.Remove duplicates from a list\n10.Removing the 0th, 4th and 5th elements\n11.Generate all permutations of a list')
+    print('12.Get the difference between the two lists')
 
 def switchToFunction(case, obj):
     '''
@@ -154,6 +167,7 @@ def switchToFunction(case, obj):
         9 : lambda: obj.removeDuplicates(),
         10 : lambda: obj.printSpecifiedList(),
         11 : lambda: obj.permutation([1, 2, 3]),
+        12 : lambda: obj.differenceTwoList()
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
