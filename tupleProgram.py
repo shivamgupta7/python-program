@@ -91,6 +91,18 @@ class programTuple:
             print('Element not present in tuple')
         return tuple(lst)
 
+    def sliceTuple(self):
+        '''
+        Slice a tuple
+        '''
+        myTuple = tuple(int(item) for item in input("Enter the integer elements(seprated by space): ").split())
+        start = int(input('Enter the start index where you want to start for slicing :'))
+        stop = int(input('Enter the last index where you want to stop for slicing :'))
+        sliceList = []    # store the tuple element after slicing
+        for index in range(start,stop):       # For tuple slicing also use myTuple[start:stop:step]
+            sliceList.append(myTuple[index])
+        return tuple(sliceList)
+
 def menu():
     '''
     Menu of programs
@@ -104,6 +116,7 @@ def menu():
     6.Check whether an element exists within a tuple
     7.Convert a list to a tuple
     8.Remove an item from a tuple
+    9.Slice a tuple
     ''')
 
 def switchToFunction(case, obj):
@@ -118,7 +131,8 @@ def switchToFunction(case, obj):
         5 : lambda: obj.repeatedItems(),
         6 : lambda: obj.checkElementExists(),
         7 : lambda: obj.listToTuple(),
-        8 : lambda: obj.removeItem()
+        8 : lambda: obj.removeItem(),
+        9 : lambda: obj.sliceTuple(),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
