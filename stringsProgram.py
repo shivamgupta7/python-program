@@ -10,12 +10,26 @@ class programStrings:
             counts += 1
         return counts
 
+    def charFrequency(self):
+        '''
+        Count the number of characters (character frequency) in a string
+        '''
+        string = input('Enter the String : ')
+        frequency = {}
+        for char in string:
+            if char in frequency.keys():
+                frequency[char] += 1
+            else:
+                frequency[char] = 1
+        return frequency
+
 def menu():
     '''
     Menu of programs
     '''
     print('''
     1.Calculate the length of a string
+    2.Character frequency in a string
     ''')
 
 def switchToFunction(case, obj):
@@ -24,6 +38,7 @@ def switchToFunction(case, obj):
     '''
     switcher = {
         1 : lambda: obj.lenOfStrings(),
+        2 : lambda: obj.charFrequency(),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
