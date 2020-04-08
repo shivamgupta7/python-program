@@ -78,6 +78,19 @@ class programTuple:
         myList = [int(item) for item in input("Enter the list of integer elements(seprated by space) : ").split()]
         return tuple(myList)
 
+    def removeItem(self):
+        '''
+        Remove an item from a tuple
+        '''
+        myTuple = tuple(int(item) for item in input("Enter the integer elements(seprated by space): ").split())
+        element = int(input('Enter the integer which you want to check exists or not :'))
+        lst = list(myTuple)    # convert tuple to list  bcz tuple is unchangeable or immutable
+        if element in lst:
+            lst.remove(element)
+        else:
+            print('Element not present in tuple')
+        return tuple(lst)
+
 def menu():
     '''
     Menu of programs
@@ -90,6 +103,7 @@ def menu():
     5.Find the repeated items of a tuple
     6.Check whether an element exists within a tuple
     7.Convert a list to a tuple
+    8.Remove an item from a tuple
     ''')
 
 def switchToFunction(case, obj):
@@ -104,6 +118,7 @@ def switchToFunction(case, obj):
         5 : lambda: obj.repeatedItems(),
         6 : lambda: obj.checkElementExists(),
         7 : lambda: obj.listToTuple(),
+        8 : lambda: obj.removeItem()
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
