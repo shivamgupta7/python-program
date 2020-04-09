@@ -114,6 +114,27 @@ class programStrings:
         new_string = lower_str + string[num:]
         return new_string
 
+    def occurSubstring(self):
+        '''
+        Count occurrences of a substring in a string
+        '''
+        string = input('Enter the string : ')
+        pattern = input('Enter the substring for counting : ')
+        str_len = len(string)
+        pat_len = len(pattern)
+        counts = 0
+        #  A loop to slide pat[] one by one
+        for index in range(str_len - pat_len + 1):
+            # For current index, check for pattern match
+            pindex = 0    # pattern index
+            for pindex in range(pat_len):
+                if (string[index + pindex] != pattern[pindex]):
+                    break
+            if (pindex == pat_len-1):      # check index of pattern is equal to length of pattern -1
+                counts += 1
+                pindex = 0
+        return counts
+
 def menu():
     '''
     Menu of programs
@@ -129,6 +150,7 @@ def menu():
     8.Display formatted text (width=50) as output
     9.Reverse a string
     10.Lowercase first n characters in a string
+    11.Count occurrences of a substring in a string
     ''')
 
 def switchToFunction(case, obj):
@@ -145,7 +167,8 @@ def switchToFunction(case, obj):
         7 : lambda: obj.findUniqueWords(),
         8 : lambda: obj.formattedText(),
         9 : lambda: obj.reverseString(),
-        10 : lambda : obj.first_n_charLower()
+        10 : lambda : obj.first_n_charLower(),
+        11 : lambda : obj.occurSubstring()
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
