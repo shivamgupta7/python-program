@@ -1,3 +1,5 @@
+from listProgram import programList
+
 class programStrings:
 
     def lenOfStrings(self):
@@ -48,6 +50,17 @@ class programStrings:
                 string += 'ing'
         return string
 
+    def findLongestWord(self):
+        '''
+        Takes a list of words and returns the length of the longest one.
+        '''
+        wordsList = input('Enter words separated by space : ').split()
+        word_len = []       # store length and words for each word
+        for word in wordsList:
+            word_len.append((len(word), word))     # store tuple of list
+        word_len = programList.bubbleSort(word_len)
+        return word_len[-1][1]
+
 def menu():
     '''
     Menu of programs
@@ -57,6 +70,7 @@ def menu():
     2.Character frequency in a string
     3.Occurrences changed with $
     4.Add 'ing' or 'ly' at the end 
+    5.Returns the longest word in list
     ''')
 
 def switchToFunction(case, obj):
@@ -67,7 +81,8 @@ def switchToFunction(case, obj):
         1 : lambda: obj.lenOfStrings(),
         2 : lambda: obj.charFrequency(),
         3 : lambda: obj.changeOccurChar(),
-        4 : lambda: obj.changeString()
+        4 : lambda: obj.changeString(),
+        5 : lambda: obj.findLongestWord(),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
