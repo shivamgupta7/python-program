@@ -102,6 +102,18 @@ class programStrings:
             reverse_str = char + reverse_str
         return reverse_str
 
+    def first_n_charLower(self):
+        '''
+        Lowercase first n characters in a string
+        '''
+        string = input('Enter the string : ')
+        num = int(input('Enter how many first n characters in lower case : '))
+        lower_str = ""
+        for index in range(num):
+            lower_str += string[index].lower()
+        new_string = lower_str + string[num:]
+        return new_string
+
 def menu():
     '''
     Menu of programs
@@ -116,6 +128,7 @@ def menu():
     7.Find unique words in sorted order
     8.Display formatted text (width=50) as output
     9.Reverse a string
+    10.Lowercase first n characters in a string
     ''')
 
 def switchToFunction(case, obj):
@@ -132,6 +145,7 @@ def switchToFunction(case, obj):
         7 : lambda: obj.findUniqueWords(),
         8 : lambda: obj.formattedText(),
         9 : lambda: obj.reverseString(),
+        10 : lambda : obj.first_n_charLower()
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
