@@ -92,6 +92,16 @@ class programStrings:
         formatingString = textwrap.fill(string, width=50)
         return formatingString
 
+    def reverseString(self):
+        '''
+        Reverse a string
+        ''' 
+        string = input('Enter the String : ')
+        reverse_str = "" 
+        for char in string: 
+            reverse_str = char + reverse_str
+        return reverse_str
+
 def menu():
     '''
     Menu of programs
@@ -105,6 +115,7 @@ def menu():
     6.Convert string to upper and lower cases
     7.Find unique words in sorted order
     8.Display formatted text (width=50) as output
+    9.Reverse a string
     ''')
 
 def switchToFunction(case, obj):
@@ -120,6 +131,7 @@ def switchToFunction(case, obj):
         6 : lambda: obj.changeUpperAndLowerCase(),
         7 : lambda: obj.findUniqueWords(),
         8 : lambda: obj.formattedText(),
+        9 : lambda: obj.reverseString(),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
