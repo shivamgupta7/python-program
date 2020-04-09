@@ -70,6 +70,19 @@ class programStrings:
         lowerCase = string.lower()
         return upperCase, lowerCase
 
+    def findUniqueWords(self):
+        '''
+        Accepts a comma separated sequence of words as input and 
+        prints the unique words in sorted form (alphanumerically)
+        '''
+        words = tuple(input('Enter words separated by comma : ').split(','))
+        uniqueWords = []     # store all unique words in list
+        for word in words:
+            if word not in uniqueWords:
+                uniqueWords.append(word)
+        uniqueWords = programList.bubbleSort(uniqueWords)
+        return uniqueWords
+
 def menu():
     '''
     Menu of programs
@@ -81,6 +94,7 @@ def menu():
     4.Add 'ing' or 'ly' at the end 
     5.Returns the longest word in list
     6.Convert string to upper and lower cases
+    7.Find unique words in sorted order
     ''')
 
 def switchToFunction(case, obj):
@@ -93,7 +107,8 @@ def switchToFunction(case, obj):
         3 : lambda: obj.changeOccurChar(),
         4 : lambda: obj.changeString(),
         5 : lambda: obj.findLongestWord(),
-        6 : lambda: obj.changeUpperAndLowerCase()
+        6 : lambda: obj.changeUpperAndLowerCase(),
+        7 : lambda: obj.findUniqueWords(),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
