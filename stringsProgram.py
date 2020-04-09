@@ -61,6 +61,15 @@ class programStrings:
         word_len = programList.bubbleSort(word_len)
         return word_len[-1][1]
 
+    def changeUpperAndLowerCase(self):
+        '''
+        Takes input from the user and displays that input back in upper and lower cases
+        '''
+        string = input('Enter words for convert to upper and lower case : ')
+        upperCase = string.upper()
+        lowerCase = string.lower()
+        return upperCase, lowerCase
+
 def menu():
     '''
     Menu of programs
@@ -71,6 +80,7 @@ def menu():
     3.Occurrences changed with $
     4.Add 'ing' or 'ly' at the end 
     5.Returns the longest word in list
+    6.Convert string to upper and lower cases
     ''')
 
 def switchToFunction(case, obj):
@@ -83,6 +93,7 @@ def switchToFunction(case, obj):
         3 : lambda: obj.changeOccurChar(),
         4 : lambda: obj.changeString(),
         5 : lambda: obj.findLongestWord(),
+        6 : lambda: obj.changeUpperAndLowerCase()
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
