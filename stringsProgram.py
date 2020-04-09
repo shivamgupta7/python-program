@@ -1,4 +1,5 @@
 from listProgram import programList
+import textwrap
 
 class programStrings:
 
@@ -83,6 +84,14 @@ class programStrings:
         uniqueWords = programList.bubbleSort(uniqueWords)
         return uniqueWords
 
+    def formattedText(self):
+        '''
+        Display formatted text (width=50) as output
+        '''
+        string = input('Enter the String : ')
+        formatingString = textwrap.fill(string, width=50)
+        return formatingString
+
 def menu():
     '''
     Menu of programs
@@ -95,6 +104,7 @@ def menu():
     5.Returns the longest word in list
     6.Convert string to upper and lower cases
     7.Find unique words in sorted order
+    8.Display formatted text (width=50) as output
     ''')
 
 def switchToFunction(case, obj):
@@ -109,6 +119,7 @@ def switchToFunction(case, obj):
         5 : lambda: obj.findLongestWord(),
         6 : lambda: obj.changeUpperAndLowerCase(),
         7 : lambda: obj.findUniqueWords(),
+        8 : lambda: obj.formattedText(),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     print(func())
