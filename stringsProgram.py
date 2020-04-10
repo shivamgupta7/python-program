@@ -130,7 +130,7 @@ class programStrings:
             for pindex in range(pat_len):
                 if (string[index + pindex] != pattern[pindex]):
                     break
-            if (pindex == pat_len-1):      # check index of pattern is equal to length of pattern -1
+            if ((pindex == pat_len-1) & (string[index+pindex] == pattern[pindex])):      # check index of pattern is equal to length of pattern -1
                 counts += 1
                 pindex = 0
         return counts
