@@ -225,6 +225,26 @@ class addressbook:
         else:
             print("No contacts find")
 
+    @classmethod
+    def removePersonContact(cls,filepath):
+        """
+        Function to remove specified contact details from the addressbook
+        """
+        # Try to open the current addressbook and find the person contact
+        address_books = cls.open_addressbook(filepath)
+        persons = addressbook.retrievePersonContact(filepath)
+
+        if persons:
+            try:
+                with open(filepath, 'w') as outfile:
+                    # If contact was found delete it
+                    for person in persons:
+                        address_books['persons'].remove(person)
+                    json.dump(address_books, outfile, indent= 4)
+                    print('Contact removed.')
+            finally:
+                outfile.close()
+
 def menu():
     '''
     Menu of programs
@@ -234,6 +254,7 @@ def menu():
     2.Print all person contacts
     3.Add new person contact in address book
     4.Retirve specified contact details in the addressbook
+    5.Remove specified contact details from the addressbook
     ''')
 
 def switchToFunction(case,filepath):
@@ -246,6 +267,7 @@ def switchToFunction(case,filepath):
         2 : lambda: obj.printAllContacts(filepath),
         3 : lambda: obj.add_contact(filepath),
         4 : lambda: obj.retrievePersonContact(filepath),
+        5 : lambda: obj.removePersonContact(filepath),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     func()
