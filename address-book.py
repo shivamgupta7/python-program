@@ -102,6 +102,84 @@ class addressbook:
         else:
             print('No address book found!')
 
+    @classmethod
+    def add_contact(cls,filepath):
+        """
+        Function to add contact details to the addressbook
+        It take user input and creates a contact that is added
+        """
+        new_contact = {}
+        try:
+            new_fname = input('Please enter the first name: ')
+            addressbook.fname = new_fname          # set first name 
+            new_contact['fname'] = addressbook.fname    # get fast name
+            if not new_contact['fname']:
+                raise ValueError('Error: Empty First Name')
+
+            new_lname = input('Please enter last name: ')
+            addressbook.lname = new_lname
+            new_contact['lname'] = addressbook.lname
+            if not new_contact['lname']:
+                raise ValueError('Error: Empty Last Name')
+
+            new_address = input('Please enter address: ')
+            addressbook.address = new_address
+            new_contact['address'] = addressbook.address
+            if not new_contact['address']:
+                raise ValueError('Error: Empty address')
+
+            new_city = input('Please enter city name: ')
+            addressbook.city = new_city
+            new_contact['city'] = addressbook.city
+            if not new_contact['city']:
+                raise ValueError('Error: Empty City Name')
+
+            new_state = input('Please enter state name: ')
+            addressbook.state = new_state
+            new_contact['state'] = addressbook.state
+            if not new_contact['state']:
+                raise ValueError('Error: Empty State Name')
+
+            new_zipCode = input('Please enter zip code: ')
+            addressbook.state = new_zipCode
+            new_contact['zipCode'] = addressbook.state
+            if not new_contact['zipCode']:
+                raise ValueError('Error: Empty Zip Code')
+
+            new_phone = input('Please enter phone number: ')
+            addressbook.phone = new_phone
+            new_contact['phone'] = addressbook.phone
+            if not new_contact['phone']:
+                raise ValueError('Error: Empty Phone Number')
+
+        except ValueError as err:
+            print(err)
+            print('Contact not added.')
+            exit()
+
+        except KeyboardInterrupt:
+            print('\nHiting the interrupt key.')
+            print('Contact not added.')
+            exit()
+
+            # Try to open the current addressbook
+        addressbooks = cls.open_addressbook(filepath)
+
+        if addressbooks is None:
+            # If there was no addressbook create one
+            print('Creating new address book')
+            contacts = []
+            addressbooks = {'persons': contacts}
+
+        print(new_contact)
+        try:
+            with open(filepath, 'w') as outfile:
+                # Write the output file with the new contact
+                addressbooks['persons'].append(new_contact)
+                json.dump(addressbooks, outfile, indent=4)
+        finally:
+            outfile.close()
+
 def menu():
     '''
     Menu of programs
@@ -109,6 +187,7 @@ def menu():
     print('''
     1.Open Address book(load json file)
     2.Print all person contacts
+    3.Add new person contact in address book
     ''')
 
 def switchToFunction(case,filepath):
@@ -119,6 +198,7 @@ def switchToFunction(case,filepath):
     switcher = {
         1 : lambda: obj.open_addressbook(filepath),
         2 : lambda: obj.printAllContacts(filepath),
+        3 : lambda: obj.add_contact(filepath),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     func()
