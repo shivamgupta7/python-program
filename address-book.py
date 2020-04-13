@@ -89,12 +89,26 @@ class addressbook:
             print('File does not exist.')
         return addressbook
 
+    @classmethod
+    def printAllContacts(cls,filepath):
+        """
+        Function to print list of all contacts details in the addressbook as form of tables.
+        """
+        address_books = cls.open_addressbook(filepath)
+        if address_books:
+            print("{:<10} {:<10} {:<30} {:<10} {:<15} {:<10} {:<10}".format('FNAME', 'LNAME', 'ADDRESS', 'CITY', 'STATE', 'ZIP CODE', 'PHONE NO'))
+            for person in address_books['persons']:
+                print("{:<10} {:<10} {:<30} {:<10} {:<15} {:<10} {:<10}".format(person['fname'],person['lname'],person['address'],person['city'],person['state'],person['zipCode'],person['phone']))
+        else:
+            print('No address book found!')
+
 def menu():
     '''
     Menu of programs
     '''
     print('''
     1.Open Address book(load json file)
+    2.Print all person contacts
     ''')
 
 def switchToFunction(case,filepath):
@@ -104,6 +118,7 @@ def switchToFunction(case,filepath):
     obj = addressbook
     switcher = {
         1 : lambda: obj.open_addressbook(filepath),
+        2 : lambda: obj.printAllContacts(filepath),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     func()
