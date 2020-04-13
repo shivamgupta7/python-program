@@ -180,6 +180,51 @@ class addressbook:
         finally:
             outfile.close()
 
+    @classmethod
+    def retrievePersonContact(cls,filepath):
+        """
+        Function to retirve specified contact details in the addressbook
+        Returns a contact or None
+        """
+        print('Search data using: \n1.First Name\n2.Last Name\n3.City\n4.State')
+        choice = int(input('Enter your choice: '))
+        contact_details = []
+        address_books = cls.open_addressbook(filepath)
+        if not address_books:
+            print('No address book found!')
+        else:
+            if choice == 1:
+                fname = input('Enter First Name which contact you want to search: ')
+                for person in address_books['persons']:
+                    if person['fname'].casefold() == fname.casefold():  # casefold() convert string into lower case
+                        contact_details.append(person)
+
+            elif choice == 2:
+                lname = input('Enter Last Name which contact you want to search: ')
+                for person in address_books['persons']:
+                    if person['lname'].casefold() == lname.casefold():
+                        contact_details.append(person)
+
+            elif choice == 3:
+                city = input('Enter City Name which contact you want to search: ')
+                for person in address_books['persons']:
+                    if person['city'].casefold() == city.casefold():
+                        contact_details.append(person)
+
+            elif choice == 4:
+                state = input('Enter State Name which contact you want to search: ')
+                for person in address_books['persons']:
+                    if person['state'].casefold() == state.casefold():
+                        contact_details.append(person)
+            
+        if contact_details:
+            print("{:<10} {:<10} {:<30} {:<10} {:<15} {:<10} {:<10}".format('FNAME', 'LNAME', 'ADDRESS', 'CITY', 'STATE', 'ZIP CODE', 'PHONE NO'))
+            for person in contact_details:
+                print("{:<10} {:<10} {:<30} {:<10} {:<15} {:<10} {:<10}".format(person['fname'],person['lname'],person['address'],person['city'],person['state'],person['zipCode'],person['phone']))
+            return contact_details
+        else:
+            print("No contacts find")
+
 def menu():
     '''
     Menu of programs
@@ -188,6 +233,7 @@ def menu():
     1.Open Address book(load json file)
     2.Print all person contacts
     3.Add new person contact in address book
+    4.Retirve specified contact details in the addressbook
     ''')
 
 def switchToFunction(case,filepath):
@@ -199,6 +245,7 @@ def switchToFunction(case,filepath):
         1 : lambda: obj.open_addressbook(filepath),
         2 : lambda: obj.printAllContacts(filepath),
         3 : lambda: obj.add_contact(filepath),
+        4 : lambda: obj.retrievePersonContact(filepath),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     func()
