@@ -1,0 +1,22 @@
+{
+    "persons": [
+        {
+            "fname": "Shivam",
+            "lname": "Gupta",
+            "address": "BTM Stage 1, Madiwala",
+            "city": "Bengaluru",
+            "state": "Karnataka",
+            "zipCode": "560068",
+            "phone": "7379373769"
+        },
+        {
+            "fname": "Gaurav",
+            "lname": "Gupta",
+            "address": "Gomti Nagar",
+            "city": "Lucknow",
+            "state": "Uttar Pradesh",
+            "zipCode": "272001",
+            "phone": "9454002001"
+        }
+    ]
+}
