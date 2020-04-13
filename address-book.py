@@ -70,3 +70,19 @@ class addressbook:
     @phone.setter    
     def phone(self,phone):
         self._phone = phone
+
+    @staticmethod
+    def open_addressbook(filepath):
+        """
+        Function to open the address book file specified
+        Returns the addressbook or None
+        """
+        path_exists = os.path.exists(filepath)
+        addressbook = None
+        if path_exists:
+            try:                   # safest way to open or close file.
+                with open(filepath, 'r') as infile:
+                    addressbook = json.load(infile)
+            finally:
+                infile.close()
+        return addressbook
