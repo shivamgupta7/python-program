@@ -85,4 +85,39 @@ class addressbook:
                     addressbook = json.load(infile)
             finally:
                 infile.close()
+        else:
+            print('File does not exist.')
         return addressbook
+
+def menu():
+    '''
+    Menu of programs
+    '''
+    print('''
+    1.Open Address book(load json file)
+    ''')
+
+def switchToFunction(case,filepath):
+    '''
+    Create switch function to move perticular program
+    '''
+    obj = addressbook
+    switcher = {
+        1 : lambda: obj.open_addressbook(filepath),
+        }
+    func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
+    func()
+
+def main():
+    menu()
+    choice = int(input("Enter which program you want to run: "))
+    FILE_PATH = "data/address_book_file.json"
+    switchToFunction(choice,FILE_PATH)
+    options = input('Do you want to continue?[y/n]: ')
+    if options.lower() == 'y':
+        main()
+    else:
+        exit()
+
+if __name__ == "__main__":
+    main()
