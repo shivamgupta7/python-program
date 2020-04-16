@@ -1,4 +1,5 @@
 import json, os
+import tabulate
 
 class addressbook:
 
@@ -94,9 +95,10 @@ class addressbook:
         """
         address_books = cls.open_addressbook(filepath)
         if address_books:
-            print("{:<10} {:<10} {:<30} {:<10} {:<15} {:<10} {:<10}".format('FNAME', 'LNAME', 'ADDRESS', 'CITY', 'STATE', 'ZIP CODE', 'PHONE NO'))
-            for person in address_books['persons']:
-                print("{:<10} {:<10} {:<30} {:<10} {:<15} {:<10} {:<10}".format(person['fname'],person['lname'],person['address'],person['city'],person['state'],person['zipCode'],person['phone']))
+            contacts = address_books['persons']
+            header = contacts[0].keys()
+            rows =  [person.values() for person in contacts]
+            print(tabulate.tabulate(rows, header))
         else:
             print('No address book found!')
 
@@ -110,7 +112,7 @@ class addressbook:
         try:
             new_fname = input('Please enter the first name: ')
             addressbook.fname = new_fname          # set first name 
-            new_contact['fname'] = addressbook.fname    # get fast name
+            new_contact['fname'] = addressbook.fname    # get first name
             if not new_contact['fname']:
                 raise ValueError('Error: Empty First Name')
 
@@ -139,8 +141,8 @@ class addressbook:
                 raise ValueError('Error: Empty State Name')
 
             new_zipCode = input('Please enter zip code: ')
-            addressbook.state = new_zipCode
-            new_contact['zipCode'] = addressbook.state
+            addressbook.zipCode = new_zipCode
+            new_contact['zipCode'] = addressbook.zipCode
             if not new_contact['zipCode']:
                 raise ValueError('Error: Empty Zip Code')
 
@@ -216,9 +218,9 @@ class addressbook:
                         contact_details.append(person)
             
         if contact_details:
-            print("{:<10} {:<10} {:<30} {:<10} {:<15} {:<10} {:<10}".format('FNAME', 'LNAME', 'ADDRESS', 'CITY', 'STATE', 'ZIP CODE', 'PHONE NO'))
-            for person in contact_details:
-                print("{:<10} {:<10} {:<30} {:<10} {:<15} {:<10} {:<10}".format(person['fname'],person['lname'],person['address'],person['city'],person['state'],person['zipCode'],person['phone']))
+            header = contact_details[0].keys()
+            rows =  [person.values() for person in contact_details]
+            print(tabulate.tabulate(rows, header))
             return contact_details
         else:
             print("No contacts find")
@@ -253,7 +255,7 @@ class addressbook:
             fname= (input("Enter the first name of the contact to be modified: "))
             is_contact_modified=False
             for person in address_books['persons']:
-                if person['fname'] == fname:
+                if person['fname'].casefold() == fname.casefold():
                     cls.do_modification(person)
                     with open(filepath, 'w') as outfile:
                         json.dump(address_books, outfile, indent= 4)
@@ -294,6 +296,21 @@ class addressbook:
         except KeyboardInterrupt:
             print("KeyboardInterrupt occurred")
 
+    @classmethod
+    def sortContact(cls,filepath):
+        '''
+        Function to sort the entries in the address book alphabetically 
+        by last name (with ties broken by first name if necessary)
+        '''
+        address_books = cls.open_addressbook(filepath)
+        if address_books:
+            sort_contact = sorted(address_books['persons'], key = lambda person: (person['lname'], person['fname']))
+            header = sort_contact[0].keys()
+            rows =  [x.values() for x in sort_contact]
+            print(tabulate.tabulate(rows, header))
+        else:
+            print('No address book found!')
+
 def menu():
     '''
     Menu of programs
@@ -305,6 +322,7 @@ def menu():
     4.Retirve specified contact details in the addressbook
     5.Remove specified contact details from the addressbook
     6.Modify specified contact details in the addressbook
+    7.Sort contact by last name
     ''')
 
 def switchToFunction(case,filepath):
@@ -318,7 +336,8 @@ def switchToFunction(case,filepath):
         3 : lambda: obj.add_contact(filepath),
         4 : lambda: obj.retrievePersonContact(filepath),
         5 : lambda: obj.removePersonContact(filepath),
-        6 : lambda: obj.modify_contact(filepath)
+        6 : lambda: obj.modify_contact(filepath),
+        7 : lambda: obj.sortContact(filepath)
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     func()
