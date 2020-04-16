@@ -85,8 +85,6 @@ class addressbook:
                     addressbook = json.load(infile)
             finally:
                 infile.close()
-        else:
-            print('File does not exist.')
         return addressbook
 
     @classmethod
@@ -245,6 +243,57 @@ class addressbook:
             finally:
                 outfile.close()
 
+    @classmethod
+    def modify_contact(cls,filepath):
+        '''
+        Function to modify specified contact details in the addressbook
+        '''
+        address_books = cls.open_addressbook(filepath)
+        if address_books:
+            fname= (input("Enter the first name of the contact to be modified: "))
+            is_contact_modified=False
+            for person in address_books['persons']:
+                if person['fname'] == fname:
+                    cls.do_modification(person)
+                    with open(filepath, 'w') as outfile:
+                        json.dump(address_books, outfile, indent= 4)
+                    is_contact_modified=True
+                    print("Contact modified")
+                    break
+            if not is_contact_modified:
+                print("No contact with this name found")
+        else:
+            print("Address book empty. No contact to modified")
+
+    @classmethod
+    def do_modification(cls, contact):
+        '''
+        Function to modifiy specified contact here
+        '''
+        try:
+            while True:
+                print ("Enter 1. to modify city\n2. to modify state\n3. to modify phone no\n4.quit without modifying")
+                choice= int(input())
+                if choice == 1:
+                    new_city = input("Enter new city name: ")
+                    contact['city'] = new_city
+                    break
+                elif choice == 2:
+                    new_state = input("Enter new state name: ")
+                    contact['state'] = new_state
+                    break
+                elif choice == 3:
+                    new_phone = input('Enter new phone number: ')
+                    contact['phone'] = new_phone
+                    break
+                else:
+                    print("Incorrect choice")
+                    break
+        except EOFError:
+            print("EOF Error occurred")
+        except KeyboardInterrupt:
+            print("KeyboardInterrupt occurred")
+
 def menu():
     '''
     Menu of programs
@@ -255,6 +304,7 @@ def menu():
     3.Add new person contact in address book
     4.Retirve specified contact details in the addressbook
     5.Remove specified contact details from the addressbook
+    6.Modify specified contact details in the addressbook
     ''')
 
 def switchToFunction(case,filepath):
@@ -268,6 +318,7 @@ def switchToFunction(case,filepath):
         3 : lambda: obj.add_contact(filepath),
         4 : lambda: obj.retrievePersonContact(filepath),
         5 : lambda: obj.removePersonContact(filepath),
+        6 : lambda: obj.modify_contact(filepath)
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     func()
