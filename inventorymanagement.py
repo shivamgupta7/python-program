@@ -49,6 +49,28 @@ class inventoryManagement:
                 infile.close()
         return inventorybook
 
+    @staticmethod
+    def save_inventorybook(filepath, types, product):
+        '''
+        Function to save the inventory book file specified type of product
+        '''
+        # Try to open the current inventory book
+        inventorybook = inventoryManagement.open_inventorybook(filepath)
+
+        if inventorybook is None:
+            # If there was no inventory book create one
+            print('Creating new inventory book')
+            inventorybook = {'Rice': [], 'Pulses': [], 'Wheats': []}
+        
+        try:
+            with open(filepath, 'w') as outfile:
+                # Write the output file with the new product into inventory book
+                inventorybook[types].append(product)
+                json.dump(inventorybook, outfile, indent=4)
+                print('Product added into inventory book.')
+        finally:
+            outfile.close()
+
 def menu():
     '''
     Menu of programs
