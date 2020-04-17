@@ -109,6 +109,55 @@ class inventoryManagement:
         else:
             print('No inventory book found!')
 
+    @classmethod
+    def add_inventory(cls,filepath):
+        """
+        Function to add product details to the inventorybook
+        It take user input and creates a product that is added
+        """
+        new_inventory = {}
+        try:
+            productName = input('Please enter the name of product: ')
+            inventoryManagement.name = productName          # set product name
+            new_inventory['name'] = inventoryManagement.name    # get product name
+            if not new_inventory['name']:
+                raise ValueError('Error: Empty Product Name')
+
+            productWeight = float(input('Please enter weights of product: '))
+            inventoryManagement.weight = productWeight
+            new_inventory['weight'] = inventoryManagement.weight
+            if not new_inventory['weight']:
+                raise ValueError('Error: Empty Product Weight')
+
+            productPrice = float(input('Please enter product price: '))
+            inventoryManagement.price = productPrice
+            new_inventory['price'] = inventoryManagement.price
+            if not new_inventory['price']:
+                raise ValueError('Error: Empty address')
+
+        except ValueError as err:
+            print(err)
+            print('Contact not added.')
+            exit()
+
+        except KeyboardInterrupt:
+            print('\nHiting the interrupt key.')
+            print('Contact not added.')
+            exit()
+
+        print(new_inventory)
+        
+        print('1.Add into Rice\n2.Add into Pulses\n3.Add into Wheats')
+        choice = int(input('Enter where you want to add: '))
+        if choice == 1:
+            cls.save_inventorybook(filepath, 'Rice', new_inventory)
+        elif choice == 2:
+            cls.save_inventorybook(filepath, 'Pulses', new_inventory)
+        elif choice == 3:
+            cls.save_inventorybook(filepath, 'Wheats', new_inventory)
+        else:
+            print('Invalid input. Product not added!')
+
 def menu():
     '''
     Menu of programs
@@ -116,6 +165,7 @@ def menu():
     print('''
     1.Open Inventory book(load json file)
     2.Print list of all products details in the inventorybook
+    3.Add product details to the inventorybook
     ''')
 
 def switchToFunction(case,filepath):
@@ -126,6 +176,7 @@ def switchToFunction(case,filepath):
     switcher = {
         1 : lambda: obj.open_inventorybook(filepath),
         2 : lambda: obj.printAllInventory(filepath),
+        3 : lambda: obj.add_inventory(filepath),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     func()
