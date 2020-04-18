@@ -105,6 +105,18 @@ class inventoryManagement:
             print('Product not search.')
             exit()
 
+    @classmethod
+    def claculatePrice(cls, filepath, obj):
+        '''
+        Function to calculate all inventory price
+        '''
+        inventorybook = obj.open_inventorybook(filepath)
+        for grain in inventorybook:
+            totalPrice = 0
+            for item in inventorybook[grain]:
+                totalPrice += item['price'] * item['weight']
+            print('Total {} price is {}'.format(grain,totalPrice))
+
 def menu():
     '''
     Menu of programs
@@ -112,6 +124,7 @@ def menu():
     print('''
     1.Modify specified product details in the inventory book
     2.Retirve specified product details in the inventorybook
+    3.Calculate all inventory price
     ''')
 
 def switchToFunction(case,filepath,obj):
@@ -122,6 +135,7 @@ def switchToFunction(case,filepath,obj):
     switcher = {
         1 : lambda: manager.modify_product(filepath,obj),
         2 : lambda: manager.retrieveProduct(filepath,obj),
+        3 : lambda: manager.claculatePrice(filepath,obj),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     func()
