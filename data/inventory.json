@@ -1,0 +1,38 @@
+{
+    "Rice": [
+        {
+            "name": "Basumati",
+            "weight": 20.0,
+            "price": 140.0
+        },
+        {
+            "name": "Brown Rice",
+            "weight": 20.0,
+            "price": 55.0
+        }
+    ],
+    "Pulses": [
+        {
+            "name": "Chickpeas",
+            "weight": 12.0,
+            "price": 65.8
+        },
+        {
+            "name": "Moong daal",
+            "weight": 16.0,
+            "price": 64.0
+        }
+    ],
+    "Wheats": [
+        {
+            "name": "Hard Red Spring",
+            "weight": 30.0,
+            "price": 55.0
+        },
+        {
+            "name": "Soft Red Winter",
+            "weight": 25.0,
+            "price": 42.0
+        }
+    ]
+}
