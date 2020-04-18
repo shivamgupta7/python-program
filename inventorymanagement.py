@@ -69,12 +69,49 @@ class inventoryManagement:
         except KeyboardInterrupt:
             print("KeyboardInterrupt occurred")
 
+    @classmethod
+    def retrieveProduct(cls, filepath, obj):
+        """
+        Function to retirve specified product details in the inventorybook
+        Returns a product or None
+        """
+        inventory_books = obj.open_inventorybook(filepath)
+        try:
+            if inventory_books:
+                print('1.Search into Rice\n2.Search into Pulses\n3.Search into Wheats')
+                choice = int(input('Enter where you want to search: '))
+                switcher = {1: "Rice", 2: "Pulses", 3: "Wheats"}
+                grain = switcher.get(choice)
+                print(grain)
+                name= input("Enter the name of the product to be search: ")
+                is_product = False
+                for item in inventory_books[grain]:
+                    if item['name'].casefold() == name.casefold():
+                        header = item.keys()
+                        rows =  [item.values()]
+                        print(tabulate.tabulate(rows, header))
+                        is_product = True
+                if not is_product:
+                    print('Product not found!')
+            else:
+                print("Inventory book empty!")
+
+        except KeyError:
+            print('Invalid Input! Product not Search.')
+            exit()
+
+        except KeyboardInterrupt:
+            print('\nHiting the interrupt key!')
+            print('Product not search.')
+            exit()
+
 def menu():
     '''
     Menu of programs
     '''
     print('''
     1.Modify specified product details in the inventory book
+    2.Retirve specified product details in the inventorybook
     ''')
 
 def switchToFunction(case,filepath,obj):
@@ -84,6 +121,7 @@ def switchToFunction(case,filepath,obj):
     manager = inventoryManagement
     switcher = {
         1 : lambda: manager.modify_product(filepath,obj),
+        2 : lambda: manager.retrieveProduct(filepath,obj),
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     func()
