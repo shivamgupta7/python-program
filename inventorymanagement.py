@@ -125,6 +125,7 @@ def menu():
     1.Modify specified product details in the inventory book
     2.Retirve specified product details in the inventorybook
     3.Calculate all inventory price
+    4.Print list of all products details in the inventorybook
     ''')
 
 def switchToFunction(case,filepath,obj):
@@ -136,6 +137,7 @@ def switchToFunction(case,filepath,obj):
         1 : lambda: manager.modify_product(filepath,obj),
         2 : lambda: manager.retrieveProduct(filepath,obj),
         3 : lambda: manager.claculatePrice(filepath,obj),
+        4 : lambda: obj.printAllInventory(filepath)
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
     func()
