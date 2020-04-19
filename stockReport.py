@@ -2,9 +2,6 @@
 Print a Stock Report with total value of each Stock and the total value of Stock
 having functions in the Class to calculate the value of each stock and the value
 of total stocks.
-@author Shivam Gupta
-@version 1.0
-@since 11/01/2019
 """
 
 # Stock class having constructor and data handler methods
