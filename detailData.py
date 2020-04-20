@@ -6,6 +6,7 @@ import datetime
 import json
 import os
 from transaction import *
+from customer import *
 
 # this method to open the json file specified Returns the json file object or None
 def open_jsonfile(filepath):
@@ -253,3 +254,15 @@ class detailData:
               "--------------------------------------")
         for data in company_info:
             print("Name: ", company_info[data]["Company Name"], "\nSymbol:", company_info[data]["Company Symbol"], "\n")
+        
+    @staticmethod
+    def add_customer():
+        print("Customer Information")
+        name = input("Enter customer name : ")
+        amount = float(input("Enter a amount : "))
+        no_of_share = int(input("Enter the Number Of Share : "))
+        customer_obj = Customer(name, amount, no_of_share)
+        customer_obj.customer_name = name
+        customer_obj.amount = amount
+        customer_obj.noOfShare = no_of_share
+        save(customer_obj)
