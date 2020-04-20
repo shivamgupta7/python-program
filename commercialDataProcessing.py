@@ -10,38 +10,45 @@ from detailData import detailData
 
 # 'StockAccount' class contains main menu
 class StockAccount:
-
-    #obj = detailData()  # creating object of 'detailData' class to access all the functionality of the class
     
-    # displaying main menu
-    print('''-----------Stock Accounts-----------
-        Enter 1. To Add a Customer
-        Enter 2. To Add a Company
-        Enter 3. To Display Customer
-        Enter 4. To Display Company
-        Enter 5. For Transaction
-        Enter 6. For Exit
-        ''')
+    @staticmethod
+    def stockProgram():
+        # displaying main menu
+        print('''-----------Stock Accounts-----------
+            Enter 1. To Add a Customer
+            Enter 2. To Add a Company
+            Enter 3. To Display Customer
+            Enter 4. To Display Company
+            Enter 5. For Transaction
+            Enter 6. For Exit
+            ''')
 
-    try:
-        choice = int(input("Enter your choice: "))
-    except Exception as e:  # handling the exception for bad input
-        print(e, "\n!!! Invalid Input !!!\n")
-    try:
-        switcher = {
-            1 : lambda: detailData.add_customer(),
-            2 : lambda: detailData.add_company(),
-            3 : lambda: detailData.display_customer(),
-            4 : lambda: detailData.display_company(),
-            5 : lambda: detailData.transaction(),
-            6 : lambda: exit()
-            }
-        func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
-        func()
-    except Exception as e:  # handling exception for bad input
-        print(e)
+        try:
+            choice = int(input("Enter your choice: "))
+        except Exception as e:  # handling the exception for bad input
+            print(e, "\n!!! Invalid Input !!!\n")
+        try:
+            switcher = {
+                1 : lambda: detailData.add_customer(),
+                2 : lambda: detailData.add_company(),
+                3 : lambda: detailData.display_customer(),
+                4 : lambda: detailData.display_company(),
+                5 : lambda: detailData.transaction(),
+                6 : lambda: exit()
+                }
+            func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
+            func()
+        except Exception as e:  # handling exception for bad input
+            print(e)
 
+def main():
+    StockAccount.stockProgram()
+    options = input('\nDo you want to continue?[y/n]: ')
+    if options.lower() == 'y':
+        main()
+    else:
+        exit()
 
 # from this python file only program will compile not from the imported file(s)
 if __name__ == '__main__':
-    StockAccount()
+    main()
