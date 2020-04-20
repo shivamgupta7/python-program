@@ -1,0 +1,20 @@
+{
+    "Transaction": {
+        "Shivam": {
+            "Customer Name": "Shivam",
+            "Company Symbol": "LLP",
+            "Buy or Sell": "Sell",
+            "Total Share": 2,
+            "Total Price": 20000.0,
+            "Time": "2020-04-20 15:09"
+        },
+        "anupam": {
+            "Customer Name": "anupam",
+            "Company Symbol": "SBI",
+            "Buy or Sell": "Sell",
+            "Total Share": 5,
+            "Total Price": 250.0,
+            "Time": "2020-04-20 12:38"
+        }
+    }
+}
