@@ -1,0 +1,20 @@
+{
+    "Blizzard": {
+        "Company Name": "Blizzard",
+        "Company Symbol": "Blizz",
+        "Share Price": 1420,
+        "Total Share": 24
+    },
+    "Bridgelabz": {
+        "Company Name": "Bridgelabz",
+        "Company Symbol": "LLP",
+        "Share Price": 10000,
+        "Total Share": 19
+    },
+    "State Bank of India": {
+        "Company Name": "State Bank of India",
+        "Company Symbol": "SBI",
+        "Share Price": 5000.0,
+        "Total Share": 24
+    }
+}
