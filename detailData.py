@@ -316,3 +316,19 @@ class detailData:
             print("Name: ", company_info[data]["Company Name"], "\nSymbol: ", company_info[data]['Company Symbol'],
                 "\nShare Price: ", company_info[data]['Share Price'], "\nTotal Share: ", company_info[data]['Total Share'], "\n")
         print()
+
+    @staticmethod
+    def transaction():
+        print("Enter 1.Buy Share")
+        print("Enter 2.Sell Share")
+        try:
+            choice = int(input("\nEnter your choice : "))
+        except Exception as e:
+            print(e, " Invalid Input")
+
+        switcher = {
+            1 : lambda: buy_shares(),
+            2 : lambda: sell_share()
+            }
+        func = switcher.get(choice, lambda: 'Invalid choice please select correct options.')
+        func()
