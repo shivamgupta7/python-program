@@ -295,3 +295,24 @@ class detailData:
                 with open('data/company.json', 'w') as data:
                     json.dump(company_info, data, indent=2)
         print("\nCompany Detail Added Successfully!\n")
+
+    @staticmethod
+    def display_customer():
+        customer_info = open_jsonfile('data/customer.json')
+        print(customer_info)
+        print("\n---------Details of all Customers--------")
+        for data in list(customer_info['Customers']):
+            print(data)
+            print("Name: ", customer_info["Customers"][data]["Name"], "\nNumber of Share: ",
+                  customer_info["Customers"][data]["Shares"], "\nAmount: ",
+                  customer_info["Customers"][data]["Amounts"], "\n")
+        print()
+
+    @staticmethod
+    def display_company():
+        company_info = open_jsonfile('data/company.json')
+        print("\n---------Details of all Companies--------")
+        for data in company_info:
+            print("Name: ", company_info[data]["Company Name"], "\nSymbol: ", company_info[data]['Company Symbol'],
+                "\nShare Price: ", company_info[data]['Share Price'], "\nTotal Share: ", company_info[data]['Total Share'], "\n")
+        print()
