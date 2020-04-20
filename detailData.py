@@ -5,6 +5,7 @@ methods necessary for commercial data processing.
 import datetime
 import json
 import os
+import tabulate
 from transaction import *
 from customer import *
 from company import *
@@ -299,23 +300,20 @@ class detailData:
     @staticmethod
     def display_customer():
         customer_info = open_jsonfile('data/customer.json')
-        print(customer_info)
         print("\n---------Details of all Customers--------")
+        print ("{:<10} {:<10} {:<10}".format('NAME', 'Share', 'Amount'))
         for data in list(customer_info['Customers']):
-            print(data)
-            print("Name: ", customer_info["Customers"][data]["Name"], "\nNumber of Share: ",
-                  customer_info["Customers"][data]["Shares"], "\nAmount: ",
-                  customer_info["Customers"][data]["Amounts"], "\n")
-        print()
+            print("{:<10} {:<10} {:<10}".format(customer_info["Customers"][data]["Name"],
+                   customer_info["Customers"][data]["Shares"],customer_info["Customers"][data]["Amounts"]))
 
     @staticmethod
     def display_company():
         company_info = open_jsonfile('data/company.json')
         print("\n---------Details of all Companies--------")
-        for data in company_info:
-            print("Name: ", company_info[data]["Company Name"], "\nSymbol: ", company_info[data]['Company Symbol'],
-                "\nShare Price: ", company_info[data]['Share Price'], "\nTotal Share: ", company_info[data]['Total Share'], "\n")
-        print()
+        customers = list(company_info.values())
+        header = customers[0].keys()
+        rows =  [customer.values() for customer in customers]
+        print(tabulate.tabulate(rows, header))
 
     @staticmethod
     def transaction():
