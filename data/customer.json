@@ -1,0 +1,19 @@
+{
+    "Customers": {
+        "Anupam": {
+            "Amounts": 260.0,
+            "Name": "anupam",
+            "Shares": 45
+        },
+        "Shiva": {
+            "Amounts": 124.0,
+            "Name": "shiav",
+            "Shares": 544
+        },
+        "Shivam": {
+            "Amounts": 20100.0,
+            "Name": "Shivam",
+            "Shares": 151
+        }
+    }
+}
