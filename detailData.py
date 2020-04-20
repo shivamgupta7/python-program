@@ -7,6 +7,7 @@ import json
 import os
 from transaction import *
 from customer import *
+from company import *
 
 # this method to open the json file specified Returns the json file object or None
 def open_jsonfile(filepath):
@@ -266,3 +267,31 @@ class detailData:
         customer_obj.amount = amount
         customer_obj.noOfShare = no_of_share
         save(customer_obj)
+
+    @staticmethod
+    def add_company():
+        print("Company Information")
+        company_name = input("Enter company name : ")
+        company_symbol = input("Enter a company Symbol : ")
+        share_price = float(input("Enter the Price Of Share : "))
+        total_share = int(input("Enter the total Number Of Share : "))
+        company_obj = Company(company_name, company_symbol, share_price,total_share)
+        company_obj.company_name = company_name
+        company_obj.company_symbol = company_symbol
+        company_obj.share_price = share_price
+        company_obj.total_share = total_share
+        company_info = open_jsonfile('data/company.json')
+        for data in list(company_info):
+            if data.casefold() == company_obj.company_name.casefold():
+                print("Data already found in Database! Please insert a newly data.\n")
+                break
+            else:
+                company_info[company_obj.company_name] = ({
+                    "Company Name": company_obj.company_name,
+                    "Company Symbol": company_obj.company_symbol,
+                    "Share Price": company_obj.share_price,
+                    "Total Share": company_obj.total_share
+                    })
+                with open('data/company.json', 'w') as data:
+                    json.dump(company_info, data, indent=2)
+        print("\nCompany Detail Added Successfully!\n")
