@@ -34,3 +34,60 @@ def save(customer_obj):
     with open('data/customer.json', 'w') as data:  # writing the data to the customer.json file
         json.dump(customer_info, data, indent=4)
     print("\nPerson Detail Added Successfully!\n")
+
+# this function is search for the given company and return None if the company name given as argument not found
+def searchCompany(symbol):
+    try:
+        company_info = open_jsonfile('data/company.json')
+        name_keys = list(company_info.keys())
+        count = 0
+        for data in name_keys:
+            if company_info[data]["Company Symbol"].casefold() == symbol.casefold():
+                count += 1
+                company_name = company_info[data]["Company Name"]
+                company_symbol = company_info[data]["Company Symbol"]
+                total_share = company_info[data]["Total Share"]
+                share_Price = company_info[data]["Share Price"]
+        try:
+            new_obj = {
+                "Company Name": company_name,
+                "Company Symbol": company_symbol,
+                "Total Share": total_share,
+                "Share Price": share_Price
+                }
+        except Exception as e:
+            print("\n", e)
+        if count == 0:
+            return None
+        else:
+            return new_obj
+
+    except SyntaxError:
+        print("error in name")
+
+# this function is search for the given customer and return None if the customer name given as argument not found
+def searchCustomer(name):
+    try:
+        customer_info = open_jsonfile('data/customer.json')
+        count = 0
+        for data in list(customer_info['Customers']):
+            if data.casefold() == name.casefold():
+                count += 1
+                customername = customer_info["Customers"][data]["Name"]
+                no_of_share = customer_info["Customers"][data]["Shares"]
+                amount = customer_info["Customers"][data]["Amounts"]
+        try:
+            new_obj = {
+                "Name": customername,
+                "Shares": no_of_share,
+                "Amounts": amount
+                }
+        except Exception as e:
+            print("\n", e)
+        if count == 0:
+            return None
+        else:
+            return new_obj
+
+    except SyntaxError:
+        print("error in name")
