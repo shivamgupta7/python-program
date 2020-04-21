@@ -99,6 +99,16 @@ class programNumPy:
         arr = np.append(arr, [[40, 50, 60], [70, 80, 90]])
         print("After append : ", arr)
 
+    def realImgPart(self):
+        '''
+        Find the real and imaginary parts of an array of complex numbers
+        '''
+        lst = [ 1.00000000 + 0.j + 0.70710678 + 0.70710678j ]
+        arr = np.asarray(lst)
+        print("Original array : ", arr)
+        print("Real part : ", arr.real)
+        print("Imaginary part : ", arr.imag)
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -113,6 +123,7 @@ def switchToFunction(obj):
     7.8x8 matrix and fill it with a checkerboard pattern
     8.Convert a list and tuple into arrays
     9.Append values to the end of an array
+    10.Find the real and imaginary parts of an array of complex numbers
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -126,6 +137,7 @@ def switchToFunction(obj):
             7 : obj.checkerboard_pattern,
             8 : obj.convertArray,
             9 : obj.appendArray,
+            10 : obj.realImgPart,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
