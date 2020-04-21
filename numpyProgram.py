@@ -181,6 +181,16 @@ class programNumPy:
         # read file
         print(f.read())
 
+    def flattenArray(self):
+        '''
+        Create a contiguous flattened array
+        '''
+        arr = np.array([[1, 2, 3], [4, 5, 6]])
+        print(arr)
+        # contiguous flattened array
+        arr_new = arr.flatten()
+        print("\nContiguous Flattened array : ", arr_new)
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -203,6 +213,7 @@ def switchToFunction(obj):
     14.Find the set exclusive-or of two arrays
     15.Compare two arrays using numpy
     16.Save a NumPy array to a text file
+    17.Create a contiguous flattened array
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -223,6 +234,7 @@ def switchToFunction(obj):
             14 : obj.exclusiveOrArray,
             15 : obj.compareArray,
             16 : obj.saveArray,
+            17 : obj.flattenArray,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
