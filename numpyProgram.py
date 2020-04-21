@@ -89,6 +89,16 @@ class programNumPy:
         print("Tuple : ", tup)
         print("Array : ", np.asarray(tup))
 
+    def appendArray(self):
+        '''
+        Append values to the end of an array
+        '''
+        arr = [10, 20, 30]
+        print("Original array : ", arr)
+        # append values at end of array
+        arr = np.append(arr, [[40, 50, 60], [70, 80, 90]])
+        print("After append : ", arr)
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -102,6 +112,7 @@ def switchToFunction(obj):
     6.Add a border (filled with 0's) around an existing array
     7.8x8 matrix and fill it with a checkerboard pattern
     8.Convert a list and tuple into arrays
+    9.Append values to the end of an array
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -114,6 +125,7 @@ def switchToFunction(obj):
             6 : obj.add_border,
             7 : obj.checkerboard_pattern,
             8 : obj.convertArray,
+            9 : obj.appendArray,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
