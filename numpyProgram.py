@@ -122,6 +122,16 @@ class programNumPy:
         # get total bytes consumed by elements of array
         print("\nTotal bytes consumed by elements : ", arr.nbytes)
 
+    def commonValue(self):
+        '''
+        Find common values between two arrays
+        '''
+        arr1 = np.array([10, 20, 30, 40, 50])
+        print("\nArray 1: ", arr1)
+        arr2 = np.array([15, 25, 10, 35, 30])
+        print("\nArray 2: ", arr2)
+        print("\nCommon values : ", np.intersect1d(arr1, arr2))
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -139,6 +149,7 @@ def switchToFunction(obj):
     10.Find the real and imaginary parts of an array of complex numbers
     11.Find the number of elements of an array, length of one array element
        in bytes and total bytes consumed by the elements.
+    12.Find common values between two arrays
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -154,6 +165,7 @@ def switchToFunction(obj):
             9 : obj.appendArray,
             10 : obj.realImgPart,
             11 : obj.find_arr_size_bytes,
+            12 : obj.commonValue,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
