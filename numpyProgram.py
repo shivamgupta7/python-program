@@ -168,6 +168,19 @@ class programNumPy:
         print("Array 1 > Array 2   : ", np.greater(arr1, arr2))
         print("Array 1 >= Arrays 2 : ", np.greater_equal(arr1, arr2))
 
+    def saveArray(self):
+        '''
+        Save a NumPy array to a text file
+        '''
+        arr = np.ones((4,4))
+        # save array in text file
+        np.savetxt("data/array.txt", arr, fmt="%d")
+        print("Array saved in array.txt file")
+        # open file to read
+        f = open("data/array.txt", 'r')
+        # read file
+        print(f.read())
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -189,6 +202,7 @@ def switchToFunction(obj):
     13.Find the set difference of two arrays
     14.Find the set exclusive-or of two arrays
     15.Compare two arrays using numpy
+    16.Save a NumPy array to a text file
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -208,6 +222,7 @@ def switchToFunction(obj):
             13 : obj.diffArray,
             14 : obj.exclusiveOrArray,
             15 : obj.compareArray,
+            16 : obj.saveArray,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
