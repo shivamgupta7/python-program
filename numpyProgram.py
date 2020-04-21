@@ -42,6 +42,18 @@ class programNumPy:
         # reverse array
         print("reverse : ", arr[::-1])
 
+    def border1_inside0(self):
+        '''
+        Create a 2d array with 1 on the border and 0 inside
+        '''
+        size = int(input('\nEnter the size of 2-d array: '))
+        arr = np.ones((size, size))
+        print("\nOriginal array : ""\n", arr)
+        print("\nArray with 1 on the border and 0 inside")
+        # slicing on array
+        arr[1:-1, 1:-1] = 0
+        print(arr)
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -51,6 +63,7 @@ def switchToFunction(obj):
     2.3x3 matrix with values ranging from 2 to 10
     3.Create a null vector of size 10 and update sixth value to 11
     4.Reverse an array (first element becomes last)
+    5.Create a 2d array with 1 on the border and 0 inside
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -59,6 +72,7 @@ def switchToFunction(obj):
             2 : obj.matrix3x3,
             3 : obj.create_update,
             4 : obj.reverse,
+            5 : obj.border1_inside0,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
