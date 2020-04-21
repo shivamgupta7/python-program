@@ -65,6 +65,18 @@ class programNumPy:
         arr = np.pad(arr, pad_width=1, mode='constant', constant_values=0)
         print(arr)
 
+    def checkerboard_pattern(self):
+        '''
+        8x8 matrix and fill it with a checkerboard pattern
+        '''
+        arr = np.zeros((8, 8), dtype=int)
+        # fill checkerboard pattern with 1 at every 2 row , 2 col
+        # arr[row, col]
+        arr[1::2, ::2] = 1     # start wit 1st row 
+        # fill checkerboard pattern with 1 at every 2 row, 2 col
+        arr[::2, 1::2] = 1    # start with 0th row
+        print(arr)
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -76,6 +88,7 @@ def switchToFunction(obj):
     4.Reverse an array (first element becomes last)
     5.Create a 2d array with 1 on the border and 0 inside
     6.Add a border (filled with 0's) around an existing array
+    7.8x8 matrix and fill it with a checkerboard pattern
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -86,6 +99,7 @@ def switchToFunction(obj):
             4 : obj.reverse,
             5 : obj.border1_inside0,
             6 : obj.add_border,
+            7 : obj.checkerboard_pattern,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
