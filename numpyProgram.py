@@ -109,6 +109,19 @@ class programNumPy:
         print("Real part : ", arr.real)
         print("Imaginary part : ", arr.imag)
 
+    def find_arr_size_bytes(self):
+        '''
+        Find the number of elements of an array, length of one array element
+        in bytes and total bytes consumed by the elements
+        '''
+        arr = np.array([10, 20, 30, 40, 50], dtype=float)
+        # get size of element
+        print("\nNumber of element : ", arr.size)
+        # get length of element
+        print("\nLength of 1 element : ", arr.itemsize)
+        # get total bytes consumed by elements of array
+        print("\nTotal bytes consumed by elements : ", arr.nbytes)
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -124,6 +137,8 @@ def switchToFunction(obj):
     8.Convert a list and tuple into arrays
     9.Append values to the end of an array
     10.Find the real and imaginary parts of an array of complex numbers
+    11.Find the number of elements of an array, length of one array element
+       in bytes and total bytes consumed by the elements.
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -138,6 +153,7 @@ def switchToFunction(obj):
             8 : obj.convertArray,
             9 : obj.appendArray,
             10 : obj.realImgPart,
+            11 : obj.find_arr_size_bytes,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
