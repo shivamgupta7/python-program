@@ -12,18 +12,28 @@ class programNumPy:
         arr = np.array(lst)
         print("\n1D NumPy array : ", arr)
 
+    def matrix3x3(self):
+        '''
+        3x3 matrix with values ranging from 2 to 10
+        '''
+        matrix = np.arange(2, 11).reshape(3, 3)
+        print(matrix)
+        return matrix
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
     '''
     print('''
     1.Convert a list of numeric value into a one-dimensional NumPy array
+    2.3x3 matrix with values ranging from 2 to 10
     ''')
     choice = int(input('Enter which program you want to run: '))
     switcher = {
-        1 : obj.listToArray
+        1 : obj.listToArray,
+        2 : obj.matrix3x3,
         }
-    func = switcher.get(choice, 'Invalid choice please select correct options.')
+    func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
     func()
 
 def main():
