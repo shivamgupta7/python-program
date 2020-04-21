@@ -219,6 +219,17 @@ class programNumPy:
         lowertringle = np.tril(np.ones((4,3)), -1)
         print(lowertringle)
 
+    def concatenate2dArray(self):
+        '''
+        Concatenate two 2-dimensional arrays horizontally
+        '''
+        arr1 = np.array([[0, 1, 3], [5, 7, 9]])
+        print('\nArray 1 : ', arr1)
+        arr2 = np.array([[0, 2, 4], [6, 8, 10]])
+        print('\nArray 2 : ', arr2)
+        new_arr = np.hstack((arr1, arr2))
+        print('\nAfter concatenate : ', new_arr)
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -245,6 +256,7 @@ def switchToFunction(obj):
     18.Change the data type of an array
     19.Create a 3-D array with ones on a diagonal and zeros elsewhere
     20.Create a 3-D lower triangle
+    21.Concatenate two 2-dimensional arrays horizontally
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -269,6 +281,7 @@ def switchToFunction(obj):
             18 : obj.changeDatatypes,
             19 : obj.identity_matrix,
             20 : obj.lowerTriangle,
+            21 : obj.concatenate2dArray,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
