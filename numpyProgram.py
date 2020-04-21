@@ -201,6 +201,13 @@ class programNumPy:
         new_arr = arr.astype(float)
         print("Data type of array after change : ", new_arr.dtype)
 
+    def identity_matrix(self):
+        '''
+        Create a 3-D array with ones on a diagonal and zeros elsewhere
+        '''
+        identitymatrix = np.eye(3)
+        print(identitymatrix)
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -225,6 +232,7 @@ def switchToFunction(obj):
     16.Save a NumPy array to a text file
     17.Create a contiguous flattened array
     18.Change the data type of an array
+    19.Create a 3-D array with ones on a diagonal and zeros elsewhere
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -247,6 +255,7 @@ def switchToFunction(obj):
             16 : obj.saveArray,
             17 : obj.flattenArray,
             18 : obj.changeDatatypes,
+            19 : obj.identity_matrix,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
