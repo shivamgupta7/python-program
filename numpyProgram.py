@@ -144,6 +144,17 @@ class programNumPy:
         # getting set difference between two arrays
         print("\nSet difference between two arrays: ", np.setdiff1d(arr1, arr2))
 
+    def exclusiveOrArray(self):
+        '''
+        Find the set exclusive-or of two arrays. Set exclusive-or will return the sorted, 
+        unique values that are in only one (not both) of the input arrays.
+        '''
+        arr1 = np.array([0, 10, 20, 40, 60, 80])
+        print("\nArray 1: ", arr1)
+        arr2 = np.array([10, 30, 40, 50, 70])
+        print("\nArray 2: ", arr2)
+        print("\nSet exclusive-or of two arrays : ", np.setxor1d(arr1, arr2))
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -163,6 +174,7 @@ def switchToFunction(obj):
        in bytes and total bytes consumed by the elements.
     12.Find common values between two arrays
     13.Find the set difference of two arrays
+    14.Find the set exclusive-or of two arrays
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -180,6 +192,7 @@ def switchToFunction(obj):
             11 : obj.find_arr_size_bytes,
             12 : obj.commonValue,
             13 : obj.diffArray,
+            14 : obj.exclusiveOrArray,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
