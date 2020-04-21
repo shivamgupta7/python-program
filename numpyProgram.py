@@ -155,6 +155,19 @@ class programNumPy:
         print("\nArray 2: ", arr2)
         print("\nSet exclusive-or of two arrays : ", np.setxor1d(arr1, arr2))
 
+    def compareArray(self):
+        '''
+        Compare two arrays using numpy
+        '''
+        arr1 = np.array([1, 2])
+        print("Array 1: ", arr1)
+        arr2 = np.array([3, 4])
+        print("Array 2: ", arr2)
+        print("Array 1 < Array 2   : ", np.less(arr1, arr2))
+        print("Array 1 <= Array 2  : ", np.less_equal(arr1, arr2))
+        print("Array 1 > Array 2   : ", np.greater(arr1, arr2))
+        print("Array 1 >= Arrays 2 : ", np.greater_equal(arr1, arr2))
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -175,6 +188,7 @@ def switchToFunction(obj):
     12.Find common values between two arrays
     13.Find the set difference of two arrays
     14.Find the set exclusive-or of two arrays
+    15.Compare two arrays using numpy
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -193,6 +207,7 @@ def switchToFunction(obj):
             12 : obj.commonValue,
             13 : obj.diffArray,
             14 : obj.exclusiveOrArray,
+            15 : obj.compareArray,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
