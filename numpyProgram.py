@@ -132,6 +132,18 @@ class programNumPy:
         print("\nArray 2: ", arr2)
         print("\nCommon values : ", np.intersect1d(arr1, arr2))
 
+    def diffArray(self):
+        '''
+        Find the set difference of two arrays. The set difference will 
+        return the sorted, unique values in array1 that are not in array2.
+        '''
+        arr1 = np.array([0, 10, 60, 40, 20, 80])
+        print("\nArray 1: ", arr1)
+        arr2 = np.array([10, 30, 40, 50, 70, 90])
+        print("\nArray 2: ", arr2)
+        # getting set difference between two arrays
+        print("\nSet difference between two arrays: ", np.setdiff1d(arr1, arr2))
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -150,6 +162,7 @@ def switchToFunction(obj):
     11.Find the number of elements of an array, length of one array element
        in bytes and total bytes consumed by the elements.
     12.Find common values between two arrays
+    13.Find the set difference of two arrays
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -166,6 +179,7 @@ def switchToFunction(obj):
             10 : obj.realImgPart,
             11 : obj.find_arr_size_bytes,
             12 : obj.commonValue,
+            13 : obj.diffArray,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
