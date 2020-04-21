@@ -54,6 +54,17 @@ class programNumPy:
         arr[1:-1, 1:-1] = 0
         print(arr)
 
+    def add_border(self):
+        '''
+        Add a border (filled with 0's) around an existing array
+        '''
+        size = int(input('\nEnter the size of 2-d array: '))
+        arr = np.ones((size, size))
+        print(arr)
+        # add border filled with 0's around existing array
+        arr = np.pad(arr, pad_width=1, mode='constant', constant_values=0)
+        print(arr)
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -64,6 +75,7 @@ def switchToFunction(obj):
     3.Create a null vector of size 10 and update sixth value to 11
     4.Reverse an array (first element becomes last)
     5.Create a 2d array with 1 on the border and 0 inside
+    6.Add a border (filled with 0's) around an existing array
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -73,6 +85,7 @@ def switchToFunction(obj):
             3 : obj.create_update,
             4 : obj.reverse,
             5 : obj.border1_inside0,
+            6 : obj.add_border,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
