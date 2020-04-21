@@ -77,6 +77,18 @@ class programNumPy:
         arr[::2, 1::2] = 1    # start with 0th row
         print(arr)
 
+    def convertArray(self):
+        '''
+        Convert a list and tuple into arrays
+        '''
+        lst = [1, 2, 3, 4, 5, 6, 7, 8]
+        print("List : ", lst)
+        # convert any type of input data into array
+        print("Array : ", np.asarray(lst))
+        tup = ([8, 4, 6], [1, 2, 3])
+        print("Tuple : ", tup)
+        print("Array : ", np.asarray(tup))
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -89,6 +101,7 @@ def switchToFunction(obj):
     5.Create a 2d array with 1 on the border and 0 inside
     6.Add a border (filled with 0's) around an existing array
     7.8x8 matrix and fill it with a checkerboard pattern
+    8.Convert a list and tuple into arrays
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -100,6 +113,7 @@ def switchToFunction(obj):
             5 : obj.border1_inside0,
             6 : obj.add_border,
             7 : obj.checkerboard_pattern,
+            8 : obj.convertArray,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
