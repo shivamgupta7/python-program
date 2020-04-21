@@ -33,6 +33,15 @@ class programNumPy:
         print("Update {} position value to {} : ".format(index,value), vector)
         return vector
 
+    def reverse(self):
+        '''
+        Reverse an array (first element becomes last)
+        '''
+        arr = np.arange(12, 38)
+        print("original : ", arr)
+        # reverse array
+        print("reverse : ", arr[::-1])
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -41,6 +50,7 @@ def switchToFunction(obj):
     1.Convert a list of numeric value into a one-dimensional NumPy array
     2.3x3 matrix with values ranging from 2 to 10
     3.Create a null vector of size 10 and update sixth value to 11
+    4.Reverse an array (first element becomes last)
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -48,6 +58,7 @@ def switchToFunction(obj):
             1 : obj.listToArray,
             2 : obj.matrix3x3,
             3 : obj.create_update,
+            4 : obj.reverse,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
