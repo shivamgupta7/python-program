@@ -191,6 +191,16 @@ class programNumPy:
         arr_new = arr.flatten()
         print("\nContiguous Flattened array : ", arr_new)
 
+    def changeDatatypes(self):
+        '''
+        Change the data type of an array
+        '''
+        arr = np.array([[1, 2, 3], [4, 5, 6]])
+        print("Data type of array : ", arr.dtype)
+        # change data type of an array
+        new_arr = arr.astype(float)
+        print("Data type of array after change : ", new_arr.dtype)
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -214,6 +224,7 @@ def switchToFunction(obj):
     15.Compare two arrays using numpy
     16.Save a NumPy array to a text file
     17.Create a contiguous flattened array
+    18.Change the data type of an array
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -235,6 +246,7 @@ def switchToFunction(obj):
             15 : obj.compareArray,
             16 : obj.saveArray,
             17 : obj.flattenArray,
+            18 : obj.changeDatatypes,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
