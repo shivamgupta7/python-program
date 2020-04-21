@@ -208,6 +208,17 @@ class programNumPy:
         identitymatrix = np.eye(3)
         print(identitymatrix)
 
+    def lowerTriangle(self):
+        '''
+        Create an array which looks like below array using numpy
+        [[0. 0. 0.]
+        [1. 0. 0.]
+        [1. 1. 0.]
+        [1. 1. 1.]]
+        '''
+        lowertringle = np.tril(np.ones((4,3)), -1)
+        print(lowertringle)
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -233,6 +244,7 @@ def switchToFunction(obj):
     17.Create a contiguous flattened array
     18.Change the data type of an array
     19.Create a 3-D array with ones on a diagonal and zeros elsewhere
+    20.Create a 3-D lower triangle
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -256,6 +268,7 @@ def switchToFunction(obj):
             17 : obj.flattenArray,
             18 : obj.changeDatatypes,
             19 : obj.identity_matrix,
+            20 : obj.lowerTriangle,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
