@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -54,6 +55,17 @@ class programPandas:
             }
         print(switcher.get(choice, '\nInvalid input.'))
 
+    def get_power(self):
+        '''
+        Program to get the powers of an array values element-wise
+        '''
+        size = int(input('\nEnter the size of array: '))
+        data = np.arange(size)
+        print('\nOriginal array: ', data)
+        power = np.power(data, 3)
+        print("\nPower of array value to element wise:")
+        print(power)
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -62,6 +74,7 @@ def switchToFunction(obj):
     1.Create and display a 1-D array-like object containing an array of data using Pandas module
     2.Convert a Panda module Series to Python list and it's type
     3.Program to add, subtract, multiple and divide two Pandas Series
+    4.Program to get the powers of an array values element-wise
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -69,6 +82,7 @@ def switchToFunction(obj):
             1 : obj.arrToSeries,
             2 : obj.seriesToList,
             3 : obj.add_sub_mul_div,
+            4 : obj.get_power,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
