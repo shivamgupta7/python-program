@@ -77,7 +77,7 @@ class programPandas:
         labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
 
         df = pd.DataFrame(exam_data , index=labels)
-        print(df)
+        # print(df)
         return df
 
     def dataframeInformation(self):
@@ -86,6 +86,14 @@ class programPandas:
         '''
         df = self.dictToDataFrame()
         print(df.info())
+
+    def firstNRows(self):
+        '''
+        Get the first n rows of a given DataFrame
+        '''
+        df = self.dictToDataFrame()
+        n_rows = int(input('\nEnter how many row you want to print: '))
+        print(df.head(n_rows))
 
 def switchToFunction(obj):
     '''
@@ -98,6 +106,7 @@ def switchToFunction(obj):
     4.Program to get the powers of an array values element-wise
     5.Create and display a DataFrame from a specified dictionary data which has the index labels
     6.Display a summary of the basic information about a specified DataFrame and its data
+    7.Get the first 3 rows of a given DataFrame
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -108,6 +117,7 @@ def switchToFunction(obj):
             4 : obj.get_power,
             5 : obj.dictToDataFrame,
             6 : obj.dataframeInformation,
+            7 : obj.firstNRows,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
