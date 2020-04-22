@@ -66,6 +66,19 @@ class programPandas:
         print("\nPower of array value to element wise:")
         print(power)
 
+    def dictToDataFrame(self):
+        '''
+        Create and display a DataFrame from a specified dictionary data which has the index labels
+        '''
+        exam_data = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+                'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+                'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+                'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+        labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+        df = pd.DataFrame(exam_data , index=labels)
+        print(df)
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -75,6 +88,7 @@ def switchToFunction(obj):
     2.Convert a Panda module Series to Python list and it's type
     3.Program to add, subtract, multiple and divide two Pandas Series
     4.Program to get the powers of an array values element-wise
+    5.Create and display a DataFrame from a specified dictionary data which has the index labels
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -83,12 +97,13 @@ def switchToFunction(obj):
             2 : obj.seriesToList,
             3 : obj.add_sub_mul_div,
             4 : obj.get_power,
+            5 : obj.dictToDataFrame,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
     except Exception as e:
         print("\n",e)
-    
+
 def main():
     obj = programPandas()
     switchToFunction(obj)
