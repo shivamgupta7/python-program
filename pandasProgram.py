@@ -78,6 +78,14 @@ class programPandas:
 
         df = pd.DataFrame(exam_data , index=labels)
         print(df)
+        return df
+
+    def dataframeInformation(self):
+        '''
+        Display a summary of the basic information about a specified DataFrame and its data
+        '''
+        df = self.dictToDataFrame()
+        print(df.info())
 
 def switchToFunction(obj):
     '''
@@ -89,6 +97,7 @@ def switchToFunction(obj):
     3.Program to add, subtract, multiple and divide two Pandas Series
     4.Program to get the powers of an array values element-wise
     5.Create and display a DataFrame from a specified dictionary data which has the index labels
+    6.Display a summary of the basic information about a specified DataFrame and its data
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -98,6 +107,7 @@ def switchToFunction(obj):
             3 : obj.add_sub_mul_div,
             4 : obj.get_power,
             5 : obj.dictToDataFrame,
+            6 : obj.dataframeInformation,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
