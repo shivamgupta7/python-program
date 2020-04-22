@@ -18,7 +18,7 @@ class programPandas:
         '''
         Create and display a 1-D array-like object containing an array of data using Pandas module
         '''
-        num = int(input("\nHow many element you want to add:"))
+        num = int(input("\nHow many element you want to add in series:"))
         data = series_data(num)
         return data
 
@@ -34,6 +34,26 @@ class programPandas:
         print("Converted python list : ", data.tolist())
         print("Type of python list : ", type(data.tolist()))
 
+    def add_sub_mul_div(self):
+        '''
+        Program to add, subtract, multiple and divide two Pandas Series
+        '''
+        print("\nFor first pandas series : ")
+        data1 = self.arrToSeries()
+        print("\nPandas Series 1:\n", data1)
+        print("\nFor second pandas series : ")
+        data2 = self.arrToSeries()
+        print("\nPandas Series 2:\n", data2)
+        print('\n1.Add\n2.Subtract\n3.Multiply\n4.Division')
+        choice = int(input('\nEnter your choice: '))
+        switcher = {
+            1 : data1+data2,
+            2 : data1-data2,
+            3 : data1*data2,
+            4 : data1/data2
+            }
+        print(switcher.get(choice, '\nInvalid input.'))
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -41,12 +61,14 @@ def switchToFunction(obj):
     print('''
     1.Create and display a 1-D array-like object containing an array of data using Pandas module
     2.Convert a Panda module Series to Python list and it's type
+    3.Program to add, subtract, multiple and divide two Pandas Series
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
         switcher = {
             1 : obj.arrToSeries,
             2 : obj.seriesToList,
+            3 : obj.add_sub_mul_div,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
