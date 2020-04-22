@@ -20,7 +20,19 @@ class programPandas:
         '''
         num = int(input("\nHow many element you want to add:"))
         data = series_data(num)
-        print(data)
+        return data
+
+    def seriesToList(self):
+        '''
+        Convert a Panda module Series to Python list and it's type
+        '''
+        data = self.arrToSeries()
+        print("Pandas Series :\n", data)
+        # type of series
+        print("Type of series : ", type(data))
+        # convert series data into python list and display type
+        print("Converted python list : ", data.tolist())
+        print("Type of python list : ", type(data.tolist()))
 
 def switchToFunction(obj):
     '''
@@ -28,11 +40,13 @@ def switchToFunction(obj):
     '''
     print('''
     1.Create and display a 1-D array-like object containing an array of data using Pandas module
+    2.Convert a Panda module Series to Python list and it's type
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
         switcher = {
             1 : obj.arrToSeries,
+            2 : obj.seriesToList,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
