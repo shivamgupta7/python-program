@@ -136,6 +136,14 @@ class programPandas:
         df = self.dictToDataFrame()
         return df[df.score.isnull()]
 
+    def score_attempts(self):
+        '''
+        select the rows where number of attempts in the 
+        examination is less than 2 and score greater than 15
+        '''
+        df = self.dictToDataFrame()
+        return df[ (df.score > 15) & (df.attempts < 2) ]
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -153,6 +161,7 @@ def switchToFunction(obj):
     10.Select the rows where the number of attempts in the examination is greater than 2
     11.Count the number of rows and columns of a DataFrame
     12.Select the rows where the score is missing, i.e. is NaN.
+    13.select the rows where number of attempts in the examination is less than 2 and score greater than 15
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -169,6 +178,7 @@ def switchToFunction(obj):
             10 : obj.attempts,
             11 : obj.shapeOfDataFrame,
             12 : obj.check_null,
+            13 : obj.score_attempts,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         print(func())
