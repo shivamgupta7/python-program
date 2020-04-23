@@ -135,6 +135,23 @@ class programMatplotlib:
         plt.legend()
         plt.show()
 
+    def quantitiesPlot(self):
+        '''
+        Plot quantities which have an x and y position
+        '''
+        line1_x = [0, 1, 2, 3, 4, 5] 
+        line1_y = [0, 1, 4, 9, 16, 25]
+        line2_x = [0, 1, 2, 3, 4, 5]
+        line2_y = [0, 1, 8, 27, 64, 125]
+        plt.title('Draw Curve')
+        # Display the figure.
+        plt.plot(line1_x,line1_y, 'g^', line2_x, line2_y, 'rs')
+        plt.xlabel('x - axis')
+        plt.ylabel('y - axis')
+        plt.legend(['Squres', 'Cubes'])
+        plt.savefig('data/9.two_line_diff_quantities.png')
+        plt.show()
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -148,6 +165,7 @@ def switchToFunction(obj):
     6.Plot two or more lines with different styles
     7.Plot two or more lines and set the line markers
     8.Display the current axis limits values and set new axis values
+    9.Plot quantities which have an x and y position
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -160,6 +178,7 @@ def switchToFunction(obj):
             6 : obj.diffStyle,
             7 : obj.setmarker,
             8 : obj.setaxis,
+            9 : obj.quantitiesPlot,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
