@@ -113,6 +113,14 @@ class programPandas:
         print("Select specific columns and rows:")
         return df.iloc[[1, 3, 5, 6], [0, 1]]
 
+    def attempts(self):
+        '''
+        Select the rows where the number of attempts in the examination is greater than 2
+        '''
+        df = self.dictToDataFrame()
+        print('Attempts in the examination is greater than 2: ')
+        return df[df['attempts'] > 2]
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -127,6 +135,7 @@ def switchToFunction(obj):
     7.Get the first 3 rows of a given DataFrame
     8.Select the 'name' and 'score' columns from the following DataFrame
     9.Select the specified columns and rows from a given DataFrame
+    10.Select the rows where the number of attempts in the examination is greater than 2
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -140,6 +149,7 @@ def switchToFunction(obj):
             7 : obj.firstNRows,
             8 : obj.selectColumns,
             9 : obj.select_row_columns,
+            10 : obj.attempts,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         print(func())
