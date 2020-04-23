@@ -121,6 +121,14 @@ class programPandas:
         print('Attempts in the examination is greater than 2: ')
         return df[df['attempts'] > 2]
 
+    def shapeOfDataFrame(self):
+        '''
+        Count the number of rows and columns of a DataFrame.
+        '''
+        df = self.dictToDataFrame()
+        print('\n Shape of data frame : ')   #row : len(df.axes[0]), col : len(df.axes[1])
+        return df.shape   #(row, col)
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -136,6 +144,7 @@ def switchToFunction(obj):
     8.Select the 'name' and 'score' columns from the following DataFrame
     9.Select the specified columns and rows from a given DataFrame
     10.Select the rows where the number of attempts in the examination is greater than 2
+    11.Count the number of rows and columns of a DataFrame
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -150,6 +159,7 @@ def switchToFunction(obj):
             8 : obj.selectColumns,
             9 : obj.select_row_columns,
             10 : obj.attempts,
+            11 : obj.shapeOfDataFrame,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         print(func())
