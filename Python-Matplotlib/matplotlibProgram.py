@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import pandas as pd
 
 class programMatplotlib:
 
@@ -38,6 +39,16 @@ class programMatplotlib:
         plt.savefig('data/2.line_plot_txt.png')
         plt.show()
 
+    def plotUsingCSVFile(self):
+        '''
+        Draw line charts of the financial data(fdata.csv) of Alphabet Inc. 
+        between October 3, 2016 to October 7, 2016.
+        '''
+        df = pd.read_csv('data/fdata.csv')
+        df.plot()
+        plt.savefig('data/3.line_plot_csv.png')
+        plt.show()
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -45,12 +56,14 @@ def switchToFunction(obj):
     print('''
     1.Draw a line using given axis values with suitable label in the x axis, y axis and a title
     2.Draw a line using given axis values taken from a text file
+    3.Draw a line using given axis values taken from a CSV file
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
         switcher = {
             1 : obj.drawLine,
             2 : obj.plotUsingTextFile,
+            3 : obj.plotUsingCSVFile,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
