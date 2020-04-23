@@ -203,6 +203,15 @@ class programPandas:
         df.drop(columns='attempts',inplace=True)
         return df
 
+    def insert_column(self):
+        '''
+        Insert a new column in existing DataFrame
+        '''
+        df = self.dictToDataFrame()
+        city_code = [ 'AB', 'CD', 'EF', 'GH', 'IJ', 'KL', 'MN', 'OP', 'QR', 'ST']
+        df['City Code'] = city_code
+        return df
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -229,6 +238,7 @@ def switchToFunction(obj):
     18.Sort the data frame first by 'name' in descending order, then by 'score' in ascending order.
     19.Replace the ‘qualify' column contains the values 'yes' and 'no' with True and False.
     20.Delete the 'attempts' column from the DataFrame
+    21.Insert a new column in existing DataFrame
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -253,6 +263,7 @@ def switchToFunction(obj):
             18 : obj.sort_dataframe,
             19 : obj.replace_value,
             20 : obj.delete_column,
+            21 : obj.insert_column,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         print(func())
