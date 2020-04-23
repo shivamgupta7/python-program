@@ -102,6 +102,24 @@ class programMatplotlib:
         plt.savefig('data/6.two_line_diff_style.png')
         plt.show()
 
+    def setmarker(self):
+        '''
+        Plot two or more lines and set the line markers
+        '''
+        line1_x = [0, 1, 2, 3, 4, 5] 
+        line1_y = [0, 1, 4, 9, 16, 25]
+        line2_x = [0, 1, 2, 3, 4, 5]
+        line2_y = [0, 1, 8, 27, 64, 125]
+        plt.title('Two or more lines with different widths and colors with suitable legends ')
+        # Display the figure.
+        plt.plot(line1_x, line1_y, marker = '*',  label = 'Squares-width-3')
+        plt.plot(line2_x, line2_y, marker = 'o',  label = 'Cube-width-5')
+        plt.xlabel('x - axis')
+        plt.ylabel('y - axis')
+        plt.legend()
+        plt.savefig('data/7.two_line_diff_marker.png')
+        plt.show()
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -113,6 +131,7 @@ def switchToFunction(obj):
     4.Plot two or more lines on same plot with suitable legends of each line
     5.Plot two or more lines with legends, different widths and colors
     6.Plot two or more lines with different styles
+    7.plot two or more lines and set the line markers
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -123,6 +142,7 @@ def switchToFunction(obj):
             4 : obj.addlegends,
             5 : obj.diffColorWidth,
             6 : obj.diffStyle,
+            7 : obj.setmarker,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
