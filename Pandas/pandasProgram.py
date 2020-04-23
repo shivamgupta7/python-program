@@ -30,10 +30,11 @@ class programPandas:
         data = self.arrToSeries()
         print("Pandas Series :\n", data)
         # type of series
-        print("Type of series : ", type(data))
-        # convert series data into python list and display type
-        print("Converted python list : ", data.tolist())
-        print("Type of python list : ", type(data.tolist()))
+        print('''
+        Type of series : {}
+        Converted python list : {}
+        Type of python list : {}'''.format(type(data), data.tolist(), type(data.tolist())))
+        return data.tolist()
 
     def add_sub_mul_div(self):
         '''
@@ -53,7 +54,7 @@ class programPandas:
             3 : data1*data2,
             4 : data1/data2
             }
-        print(switcher.get(choice, '\nInvalid input.'))
+        return switcher.get(choice, '\nInvalid input.')
 
     def get_power(self):
         '''
@@ -64,7 +65,7 @@ class programPandas:
         print('\nOriginal array: ', data)
         power = np.power(data, 3)
         print("\nPower of array value to element wise:")
-        print(power)
+        return power
 
     def dictToDataFrame(self):
         '''
@@ -85,7 +86,7 @@ class programPandas:
         Display a summary of the basic information about a specified DataFrame and its data
         '''
         df = self.dictToDataFrame()
-        print(df.info())
+        return df.info()
 
     def firstNRows(self):
         '''
@@ -93,7 +94,7 @@ class programPandas:
         '''
         df = self.dictToDataFrame()
         n_rows = int(input('\nEnter how many row you want to print: '))
-        print(df.head(n_rows))
+        return df.head(n_rows)
 
     def selectColumns(self):
         '''
@@ -101,7 +102,16 @@ class programPandas:
         '''
         df = self.dictToDataFrame()
         print('Select specific columns :')
-        print(df[['name','score']])
+        return df[['name','score']]
+
+    def select_row_columns(self):
+        '''
+        Select the specified columns and rows from a given DataFrame.Select 'name' 
+        and 'score' columns in rows 1, 3, 5, 6 from the following data frame.
+        '''
+        df = self.dictToDataFrame()
+        print("Select specific columns and rows:")
+        return df.iloc[[1, 3, 5, 6], [0, 1]]
 
 def switchToFunction(obj):
     '''
@@ -116,6 +126,7 @@ def switchToFunction(obj):
     6.Display a summary of the basic information about a specified DataFrame and its data
     7.Get the first 3 rows of a given DataFrame
     8.Select the 'name' and 'score' columns from the following DataFrame
+    9.Select the specified columns and rows from a given DataFrame
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -128,9 +139,10 @@ def switchToFunction(obj):
             6 : obj.dataframeInformation,
             7 : obj.firstNRows,
             8 : obj.selectColumns,
+            9 : obj.select_row_columns,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
-        func()
+        print(func())
     except Exception as e:
         print("\n",e)
 
