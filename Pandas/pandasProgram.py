@@ -212,6 +212,14 @@ class programPandas:
         df['City Code'] = city_code
         return df
 
+    def iterate_over_row(self):
+        '''
+        Iterate over rows in a DataFrame
+        '''
+        df = self.dictToDataFrame()
+        for _, row in df.iterrows():
+            print(row['name'], row['score'])
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -239,6 +247,7 @@ def switchToFunction(obj):
     19.Replace the ‘qualify' column contains the values 'yes' and 'no' with True and False.
     20.Delete the 'attempts' column from the DataFrame
     21.Insert a new column in existing DataFrame
+    22.Iterate over rows in a DataFrame
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -264,6 +273,7 @@ def switchToFunction(obj):
             19 : obj.replace_value,
             20 : obj.delete_column,
             21 : obj.insert_column,
+            22 : obj.iterate_over_row,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         print(func())
