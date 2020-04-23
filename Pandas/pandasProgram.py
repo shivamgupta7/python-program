@@ -168,6 +168,17 @@ class programPandas:
         print('Mean score for each different student: ')
         return df[df.score.mean()]
 
+    def append_delete_row(self):
+        '''
+        Append a new row 'k' to DataFrame with given values for each column. 
+        Now delete the new row and return the original data frame
+        '''
+        df = self.dictToDataFrame()
+        df.loc['k'] = ['Suresh', 15.5, 1, 'yes']
+        print('''Print all records after insert a new record: \n{}
+        \nDelete the new row and display the original rows: '''.format(df))
+        return df.drop('k')
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -189,6 +200,8 @@ def switchToFunction(obj):
     14.Change the score in row 'd' to 11.5
     15.Calculate the sum of the examination attempts by the students
     16.Calculate the mean score for each different student in data frame
+    17.append a new row 'k' to DataFrame with given values for each column. 
+    Now delete the new row and return the original data frame
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -209,6 +222,7 @@ def switchToFunction(obj):
             14 : obj.set_value,
             15 : obj.sum_attempts,
             16 : obj.mean_score,
+            17 : obj.append_delete_row,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         print(func())
