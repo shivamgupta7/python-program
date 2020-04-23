@@ -66,6 +66,24 @@ class programMatplotlib:
         plt.savefig('data/4.two_line_plot_legends.png')
         plt.show()
 
+    def diffColorWidth(self):
+        '''
+        Plot two or more lines with legends, different widths and colors
+        '''
+        line1_x = [0, 1, 2, 3, 4, 5] 
+        line1_y = [0, 1, 4, 9, 16, 25]
+        line2_x = [0, 1, 2, 3, 4, 5]
+        line2_y = [0, 1, 8, 27, 64, 125]
+        plt.title('Two or more lines with different widths and colors with suitable legends ')
+        # Display the figure.
+        plt.plot(line1_x, line1_y, color='blue', linewidth = 3,  label = 'Squares-width-3')
+        plt.plot(line2_x, line2_y, color='red', linewidth = 5,  label = 'Cube-width-5')
+        plt.xlabel('x - axis')
+        plt.ylabel('y - axis')
+        plt.legend()
+        plt.savefig('data/5.two_line_diff_width.png')
+        plt.show()
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -75,6 +93,7 @@ def switchToFunction(obj):
     2.Draw a line using given axis values taken from a text file
     3.Draw a line using given axis values taken from a CSV file
     4.Plot two or more lines on same plot with suitable legends of each line
+    5.Plot two or more lines with legends, different widths and colors
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -82,7 +101,8 @@ def switchToFunction(obj):
             1 : obj.drawLine,
             2 : obj.plotUsingTextFile,
             3 : obj.plotUsingCSVFile,
-            4: obj.addlegends,
+            4 : obj.addlegends,
+            5 : obj.diffColorWidth,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
