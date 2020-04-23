@@ -49,6 +49,23 @@ class programMatplotlib:
         plt.savefig('data/3.line_plot_csv.png')
         plt.show()
 
+    def addlegends(self):
+        '''
+        Plot two or more lines on same plot with suitable legends of each line
+        '''
+        line1_x = [0, 1, 2, 3, 4, 5] 
+        line1_y = [0, 1, 4, 9, 16, 25]
+        plt.plot(line1_x, line1_y, label = 'Squares')
+        line2_x = [0, 1, 2, 3, 4, 5]
+        line2_y = [0, 1, 8, 27, 64, 125]
+        plt.plot(line2_x, line2_y, label = 'Cubes')
+        plt.xlabel('x - axis')
+        plt.ylabel('y - axis')
+        plt.title('Draw Curve')
+        plt.legend()
+        plt.savefig('data/4.two_line_plot_legends.png')
+        plt.show()
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -57,6 +74,7 @@ def switchToFunction(obj):
     1.Draw a line using given axis values with suitable label in the x axis, y axis and a title
     2.Draw a line using given axis values taken from a text file
     3.Draw a line using given axis values taken from a CSV file
+    4.Plot two or more lines on same plot with suitable legends of each line
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -64,6 +82,7 @@ def switchToFunction(obj):
             1 : obj.drawLine,
             2 : obj.plotUsingTextFile,
             3 : obj.plotUsingCSVFile,
+            4: obj.addlegends,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
