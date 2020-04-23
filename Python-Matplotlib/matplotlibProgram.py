@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 
 class programMatplotlib:
 
@@ -152,6 +153,20 @@ class programMatplotlib:
         plt.savefig('data/9.two_line_diff_quantities.png')
         plt.show()
 
+    def allDiffStyleLine(self):
+        '''
+        Plot several lines with different format styles in one command using arrays
+        '''
+        point = np.arange(0., 5., 0.2)
+        # green dashes, blue squares and red triangles
+        plt.plot(point, point, 'g--', point, point**2, 'bs', point, point**3, 'r^')
+        plt.xlabel('x - axis')
+        plt.ylabel('y - axis')
+        plt.title('Draw Curve')
+        plt.legend(['Straight line', 'Squres', 'Cubes'])
+        plt.savefig('data/10.lines_diff_styles.png')
+        plt.show()
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -166,6 +181,7 @@ def switchToFunction(obj):
     7.Plot two or more lines and set the line markers
     8.Display the current axis limits values and set new axis values
     9.Plot quantities which have an x and y position
+    10.Plot several lines with different format styles in one command using arrays
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -179,6 +195,7 @@ def switchToFunction(obj):
             7 : obj.setmarker,
             8 : obj.setaxis,
             9 : obj.quantitiesPlot,
+            10 : obj.allDiffStyleLine,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
