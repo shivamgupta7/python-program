@@ -160,6 +160,14 @@ class programPandas:
         print('Sum of the examination attempts')
         return df[df.attempts.sum()]
 
+    def mean_score(self):
+        '''
+        Calculate the mean score for each different student in data frame
+        '''
+        df = self.dictToDataFrame()
+        print('Mean score for each different student: ')
+        return df[df.score.mean()]
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -180,6 +188,7 @@ def switchToFunction(obj):
     13.select the rows where number of attempts in the examination is less than 2 and score greater than 15
     14.Change the score in row 'd' to 11.5
     15.Calculate the sum of the examination attempts by the students
+    16.Calculate the mean score for each different student in data frame
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -199,6 +208,7 @@ def switchToFunction(obj):
             13 : obj.score_attempts,
             14 : obj.set_value,
             15 : obj.sum_attempts,
+            16 : obj.mean_score,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         print(func())
