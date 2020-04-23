@@ -187,6 +187,14 @@ class programPandas:
         df.sort_values(by=['name', 'score'],inplace =True, ascending=[False, True])
         return df
 
+    def replace_value(self):
+        '''
+        Replace the ‘qualify' column contains the values 'yes' and 'no' with True and False.
+        '''
+        df = self.dictToDataFrame()
+        df['qualify'] = df['qualify'].map({'yes': True, 'no': False})
+        return df
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -211,6 +219,7 @@ def switchToFunction(obj):
     17.append a new row 'k' to DataFrame with given values for each column. 
     Now delete the new row and return the original data frame
     18.Sort the data frame first by 'name' in descending order, then by 'score' in ascending order.
+    19.Replace the ‘qualify' column contains the values 'yes' and 'no' with True and False.
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -233,6 +242,7 @@ def switchToFunction(obj):
             16 : obj.mean_score,
             17 : obj.append_delete_row,
             18 : obj.sort_dataframe,
+            19 : obj.replace_value,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         print(func())
