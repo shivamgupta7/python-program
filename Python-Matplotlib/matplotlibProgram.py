@@ -120,6 +120,21 @@ class programMatplotlib:
         plt.savefig('data/7.two_line_diff_marker.png')
         plt.show()
 
+    def setaxis(self):
+        '''
+        Display the current axis limits values and set new axis values
+        '''
+        x_axis = [0, 1, 2 , 3, 4 ,5]
+        y_axis = [0, 1, 4, 9, 16, 25]
+        plt.plot(x_axis, y_axis, label = 'Squares')
+        plt.xlabel('x - axis')
+        plt.ylabel('y - axis')
+        plt.title('Sample draw line!')
+        plt.savefig('data/8.line_plot_set_axis.png')
+        plt.axis([0,10,0,40])
+        plt.legend()
+        plt.show()
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -131,7 +146,8 @@ def switchToFunction(obj):
     4.Plot two or more lines on same plot with suitable legends of each line
     5.Plot two or more lines with legends, different widths and colors
     6.Plot two or more lines with different styles
-    7.plot two or more lines and set the line markers
+    7.Plot two or more lines and set the line markers
+    8.Display the current axis limits values and set new axis values
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -143,6 +159,7 @@ def switchToFunction(obj):
             5 : obj.diffColorWidth,
             6 : obj.diffStyle,
             7 : obj.setmarker,
+            8 : obj.setaxis,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
