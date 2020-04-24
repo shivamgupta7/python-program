@@ -51,12 +51,30 @@ class programBarchart:
         '''
         languages = ['Java', 'Python', 'PHP', 'JavaScript', 'C#', 'C++']
         popularity = [22.2, 17.6, 8.8, 8, 7.7, 6.7]
-        plt.bar(languages,popularity, color=['r','g','b','y','b','c'])    # color = (r,g,b,transparency)
+        plt.bar(languages,popularity, color=['r','g','b','y','b','c'])
         plt.xlabel("Languages")
         plt.ylabel("Popularity")
         plt.title("Popularity of Programming Language")
         plt.grid()
         plt.savefig('data/2_4.diff_color_bar_chart.png')
+        plt.show()
+
+    def addTextLabel(self):
+        '''
+        Display a bar chart of the popularity of programming Languages.
+        Attach a text label above each bar displaying its popularity (float value)
+        '''
+        languages = ['Java', 'Python', 'PHP', 'JavaScript', 'C#', 'C++']
+        popularity = [22.2, 17.6, 8.8, 8.0, 7.7, 6.7]
+        plt.bar(languages,popularity, color=['r','g','b','y','b','c'])
+        plt.xlabel("Languages")
+        plt.ylabel("Popularity")
+        plt.title("Popularity of Programming Language")
+        plt.grid()
+        for index, value in enumerate(popularity):
+            plt.text(languages[index], value + 0.5, str(value), color='blue', fontweight='bold')
+        plt.ylim(0,30)
+        plt.savefig('data/2_5.add_text_label.png')
         plt.show()
 
 def switchToFunction(obj):
@@ -68,6 +86,7 @@ def switchToFunction(obj):
     2.Display a horizontal bar chart of the popularity of programming Languages
     3.Display a bar chart of the popularity of programming Languages. Use uniform color.
     4.Display a bar chart use different color for each bar.
+    5.Attach a text label above each bar displaying its popularity
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -76,6 +95,7 @@ def switchToFunction(obj):
             2 : obj.horizontal_bar_chart,
             3 : obj.uniform_color_bar,
             4 : obj.diff_color_bar,
+            5 : obj.addTextLabel,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
