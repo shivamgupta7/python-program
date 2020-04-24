@@ -179,6 +179,21 @@ class programBarchart:
         plt.savefig('data/2_11.bar_using_dataframe.png')
         plt.show()
 
+    def errorBar(self):
+        '''
+        Create bar plots with errorbars on the same figure
+        '''
+        mean_velocity = (0.2474, 0.1235, 0.1737, 0.1824)
+        std_velocity = (0.3314, 0.2278, 0.2836, 0.2645)
+        index = np.arange(len(mean_velocity))
+        plt.bar(index, mean_velocity, yerr=std_velocity, color='red')
+        plt.ylabel('Scores')
+        plt.xlabel('Velocity')
+        plt.title('Scores by Velocity')
+        plt.grid()
+        plt.savefig('data/2_12.error_bar_chart.png')
+        plt.show()
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -195,6 +210,7 @@ def switchToFunction(obj):
     9.Display a bar chart increase bottom margin.
     10. Use multiple X values on the same chart for men and women
     11.Create bar plot from a DataFrame
+    12.Create bar plots with errorbars on the same figure
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -210,6 +226,7 @@ def switchToFunction(obj):
             9 : obj.set_bottom_margin,
             10 : obj.group_bar_chart,
             11 : obj.barChartUsingDataFrame,
+            12 : obj.errorBar,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
