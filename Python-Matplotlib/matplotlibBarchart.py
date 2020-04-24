@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 class programBarchart:
 
@@ -143,6 +144,29 @@ class programBarchart:
         plt.savefig('data/2_9.increase_bottom_margin.png')
         plt.show()
         
+    def group_bar_chart(self):
+        '''
+        Create bar plot of scores by group and gender. Use multiple X
+        values on the same chart for men and women
+        '''
+        # set height of bar
+        men_means = (22, 30, 33, 30, 26)
+        women_means = (25, 32, 30, 35, 29)
+        # Set position of bar on X axis
+        index = np.arange(len(men_means))
+        barWidth = 0.25
+        # Make the plot
+        plt.bar(index, men_means, color='r', width=barWidth, label='Men Means')
+        plt.bar(index+barWidth, women_means, color='g', width=barWidth, label='Women Means')
+        # Add xticks on the middle of the group bars
+        plt.xlabel('groups', fontweight='bold')
+        plt.ylabel('Means Value', fontweight='bold')
+        plt.xticks(index + barWidth, ['G1', 'G2', 'G3', 'G4', 'G5'])
+        # Create legend & Show graphic
+        plt.legend()
+        plt.savefig('data/2_10.group_bar_chart.png')
+        plt.show()
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -157,6 +181,7 @@ def switchToFunction(obj):
     7.Specify the position of each bar plot
     8.Select the width of each bar and their positions
     9.Display a bar chart increase bottom margin.
+    10. Use multiple X values on the same chart for men and women
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -170,6 +195,7 @@ def switchToFunction(obj):
             7 : obj.barAtPosition,
             8 : obj.specify_width,
             9 : obj.set_bottom_margin,
+            10 : obj.group_bar_chart,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
