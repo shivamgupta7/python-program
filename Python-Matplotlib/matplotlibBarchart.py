@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 class programBarchart:
 
@@ -167,6 +168,17 @@ class programBarchart:
         plt.savefig('data/2_10.group_bar_chart.png')
         plt.show()
 
+    def barChartUsingDataFrame(self):
+        '''
+        Create bar plot from a DataFrame
+        '''
+        arr = np.array([[4,8,5,7,6],[2,3,4,2,6],[4,7,4,7,8],[2,6,4,8,6],[2,4,3,3,2]])
+        df = pd.DataFrame(arr, columns=['a','b','c','d','e'], index=[2,4,6,8,10])
+        df.plot(kind='bar')
+        plt.grid()
+        plt.savefig('data/2_11.bar_using_dataframe.png')
+        plt.show()
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -182,6 +194,7 @@ def switchToFunction(obj):
     8.Select the width of each bar and their positions
     9.Display a bar chart increase bottom margin.
     10. Use multiple X values on the same chart for men and women
+    11.Create bar plot from a DataFrame
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -196,6 +209,7 @@ def switchToFunction(obj):
             8 : obj.specify_width,
             9 : obj.set_bottom_margin,
             10 : obj.group_bar_chart,
+            11 : obj.barChartUsingDataFrame,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
