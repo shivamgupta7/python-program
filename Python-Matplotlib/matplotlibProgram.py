@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+import datetime as dt
 
 class programMatplotlib:
 
@@ -167,6 +168,26 @@ class programMatplotlib:
         plt.savefig('data/10.lines_diff_styles.png')
         plt.show()
 
+    def plotChart(self):
+        '''
+        Create multiple types of charts (a simple curve and plot some quantities) 
+        on a single set of axes
+        '''
+        data = [(dt.datetime.strptime('2016-10-03', "%Y-%m-%d"), 772.559998),
+        (dt.datetime.strptime('2016-10-04', "%Y-%m-%d"), 776.429993),
+        (dt.datetime.strptime('2016-10-05', "%Y-%m-%d"), 776.469971),
+        (dt.datetime.strptime('2016-10-06', "%Y-%m-%d"), 776.859985),
+        (dt.datetime.strptime('2016-10-07', "%Y-%m-%d"), 775.080017)]
+        x_axis = [date for (date, value) in data]
+        y_axis = [value for (date, value) in data]
+        _ ,ax = plt.subplots(figsize=(15,7))
+        # Plot the data as a red line with round markers
+        plt.plot(x_axis,y_axis,'r-o')
+        # Set the xtick locations
+        ax.set_xticks(x_axis)
+        plt.savefig('data/11.chat_plot.png')
+        plt.show()
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -182,6 +203,7 @@ def switchToFunction(obj):
     8.Display the current axis limits values and set new axis values
     9.Plot quantities which have an x and y position
     10.Plot several lines with different format styles in one command using arrays
+    11.Create multiple types of charts on a single set of axes
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -196,6 +218,7 @@ def switchToFunction(obj):
             8 : obj.setaxis,
             9 : obj.quantitiesPlot,
             10 : obj.allDiffStyleLine,
+            11 : obj.plotChart,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
