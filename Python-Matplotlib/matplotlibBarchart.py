@@ -127,6 +127,22 @@ class programBarchart:
         plt.savefig('data/2_8.add_specify_width.png')
         plt.show()
 
+    def set_bottom_margin(self):
+        '''
+        Display a bar chart of the popularity of programming Languages. Increase bottom margin.
+        '''
+        languages = ['Java', 'Python', 'PHP', 'JavaScript', 'C#', 'C++']
+        popularity = [22.2, 17.6, 8.8, 8, 7.7, 6.7]
+        plt.bar(languages,popularity)
+        plt.xticks(languages, rotation = 90)
+        plt.xlabel("Languages")
+        plt.ylabel("Popularity")
+        plt.title("Popularity of Programming Language")
+        plt.grid()
+        plt.subplots_adjust(bottom=0.2)       # plt.tight_layout() also work
+        plt.savefig('data/2_9.increase_bottom_margin.png')
+        plt.show()
+        
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -140,6 +156,7 @@ def switchToFunction(obj):
     6.Display a bar chart make blue border to each bar.
     7.Specify the position of each bar plot
     8.Select the width of each bar and their positions
+    9.Display a bar chart increase bottom margin.
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -152,6 +169,7 @@ def switchToFunction(obj):
             6 : obj.addEdgeColor,
             7 : obj.barAtPosition,
             8 : obj.specify_width,
+            9 : obj.set_bottom_margin,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
