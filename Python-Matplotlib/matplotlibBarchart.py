@@ -92,6 +92,23 @@ class programBarchart:
         plt.savefig('data/2_6.add_edge_color.png')
         plt.show()
 
+    def barAtPosition(self):
+        '''
+        Display a bar chart of the popularity of programming Languages. 
+        Specify the position of each bar plot.
+        '''
+        languages = ['Java', 'Python', 'PHP', 'JavaScript', 'C#', 'C++']
+        popularity = [22.2, 17.6, 8.8, 8, 7.7, 6.7]
+        languages_pos = [0,1,4,7,9,10]
+        plt.bar(languages_pos,popularity)
+        plt.xticks(languages_pos, languages)
+        plt.xlabel("Languages")
+        plt.ylabel("Popularity")
+        plt.title("Popularity of Programming Language")
+        plt.grid()
+        plt.savefig('data/2_7.add_specify_position.png')
+        plt.show()
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -103,6 +120,7 @@ def switchToFunction(obj):
     4.Display a bar chart use different color for each bar.
     5.Attach a text label above each bar displaying its popularity
     6.Display a bar chart make blue border to each bar.
+    7.Specify the position of each bar plot
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -113,6 +131,7 @@ def switchToFunction(obj):
             4 : obj.diff_color_bar,
             5 : obj.addTextLabel,
             6 : obj.addEdgeColor,
+            7 : obj.barAtPosition,
             }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
