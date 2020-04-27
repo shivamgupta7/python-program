@@ -1,6 +1,7 @@
 import plotly.graph_objects as go
 from numpy.random import randn
 import numpy as np
+import pandas as pd
 
 class programPlotly:
 
@@ -22,11 +23,11 @@ class programPlotly:
         '''
         Draw line and scatter plots for random 100 x and y coordinates
         '''
-        N = 100
-        random_x = np.linspace(0, 1, N)
-        random_y0 = randn(N) + 5
-        random_y1 = randn(N)
-        random_y2 = randn(N) - 5
+        point = 100
+        random_x = np.linspace(0, 1, point)
+        random_y0 = randn(point) + 5
+        random_y1 = randn(point)
+        random_y2 = randn(point) - 5
         fig = go.Figure()
         # Add traces
         fig.add_trace(go.Scatter(x=random_x, y=random_y0,
@@ -69,6 +70,28 @@ class programPlotly:
         fig.write_image("images/fig3.png")
         fig.show()
 
+    def plotUsingDataFrame(self):
+        '''
+        Draw a scatter plot for a given dataset and show datalabels on hover
+        https://raw.githubusercontent.com/plotly/datasets/master/2014_usa_states.csv
+        '''
+        data = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_usa_states.csv')
+        fig = go.Figure(data=go.Scatter(x=data['Postal'],
+                                y=data['Population'],
+                                mode='markers',
+                                marker_color=data['Population'],
+                                text=data['State']))
+        fig.update_layout(
+            title="Population of USA States",
+            xaxis_title="States",
+            yaxis_title="Populations",
+            font=dict(
+                family="Courier New, monospace",
+                size=18,
+            ))
+        fig.write_image("images/fig4.png")
+        fig.show()
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -77,6 +100,7 @@ def switchToFunction(obj):
     1.Draw a scatter plot for random 1000 x and y coordinates
     2.Draw line and scatter plots for random 100 x and y coordinates
     3.Draw a scatter plot for random 500 x and y coordinates and style it
+    4.Draw a scatter plot for a given dataset and show datalabels on hover
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
@@ -84,6 +108,7 @@ def switchToFunction(obj):
             1 : lambda: obj.scatter_plot(x=randn(1000),y=randn(1000),title='Scatter plot for random 1000 x and y coordinates'),
             2 : lambda: obj.line_plot(),
             3 : lambda: obj.style_scatter(),
+            4 : lambda: obj.plotUsingDataFrame(),
         }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
