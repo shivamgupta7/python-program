@@ -47,6 +47,28 @@ class programPlotly:
         fig.write_image("images/fig2.png")
         fig.show()
 
+    def style_scatter(self):
+        '''
+        Draw a scatter plot for random 500 x and y coordinates and style it
+        '''
+        fig = go.Figure(data=go.Scatter(
+            x = randn(500),
+            y = randn(500),
+            mode='markers',
+            marker=dict(
+                size=16,
+                color=randn(500), #set color equal to a variable
+                colorscale='Viridis', # one of plotly colorscales
+                showscale=True)))
+        fig.update_layout(
+            title="scatter plots with stlying",
+            xaxis_title="x Axis",
+            yaxis_title="y Axis",
+            font=dict(family="Courier New, monospace",size=18,)
+        )
+        fig.write_image("images/fig3.png")
+        fig.show()
+
 def switchToFunction(obj):
     '''
     Create switch function to move perticular program
@@ -54,12 +76,14 @@ def switchToFunction(obj):
     print('''
     1.Draw a scatter plot for random 1000 x and y coordinates
     2.Draw line and scatter plots for random 100 x and y coordinates
+    3.Draw a scatter plot for random 500 x and y coordinates and style it
     ''')
     try:
         choice = int(input('Enter which program you want to run: '))
         switcher = {
             1 : lambda: obj.scatter_plot(x=randn(1000),y=randn(1000),title='Scatter plot for random 1000 x and y coordinates'),
             2 : lambda: obj.line_plot(),
+            3 : lambda: obj.style_scatter(),
         }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
