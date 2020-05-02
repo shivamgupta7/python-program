@@ -47,3 +47,16 @@ class DatabaseManager:
                 self.cursor.close()
                 self.conn.close()
                 print("MySQL connection is closed")
+    
+    def modify_sql_data(self,SqlString):
+        try:
+            logging.info('Modify sql data run on ' + self.database)
+            self.cursor.execute(SqlString)
+            self.conn.commit()
+        except mysql.connector.Error as ex:
+            logging.error('Modify sql data run on ' + self.database + 'for query: '+str(ex))
+        finally:
+            if (self.conn.is_connected()):
+                self.cursor.close()
+                self.conn.close()
+                print("MySQL connection is closed")
