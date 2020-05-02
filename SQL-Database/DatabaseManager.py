@@ -33,3 +33,17 @@ class DatabaseManager:
                 self.cursor.close()
                 self.conn.close()
                 print("MySQL connection is closed")
+
+    def insert_sql_data(self,sql_string):
+        try:
+            logging.info('Insert sql data run on: ' + self.database)
+            self.cursor.execute(sql_string)
+            self.conn.commit()
+            print('New row added successfully.')
+        except mysql.connector.Error as ex:
+            logging.error('Insert sql data run on: ' + self.database + 'for query: '+str(ex))
+        finally:
+            if (self.conn.is_connected()):
+                self.cursor.close()
+                self.conn.close()
+                print("MySQL connection is closed")
