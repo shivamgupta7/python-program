@@ -3,6 +3,9 @@ import mysql.connector
 from mysql.connector import Error
 import logging
 from LoggerManager import NewLogger
+import os
+import json
+import csv
 
 
 class DatabaseManager:
@@ -15,19 +18,19 @@ class DatabaseManager:
         self.cursor = self.conn.cursor()
 
     def select_data(self, sql_string):
-        logging.info('get_sql_data run on ' + self.database)
+        logging.info('Select data run on ' + self.database + ' database')
         table_data = self.cursor.execute(sql_string)
         table_data = self.cursor.fetchall()
         return print(table_data)
 
     def create_table(self,sql_string):
         try:
-            logging.info('Create new table in ' + self.database)
+            logging.info('Create new table in ' + self.database + ' database')
             self.cursor.execute(sql_string)
             self.conn.commit()
             print('Table created successfully.')
         except mysql.connector.Error as ex:
-            logging.error('create table on: ' + self.database + 'for query: '+str(ex))
+            logging.error('create table on: ' + self.database + ' for query: '+str(ex))
         finally:
             if (self.conn.is_connected()):
                 self.cursor.close()
@@ -36,12 +39,12 @@ class DatabaseManager:
 
     def insert_sql_data(self,sql_string):
         try:
-            logging.info('Insert sql data run on: ' + self.database)
+            logging.info('Insert sql data run on: ' + self.database + ' database')
             self.cursor.execute(sql_string)
             self.conn.commit()
             print('New row added successfully.')
         except mysql.connector.Error as ex:
-            logging.error('Insert sql data run on: ' + self.database + 'for query: '+str(ex))
+            logging.error('Insert sql data run on: ' + self.database + ' for query: '+str(ex))
         finally:
             if (self.conn.is_connected()):
                 self.cursor.close()
@@ -50,11 +53,12 @@ class DatabaseManager:
     
     def modify_sql_data(self,SqlString):
         try:
-            logging.info('Modify sql data run on ' + self.database)
+            logging.info('Modify sql data run on ' + self.database + ' database')
             self.cursor.execute(SqlString)
             self.conn.commit()
+            print('Modify data successfully.')
         except mysql.connector.Error as ex:
-            logging.error('Modify sql data run on ' + self.database + 'for query: '+str(ex))
+            logging.error('Modify sql data run on ' + self.database + ' for query: '+str(ex))
         finally:
             if (self.conn.is_connected()):
                 self.cursor.close()
@@ -63,11 +67,45 @@ class DatabaseManager:
 
     def delete_sql_data(self,SqlString):
         try:
-            logging.info('delete sql data run on ' + self.database)
+            logging.info('Delete sql data run on ' + self.database + ' database')
             self.cursor.execute(SqlString)
             self.conn.commit()
+            print('Delete data successfully.')
         except mysql.connector.Error as ex:
-            logging.error('delete sql data run on ' + self.database + 'for query: '+str(ex))
+            logging.error('Delete sql data run on ' + self.database + ' for query: '+str(ex))
+        finally:
+            if (self.conn.is_connected()):
+                self.cursor.close()
+                self.conn.close()
+                print("MySQL connection is closed")
+
+    def export_data(self,SqlString,file_type):
+        try:
+            if file_type.casefold() == 'json':
+                logging.info('Export database ' + self.database + ' to ' + file_type +' file.')
+                self.cursor.execute(SqlString)
+                row_headers = [column[0] for column in self.cursor.description]
+                data=self.cursor.fetchall()
+                json_data = {'Employees': []}
+                out_file = open("employees.json", "w")
+                for result in data:
+                    json_data['Employees'].append(dict(zip(row_headers,result)))
+                json.dump(json_data, out_file,indent=4, default=str)
+                out_file.close()
+                print('Table convert into json file successfully.')
+            elif file_type.casefold() == 'csv':
+                logging.info('Export database ' + self.database + ' to ' + file_type +' file.')
+                self.cursor.execute(SqlString)
+                data = self.cursor.fetchall()
+                column_names = [column[0] for column in self.cursor.description]
+                out_file = open('employee.csv', 'w')
+                myFile = csv.writer(out_file)
+                myFile.writerow(column_names)
+                myFile.writerows(data)
+                out_file.close()
+                print('Table convert into CSV file successfully.')
+        except mysql.connector.Error as ex:
+            logging.error('Export sql data run on ' + self.database + ' for query: '+str(ex))
         finally:
             if (self.conn.is_connected()):
                 self.cursor.close()
