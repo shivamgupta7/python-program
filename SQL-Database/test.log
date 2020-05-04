@@ -1,0 +1,11 @@
+2020-05-04 20:03:14,670 DatabaseManager INFO      : Starting new task: 
+2020-05-04 20:03:14,671 root         INFO     Insert sql data run on: employees
+2020-05-04 20:03:14,671 root         ERROR    Insert sql data run on: employees for query: 1146 (42S02): Table 'employees.employees' doesn't exist
+2020-05-04 20:03:48,260 DatabaseManager INFO      : Starting new task: 
+2020-05-04 20:03:48,261 root         INFO     Create new table in employees
+2020-05-04 20:04:13,900 DatabaseManager INFO      : Starting new task: 
+2020-05-04 20:04:13,900 root         INFO     Insert sql data run on: employees
+2020-05-04 20:07:50,067 DatabaseManager INFO      : Starting new task: 
+2020-05-04 20:07:50,067 root         INFO     Export database employees to json file.
+2020-05-04 20:08:15,026 DatabaseManager INFO      : Starting new task: 
+2020-05-04 20:08:15,026 root         INFO     Export database employees to csv file.
