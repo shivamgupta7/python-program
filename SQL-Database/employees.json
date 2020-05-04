@@ -1,0 +1,60 @@
+{
+    "Employees": [
+        {
+            "emp_no": 1,
+            "birth_date": "1996-10-30",
+            "first_name": "Rohit",
+            "last_name": "Gupta",
+            "gender": "M",
+            "hire_date": "2020-03-05"
+        },
+        {
+            "emp_no": 2,
+            "birth_date": "1995-09-21",
+            "first_name": "Gaurav",
+            "last_name": "Gupta",
+            "gender": "M",
+            "hire_date": "2018-05-10"
+        },
+        {
+            "emp_no": 3,
+            "birth_date": "1997-01-30",
+            "first_name": "Shraddha",
+            "last_name": "Srivastava",
+            "gender": "F",
+            "hire_date": "2020-04-15"
+        },
+        {
+            "emp_no": 4,
+            "birth_date": "1997-05-31",
+            "first_name": "Priya",
+            "last_name": "Pandey",
+            "gender": "F",
+            "hire_date": "2020-01-30"
+        },
+        {
+            "emp_no": 5,
+            "birth_date": "1995-11-06",
+            "first_name": "Himanshu",
+            "last_name": "Singh",
+            "gender": "M",
+            "hire_date": "2019-07-12"
+        },
+        {
+            "emp_no": 6,
+            "birth_date": "1997-02-27",
+            "first_name": "Divyendu",
+            "last_name": "Yadav",
+            "gender": "M",
+            "hire_date": "2019-02-20"
+        },
+        {
+            "emp_no": 7,
+            "birth_date": "1996-12-09",
+            "first_name": "Pankhuri",
+            "last_name": "Mahrotra",
+            "gender": "F",
+            "hire_date": "2019-08-13"
+        }
+    ]
+}
