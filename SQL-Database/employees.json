@@ -1,5 +1,5 @@
 {
-    "Employees": [
+    "employees": [
         {
             "emp_no": 1,
             "birth_date": "1996-10-30",
