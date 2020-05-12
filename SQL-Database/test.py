@@ -78,4 +78,7 @@ dbm = DatabaseManager(host_name='localhost',username='root',password='Gupta@007'
 #                         ('1997-02-27', 'Divyendu', 'Yadav', 'M', '2019-02-20'),
 #                         ('1996-12-09', 'Pankhuri', 'Mahrotra', 'F', '2019-08-13') """)
 
-dbm.export_data('select * from employees', 'csv')
+# dbm.export_data('select * from employees', 'json', 'employees')
+
+dbm.import_data('''LOAD DATA LOCAL INFILE 'employee.csv' INTO TABLE employees 
+                    FIELDS TERMINATED BY ',' ENCLOSED BY '"' IGNORE 1 LINES;''')
