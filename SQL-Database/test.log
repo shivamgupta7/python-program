@@ -9,3 +9,40 @@
 2020-05-04 20:07:50,067 root         INFO     Export database employees to json file.
 2020-05-04 20:08:15,026 DatabaseManager INFO      : Starting new task: 
 2020-05-04 20:08:15,026 root         INFO     Export database employees to csv file.
+2020-05-04 22:21:43,676 DatabaseManager INFO      : Starting new task: 
+2020-05-04 22:21:43,677 root         INFO     Export database employees to csv file.
+2020-05-04 22:22:07,833 DatabaseManager INFO      : Starting new task: 
+2020-05-04 22:22:07,833 root         INFO     Export database employees to json file.
+2020-05-05 12:58:50,858 DatabaseManager INFO      : Starting new task: 
+2020-05-05 12:58:50,858 root         INFO     Import data onemployees database
+2020-05-05 12:58:50,859 root         ERROR    Import data run on employees for query: 1148 (42000): The used command is not allowed with this MySQL version
+2020-05-05 13:00:56,801 DatabaseManager INFO      : Starting new task: 
+2020-05-05 13:00:56,801 root         INFO     Import data on employees database
+2020-05-05 13:00:56,801 root         ERROR    Import data run on employees for query: 1148 (42000): The used command is not allowed with this MySQL version
+2020-05-05 13:03:23,089 DatabaseManager INFO      : Starting new task: 
+2020-05-05 13:03:23,089 root         INFO     Import data on employees database
+2020-05-05 13:03:23,090 root         ERROR    Import data run on employees for query: 1148 (42000): The used command is not allowed with this MySQL version
+2020-05-05 13:07:25,060 DatabaseManager INFO      : Starting new task: 
+2020-05-05 13:07:25,060 root         INFO     Import data on employees database
+2020-05-05 13:07:25,060 root         ERROR    Import data run on employees for query: 1148 (42000): The used command is not allowed with this MySQL version
+2020-05-05 14:19:17,758 DatabaseManager INFO      : Starting new task: 
+2020-05-05 14:19:17,759 root         INFO     Import data on employees database
+2020-05-05 14:19:17,759 root         ERROR    Import data run on employees for query: 1148 (42000): The used command is not allowed with this MySQL version
+2020-05-05 14:19:55,278 DatabaseManager INFO      : Starting new task: 
+2020-05-05 14:19:55,278 root         INFO     Import data on employees database
+2020-05-05 14:19:55,278 root         ERROR    Import data run on employees for query: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ENABLE LOCAL INFILE 'employee.csv' INTO TABLE employees 
+                    FIE' at line 1
+2020-05-05 14:24:33,971 DatabaseManager INFO      : Starting new task: 
+2020-05-05 14:24:33,972 root         INFO     Import data on employees database
+2020-05-05 14:24:33,972 root         ERROR    Import data run on employees for query: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ENABLE LOCAL INFILE 'employee.csv' INTO TABLE employees 
+                    FIE' at line 1
+2020-05-05 14:24:45,180 DatabaseManager INFO      : Starting new task: 
+2020-05-05 14:24:45,180 root         INFO     Import data on employees database
+2020-05-05 14:24:45,181 root         ERROR    Import data run on employees for query: 1148 (42000): The used command is not allowed with this MySQL version
+2020-05-05 14:27:48,352 DatabaseManager INFO      : Starting new task: 
+2020-05-05 14:27:48,352 root         INFO     Import data on employees database
+2020-05-05 14:27:48,353 root         ERROR    Import data run on employees for query: 1148 (42000): The used command is not allowed with this MySQL version
+2020-05-05 14:38:38,370 DatabaseManager INFO      : Starting new task: 
+2020-05-05 14:38:38,370 root         INFO     Import data on employees database
+2020-05-05 14:39:11,674 DatabaseManager INFO      : Starting new task: 
+2020-05-05 14:39:11,674 root         INFO     Import data on employees database
