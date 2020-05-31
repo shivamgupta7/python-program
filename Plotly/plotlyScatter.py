@@ -106,9 +106,9 @@ def switchToFunction(obj):
         choice = int(input('Enter which program you want to run: '))
         switcher = {
             1 : lambda: obj.scatter_plot(x=randn(1000),y=randn(1000),title='Scatter plot for random 1000 x and y coordinates'),
-            2 : lambda: obj.line_plot(),
-            3 : lambda: obj.style_scatter(),
-            4 : lambda: obj.plotUsingDataFrame(),
+            2 : obj.line_plot,
+            3 : obj.style_scatter,
+            4 : obj.plotUsingDataFrame,
         }
         func = switcher.get(choice, lambda: print('\nInvalid choice please select correct options.'))
         func()
