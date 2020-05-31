@@ -331,16 +331,16 @@ def switchToFunction(case,filepath):
     '''
     obj = addressbook
     switcher = {
-        1 : lambda: obj.open_addressbook(filepath),
-        2 : lambda: obj.printAllContacts(filepath),
-        3 : lambda: obj.add_contact(filepath),
-        4 : lambda: obj.retrievePersonContact(filepath),
-        5 : lambda: obj.removePersonContact(filepath),
-        6 : lambda: obj.modify_contact(filepath),
-        7 : lambda: obj.sortContact(filepath)
+        1 : obj.open_addressbook,
+        2 : obj.printAllContacts,
+        3 : obj.add_contact,
+        4 : obj.retrievePersonContact,
+        5 : obj.removePersonContact,
+        6 : obj.modify_contact,
+        7 : obj.sortContact
         }
     func = switcher.get(case, lambda: 'Invalid choice please select correct options.')
-    func()
+    func(filepath)
 
 def main():
     menu()
